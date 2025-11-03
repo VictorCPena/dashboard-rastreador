@@ -1,0 +1,36 @@
+# =============================================================================
+# ARQUIVO .GITIGNORE
+# =============================================================================
+
+# --- 1. SEGREDOS ---
+# Ignora o arquivo de chaves de API e senhas. NUNCA suba isso.
+.env
+
+# --- 2. MODELOS PESADOS ---
+# Ignora a pasta inteira de modelos de IA.
+# Eles são muito pesados para o GitHub e não são usados pelo dashboard.
+modelos/
+
+# Ignora arquivos de dados de treinamento (como o parquet)
+*.parquet
+
+# --- 3. DADOS BRUTOS E CACHE LOCAL ---
+# Ignora os bancos de dados SQLite. O dashboard lê os .json, não o .db
+dados/*.db
+
+# --- 4. PERFIL DO CHROME ---
+# Ignora o perfil local do Chrome (segurança máxima)
+# (Mesmo que não esteja na pasta, é uma boa prática)
+c:/Users/Bolero/Downloads/chrome_profile/
+
+# --- 5. PASTAS DE RESULTADOS (OUTPUTS) ---
+# O dashboard GERA esses relatórios, ele não precisa LER eles.
+# Ignorar isso impede que o repositório fique cheio de HTML.
+relatorios/
+relatorios_html/
+
+# --- 6. CACHE DO PYTHON E LIXO DO SO ---
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store

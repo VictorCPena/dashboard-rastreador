@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Análise: {{ report_name }}</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script> 
+    
+    <style>
+        body { background-color: #f8f9fa; font-family: 'Poppins', sans-serif; }
+        .navbar-brand { font-weight: 600; }
+        .main-header { font-weight: 700; color: #343a40; }
+        .chart-container { background-color: white; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); overflow: hidden; }
+        .metric-card { background-color: white; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: 100%; }
+        .metric-card .icon { font-size: 2.5rem; margin-bottom: 10px; }
+        .metric-card h3 { font-size: 1rem; color: #6c757d; font-weight: 400; margin-bottom: 5px; }
+        .metric-card p { font-size: 2.2rem; font-weight: 700; margin: 0; }
+        .metric-card span { font-size: 1rem; font-weight: 600; }
+        .nav-tabs .nav-link { font-weight: 600; color: #6c757d; }
+        .nav-tabs .nav-link.active { color: #0d6efd; border-color: #dee2e6 #dee2e6 #fff; }
+        .summary-box { background-color: #f0f2f6; border-radius: 10px; padding: 20px; margin-bottom: 2rem; }
+        canvas { max-width: 100%; height: auto !important;} 
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid"><a class="navbar-brand" href="#">📊 Relatório de Análise de Mídias</a></div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="mb-4 main-header">Relatório Estático de Análise</h1>
+        <div class="alert alert-secondary"><strong>Relatório:</strong> {{ report_name }}</div>
+        <div class="alert alert-warning"><strong>Nota:</strong> Este é um relatório estático. Os gráficos são renderizados no seu navegador.</div>
+
+        <div class="p-4 chart-container summary-box"> 
+            <h2><i class="fas fa-file-alt me-2"></i>Resumo Executivo (Gerado por IA)</h2>
+            <hr>
+            <div>{{ resumo_executivo | safe }}</div> 
+        </div>
+
+        <h2 class="mt-5">Métricas Gerais (Período Completo)</h2>
+        <div class="row text-center my-4 g-4" id="metric-cards-container">
+            </div>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation"><button class="nav-link active" id="sentimento-tab" data-bs-toggle="tab" data-bs-target="#sentimento" type="button" role="tab">📊 Sentimento e Gênero</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="conteudo-tab" data-bs-toggle="tab" data-bs-target="#conteudo" type="button" role="tab">📝 Conteúdo e Texto</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="dados-tab" data-bs-toggle="tab" data-bs-target="#dados" type="button" role="tab">📋 Amostra de Dados</button></li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="sentimento" role="tabpanel">
+                <div class="row mt-4">
+                    <div class="col-lg-6 chart-container">
+                        <h5>Distribuição de Sentimentos (%)</h5>
+                        <p class="text-muted small">Visão geral da recepção do público. Mostra a proporção de comentários positivos, neutros e negativos.</p>
+                        <canvas id="sentimentPieChart"></canvas> 
+                    </div>
+                     <div class="col-lg-6 chart-container">
+                        <h5>Distribuição de Gêneros (%)</h5>
+                        <p class="text-muted small">Divide o público que comentou por gênero identificado (com base no nome).</p>
+                        <canvas id="genderPieChart"></canvas> 
+                    </div>
+                     <div class="col-12 chart-container"> 
+                        <h5>Distribuição de Sentimento por Gênero (Barras)</h5>
+                        <p class="text-muted small">Mostra se um gênero específico (masculino, feminino) tende a ser mais positivo ou negativo.</p>
+                        <canvas id="genderBarChart"></canvas> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane fade" id="conteudo" role="tabpanel">
+                <div class="row mt-4">
+                    <div class="col-lg-6 chart-container">
+                         <h5>Top 20 Termos Mais Frequentes</h5>
+                         <p class="text-muted small">Os principais assuntos e palavras-chave mencionados pelo público nos comentários (após filtrar palavras comuns).</p>
+                         <canvas id="wordFreqChart"></canvas> 
+                    </div>
+                    <div class="col-lg-6 chart-container">
+                         <h5>Top 15 Emojis Mais Usados</h5>
+                         <p class="text-muted small">Emojis mais usados, que ajudam a identificar o "tom" emocional das reações.</p>
+                         <canvas id="emojiChart"></canvas> 
+                    </div>
+                    <div class="col-12 chart-container">
+                         <h5>Linha do Tempo dos Comentários</h5>
+                         <p class="text-muted small">Mostra os picos de atividade. Dias com muitos comentários podem indicar postagens ou eventos de alto impacto.</p>
+                         <canvas id="timelineChart"></canvas> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane fade" id="dados" role="tabpanel">
+                <div class="row mt-4">
+                    <div class="col-12 chart-container">
+                        <h2><i class="fas fa-table me-2"></i>Amostra de Dados Processados (20 Primeiros)</h2>
+                        <hr>
+                        <div class="table-responsive">
+                            {{ tabela_amostra | safe }} 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="text-center text-muted mt-5 mb-3">
+        <hr>
+        <p>Relatório gerado em: {{ generation_date }}</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // 1. Recebe os dados injetados pelo Jinja2/Python
+        let reportData = {};
+        try {
+            // Tenta parsear o JSON injetado
+             reportData = JSON.parse({{ report_data_json | safe }});
+        } catch (e) {
+            console.error("Erro ao parsear report_data_json:", e);
+            // Insere uma mensagem de erro no corpo do HTML
+            document.body.insertAdjacentHTML('afterbegin', '<div class="alert alert-danger">Erro crítico: Falha ao carregar dados para os gráficos. Verifique o console para detalhes.</div>');
+        }
+
+        const colorMapSentiment = { 'Negativo':'#F44336', 'Neutro':'#9E9E9E', 'Positivo':'#4CAF50' };
+        const colorMapGender = {'masculino': '#1f77b4', 'feminino': '#e377c2', 'Desconhecido': '#7f7f7f', 'indeterminado': '#7f7f7f'}; 
+
+        // --- Função Auxiliar para Cores ---
+        function getColors(labels, colorMap) {
+            // Garante que labels seja um array
+            if (!Array.isArray(labels)) return ['#CCCCCC']; 
+            return labels.map(label => colorMap[label] || '#CCCCCC'); // Usa cinza se não mapeado
+        }
+
+        // --- Registra o plugin de datalabels globalmente ---
+        // Verifica se o plugin foi carregado antes de registrar
+        if (typeof ChartDataLabels !== 'undefined') {
+            Chart.register(ChartDataLabels);
+            // Configuração padrão para datalabels
+            Chart.defaults.set('plugins.datalabels', {
+                color: '#ffffff', // Cor do texto da porcentagem
+                anchor: 'end', // Posição da label
+                align: 'start', // Alinhamento da label
+                offset: -10, // Distância da borda
+                borderRadius: 4, // Borda arredondada
+                backgroundColor: (context) => { // Cor de fundo semi-transparante
+                     // Usa a cor da fatia com alguma transparência
+                     const chart = context.chart;
+                     const datasetIndex = context.datasetIndex;
+                     const dataIndex = context.dataIndex;
+                     const color = chart.data.datasets[datasetIndex].backgroundColor[dataIndex];
+                     // Retorna a cor com alfa (transparência)
+                     // Regex para extrair RGB de hex (#RRGGBB) e adicionar alfa
+                     const rgb = color.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
+                     return rgb ? `rgba(${parseInt(rgb[1], 16)}, ${parseInt(rgb[2], 16)}, ${parseInt(rgb[3], 16)}, 0.7)` : 'rgba(0,0,0,0.5)';
+                },
+                font: { weight: 'bold', size: 11 }, // Tamanho ajustado
+                formatter: (value, ctx) => { // Formata para porcentagem
+                    let sum = 0;
+                    let dataArr = ctx.chart.data.datasets[0].data;
+                    // Garante que dataArr seja um array e contenha números
+                    if (!Array.isArray(dataArr)) return '';
+                    dataArr.map(data => { sum += (Number(data) || 0); });
+                    if (sum === 0) return '0.0%';
+                    let percentage = (value*100 / sum);
+                    // Só mostra se for maior que uma porcentagem mínima (ex: 3%)
+                    return percentage >= 3 ? percentage.toFixed(1) + "%" : '';
+                }
+            });
+        } else {
+             console.warn("ChartDataLabels plugin não carregado. As porcentagens nos gráficos de pizza não serão exibidas.");
+        }
+
+
+        // --- Renderiza Métricas ---
+        const metricsContainer = document.getElementById('metric-cards-container');
+        // Verifica se reportData e reportData.metrics existem e é um array
+        if (reportData && Array.isArray(reportData.metrics) && metricsContainer) {
+            let metricsHtml = '';
+            reportData.metrics.forEach(metric => {
+                // Adiciona verificações para valores padrão
+                const label = metric.label || 'N/A';
+                const value = metric.value !== undefined ? metric.value : 'N/A';
+                const delta = metric.delta || '';
+                const color = metric.color || '#CCCCCC';
+                const icon = metric.icon || 'fa-question-circle';
+
+                metricsHtml += `
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="metric-card h-100">
+                            <div class="icon" style="color: ${color};"><i class="fas ${icon}"></i></div>
+                            <h3>${label}</h3>
+                            <p style="color: ${color};">${value}</p>
+                            <span style="color: ${color};">${delta}</span>
+                        </div>
+                    </div>`;
+            });
+            metricsContainer.innerHTML = metricsHtml;
+        } else if (metricsContainer) {
+             metricsContainer.innerHTML = "<div class='col-12'><div class='alert alert-warning'>Dados de métricas não disponíveis.</div></div>";
+        }
+
+
+        // --- Função genérica para exibir mensagem de "Sem Dados" ---
+        function showNoDataMessage(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            if (canvas && canvas.parentNode) {
+                 // [MUDANÇA] Adiciona a mensagem DEPOIS do canvas para não quebrar a estrutura
+                 canvas.parentNode.insertAdjacentHTML('beforeend', "<div class='alert alert-info'>Sem dados suficientes para exibir este gráfico.</div>");
+                 canvas.style.display = 'none'; // Esconde o canvas
+            }
+        }
+
+        // --- Renderiza Gráfico de Pizza (Sentimento) COM PORCENTAGENS ---
+        const sentimentPieCtx = document.getElementById('sentimentPieChart');
+        // Verifica se os dados necessários existem e não estão vazios
+        if (sentimentPieCtx && reportData.sentiment_counts && Array.isArray(reportData.sentiment_counts.labels) && reportData.sentiment_counts.labels.length > 0) {
+            try {
+                new Chart(sentimentPieCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: reportData.sentiment_counts.labels,
+                        datasets: [{
+                            label: 'Sentimentos',
+                            data: reportData.sentiment_counts.data,
+                            backgroundColor: getColors(reportData.sentiment_counts.labels, colorMapSentiment),
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false, // Permite controlar melhor a altura
+                        plugins: {
+                            legend: { position: 'top' },
+                            // Datalabels já configurado globalmente, mas pode sobrescrever aqui
+                            datalabels: {
+                                // Exemplo: sobrescrever cor se necessário
+                                // color: '#333'
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                 console.error("Erro ao criar gráfico de pizza de sentimento:", e);
+                 showNoDataMessage('sentimentPieChart');
+            }
+        } else if (sentimentPieCtx) {
+             showNoDataMessage('sentimentPieChart');
+        }
+
+        // --- Renderiza Gráfico de Pizza (Gênero) ---
+        const genderPieCtx = document.getElementById('genderPieChart');
+        if (genderPieCtx && reportData.gender_pie_counts && Array.isArray(reportData.gender_pie_counts.labels) && reportData.gender_pie_counts.labels.length > 0) {
+             try {
+                new Chart(genderPieCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: reportData.gender_pie_counts.labels,
+                        datasets: [{
+                            label: 'Gêneros',
+                            data: reportData.gender_pie_counts.data,
+                            backgroundColor: getColors(reportData.gender_pie_counts.labels, colorMapGender),
+                            hoverOffset: 4
+                        }]
+                    },
+                     options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'top' },
+                            datalabels: {
+                                 // Usa o formatter padrão global
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                 console.error("Erro ao criar gráfico de pizza de gênero:", e);
+                 showNoDataMessage('genderPieChart');
+            }
+        } else if (genderPieCtx) {
+            showNoDataMessage('genderPieChart');
+        }
+
+        // --- Renderiza Gráfico de Barras (Gênero x Sentimento) ---
+        const genderBarCtx = document.getElementById('genderBarChart');
+        if (genderBarCtx && reportData.gender_bar_counts && Array.isArray(reportData.gender_bar_counts.labels) && reportData.gender_bar_counts.labels.length > 0 && Array.isArray(reportData.gender_bar_counts.datasets) && reportData.gender_bar_counts.datasets.some(ds => ds.data.length > 0)) {
+            try {
+                new Chart(genderBarCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: reportData.gender_bar_counts.labels,
+                        datasets: reportData.gender_bar_counts.datasets.map(ds => ({
+                            label: ds.label,
+                            data: ds.data,
+                            backgroundColor: colorMapSentiment[ds.label] || '#CCCCCC'
+                        }))
+                    },
+                    options: {
+                        responsive: true,
+                         maintainAspectRatio: false,
+                        scales: { y: { beginAtZero: true } },
+                        plugins: {
+                            legend: { position: 'top' },
+                            datalabels: { display: false } // Desativa datalabels para barras agrupadas
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error("Erro ao criar gráfico de barras de gênero:", e);
+                showNoDataMessage('genderBarChart');
+            }
+        } else if (genderBarCtx) {
+             showNoDataMessage('genderBarChart');
+        }
+
+        // --- Renderiza Gráfico de Barras Horizontais (Frequência de Palavras) ---
+        const wordFreqCtx = document.getElementById('wordFreqChart');
+        if (wordFreqCtx && reportData.word_freq && Array.isArray(reportData.word_freq.labels) && reportData.word_freq.labels.length > 0) {
+             try {
+                new Chart(wordFreqCtx, {
+                    type: 'bar',
+                    data: { labels: reportData.word_freq.labels, datasets: [{ label: 'Frequência', data: reportData.word_freq.data, backgroundColor: '#636efa', borderColor: '#636efa', borderWidth: 1 }] },
+                    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, datalabels: { display: false } } }
+                });
+             } catch (e) {
+                  console.error("Erro ao criar gráfico de frequência de palavras:", e);
+                  showNoDataMessage('wordFreqChart');
+             }
+        } else if (wordFreqCtx) {
+            showNoDataMessage('wordFreqChart');
+        }
+
+        // --- Renderiza Gráfico de Barras Horizontais (Emojis) ---
+         const emojiCtx = document.getElementById('emojiChart');
+         if (emojiCtx && reportData.emoji_freq && Array.isArray(reportData.emoji_freq.labels) && reportData.emoji_freq.labels.length > 0) {
+             try {
+                new Chart(emojiCtx, {
+                    type: 'bar',
+                    data: { labels: reportData.emoji_freq.labels, datasets: [{ label: 'Frequência', data: reportData.emoji_freq.data, backgroundColor: '#FFA15A', borderColor: '#FFA15A', borderWidth: 1 }] },
+                    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, datalabels: { display: false } } }
+                });
+             } catch (e) {
+                 console.error("Erro ao criar gráfico de emojis:", e);
+                 showNoDataMessage('emojiChart');
+             }
+        } else if (emojiCtx) {
+             showNoDataMessage('emojiChart');
+        }
+
+        // --- Renderiza Gráfico de Linha (Timeline) ---
+        const timelineCtx = document.getElementById('timelineChart');
+        if (timelineCtx && reportData.timeline && Array.isArray(reportData.timeline.labels) && reportData.timeline.labels.length > 0) {
+            try {
+                new Chart(timelineCtx, {
+                    type: 'line',
+                    data: { labels: reportData.timeline.labels, datasets: [{ label: 'Nº de Comentários', data: reportData.timeline.data, fill: false, borderColor: '#19d3f3', tension: 0.1 }] },
+                    options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false }, datalabels: { display: false } } }
+                });
+            } catch (e) {
+                 console.error("Erro ao criar gráfico de linha do tempo:", e);
+                 showNoDataMessage('timelineChart');
+            }
+        } else if (timelineCtx) {
+             showNoDataMessage('timelineChart');
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+settings:
+  chrome_profile_path: "c:/Users/Bolero/Downloads/chrome_profile"
+
+paths:
+  output_report: "dados/relatorio_geral.txt"
+  sentiment_model: "modelos/modelo_final_bert_base_estavel"
+  gender_model: "modelos/modelo_final_genero_final"
+
+email:
+  sender: "seu-email@gmail.com"
+  recipients:
+    - "email-destino@exemplo.com.br"
+  subject: "Relatório Semanal: Análise de Mídias Sociais"
+
+# Em config/config.yaml
+
+gemini:
+  # --- Configurações que você já tinha ---
+  model_name: "gemini-2.5-flash" # (Corrigi o seu "2.5-flash" para "1.5-flash", que é o modelo correto)
+  generation_config:
+    temperature: 0.5
+    max_output_tokens: 4096
+  
+  # --- Chaves que estavam faltando e o script precisa ---
+  api_key_env: "GEMINI_API_KEY"
+  api_delay_seconds: 2
+  max_comments_per_group: 250
+
+  # --- O PROMPT QUE CAUSOU O ERRO ---
+  detailed_summary_prompt: >-
+    Você é um analista de mídias sociais. Analise os comentários a seguir sobre "{nome_grupo}" 
+    e forneça um resumo detalhado em 3 a 5 tópicos (bullet points).
+    Identifique o sentimento geral, os principais pontos positivos e negativos, e 
+    qualquer sugestão ou reclamação recorrente. Seja conciso e direto.
+
+    Comentários para análise:
+    {conteudos_formatados}
+
+  # --- O PRÓXIMO PROMPT QUE IA DAR ERRO ---
+  executive_summary_prompt: >-
+    Você é um analista sênior de mídias sociais. Você recebeu os resumos detalhados abaixo, 
+    cada um de uma fonte diferente.
+    Compile um "Resumo Executivo" geral e unificado em markdown.
+
+    O resumo deve conter:
+    1.  **Sentimento Geral:** O sentimento predominante (Positivo, Negativo, Misto).
+    2.  **Temas Principais:** Os 3 a 5 assuntos mais discutidos.
+    3.  **Pontos de Atenção:** Quaisquer problemas críticos, reclamações ou elogios 
+        significativos que a equipe precisa saber.
+    4.  **Recomendações (Opcional):** Uma sugestão de ação, se aplicável.
+
+    Resumos Detalhados das Fontes:
+    {texto_dos_resumos}
+
+coleta:
+  twitter:
+    max_scrolls: 10
+    scroll_delay: 2.5
+    timeout: 30
+  instagram:
+    max_posts_por_perfil: 25
+    scrolls_perfil: 25
+    scroll_delay: 3
+    timeout: 30
+
+# --- SEÇÃO CORRIGIDA ---
+monitor_profiles:
+  diario_do_nordeste:
+    instagram_profiles:
+      - diariodonordeste
+    # Você pode adicionar twitter_profiles aqui no futuro se precisar
+    # twitter_profiles:
+    #   - diariodonordeste
+
+  o_povo:
+    instagram_profiles:
+      - opovoonline
+    # Você pode adicionar twitter_profiles aqui no futuro se precisar
+    # twitter_profiles:
+    #   - opovoonline
+
+  bolerocomunicacao:
+    instagram_profiles:
+      - bolerocomunicacao
