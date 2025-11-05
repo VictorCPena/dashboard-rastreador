@@ -4,7 +4,6 @@ pandas
 plotly
 emoji
 Jinja2
-subprocess
 # Processamento de Texto
 spacy
 
