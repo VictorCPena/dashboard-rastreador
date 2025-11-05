@@ -1,35 +1,36 @@
 # =============================================================================
-# ARQUIVO .GITIGNORE
+# .GITIGNORE (Versão Final Segura - IGNORA O CÓDIGO FONTE)
 # =============================================================================
 
-# --- 1. SEGREDOS ---
-# Ignora o arquivo de chaves de API e senhas. NUNCA suba isso.
+# --- 1. CÓDIGO FONTE DO PIPELINE ---
+# IGNORA o "motor" (coletores, scripts de análise, etc.)
+src/
+
+# --- 2. SEGREDOS ---
+# Ignora o arquivo de chaves de API e senhas.
 .env
 
-# --- 2. MODELOS PESADOS ---
+# --- 3. MODELOS PESADOS ---
 # Ignora a pasta inteira de modelos de IA.
-# Eles são muito pesados para o GitHub e não são usados pelo dashboard.
 modelos/
 
 # Ignora arquivos de dados de treinamento (como o parquet)
 *.parquet
 
-# --- 3. DADOS BRUTOS E CACHE LOCAL ---
-# Ignora os bancos de dados SQLite. O dashboard lê os .json, não o .db
+# --- 4. DADOS BRUTOS E CACHE LOCAL ---
+# Ignora os bancos de dados SQLite.
 dados/*.db
 
-# --- 4. PERFIL DO CHROME ---
+# --- 5. PERFIL DO CHROME ---
 # Ignora o perfil local do Chrome (segurança máxima)
-# (Mesmo que não esteja na pasta, é uma boa prática)
 c:/Users/Bolero/Downloads/chrome_profile/
 
-# --- 5. PASTAS DE RESULTADOS (OUTPUTS) ---
-# O dashboard GERA esses relatórios, ele não precisa LER eles.
-# Ignorar isso impede que o repositório fique cheio de HTML.
+# --- 6. PASTAS DE OUTPUTS (Gerados) ---
+# O dashboard GERA esses relatórios HTML, ele não precisa LER eles.
 relatorios/
 relatorios_html/
 
-# --- 6. CACHE DO PYTHON E LIXO DO SO ---
+# --- 7. CACHE DO PYTHON E LIXO DO SO ---
 __pycache__/
 *.pyc
 *.pyo
