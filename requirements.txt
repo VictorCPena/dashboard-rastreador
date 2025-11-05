@@ -1,21 +1,12 @@
-selenium
-pandas
-google-generativeai
-matplotlib
-seaborn
-wordcloud
-tensorflow
-transformers
-pyyaml
-python-dotenv
+# Core do Dashboard (para Streamlit Cloud)
 streamlit
+pandas
 plotly
-Jinja2
-spacy
 emoji
-networkx
-jinja2
+Jinja2
 subprocess
-base64
-glob
-json
+# Processamento de Texto
+spacy
+
+# Link direto para o modelo de linguagem em português
+https://github.com/explosion/spacy-models/releases/download/pt_core_news_lg-3.7.0/pt_core_news_lg-3.7.0.tar.gz#egg=pt_core_news_lg
