@@ -1,11 +1,20 @@
 # Core do Dashboard (para Streamlit Cloud)
 streamlit
-pandas
-plotly
+pandas==2.1.4  # Trava o pandas
+plotly==5.18.0 # Trava o plotly
 emoji
 Jinja2
-# Processamento de Texto
-spacy
+
+# --- Processamento de Texto (AQUI É O PULO DO GATO) ---
+
+# Trava o numpy numa versão compatível com tudo
+numpy==1.26.4 
+
+# Trava o spaCy na versão EXATA do seu modelo
+spacy==3.7.0
+
+# Trava o Thinc (motor do spaCy) na versão que o spacy 3.7.0 espera
+thinc==8.1.12
 
 # Link direto para o modelo de linguagem em português
 https://github.com/explosion/spacy-models/releases/download/pt_core_news_lg-3.7.0/pt_core_news_lg-3.7.0.tar.gz#egg=pt_core_news_lg
