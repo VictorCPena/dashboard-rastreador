@@ -1,4 +1,4 @@
-# dashboard.py (CORRIGIDO)
+# dashboard.py (CORRIGIDO E AJUSTADO)
 # -*- coding: utf-8 -*-
 import streamlit as st
 import pandas as pd
@@ -59,7 +59,7 @@ st.title("📊 Dashboard de Análise de Mídias Sociais")
 COLOR_MAP = {'Negativo': '#F44336', 'Neutro': '#9E9E9E', 'Positivo': '#4CAF50'}
 HTML_OUTPUT_DIR = "relatorios_html"
 DB_DIR = "dados"
-PROCESSED_DATA_DIR = "relatorios_processados"
+PROCESSED_DATA_DIR = "relatorios_processados" # <- Você usa esta pasta
 AI_SCRIPT_TIMEOUT = 180
 CRITICAL_NEG_THRESHOLD = 25.0
 STOP_WORDS_PT = [ "rapaz", "gente", "ruma", "coisa", "tudo", "nada", "disse", "mano", "cara", "vei", "tipo", "aí", "ne", "pra", "pro", "tá", "q", "vc", "vcs", "ja", "la", "ter", "ser", "ir", "fazer", "dizer", "querer", "ficar", "deixar", "dar", "assim", "então", "aqui", "agora", "hoje", "sempre", "muito", "pouco", "grande", "pequeno", "bom", "mau", "dia", "noite", "mês", "ano", "vez" ]
@@ -138,7 +138,8 @@ def _preprocess_dataframe(df_full: pd.DataFrame) -> pd.DataFrame:
 @st.cache_data(ttl=300)
 def load_processed_data_for_profile(profile_name: str) -> pd.DataFrame:
     print(f"Carregando dados para: {profile_name}")
-    search_path = os.path.join(PROCESSED_DATA_DIR, f"{profile_name}_*.json")
+    # Esta é a função correta que você criou
+    search_path = os.path.join(PROCESSED_DATA_DIR, f"{profile_name}_*.json") 
     df_raw = _load_data_from_json_files(search_path)
     if df_raw.empty: return pd.DataFrame()
     return _preprocess_dataframe(df_raw)
@@ -342,7 +343,7 @@ def display_dashboard_content(
     st.sidebar.header(f"Filtros Adicionais ({network_name}) 🔍")
 
     selected_source = "All Sources"
-   
+    
     selected_run_id = "All Runs"; selected_run_id_display = "All Runs"
     if 'run_id' in df_display.columns:
         run_ids = df_display['run_id'].unique().tolist()
@@ -454,9 +455,9 @@ def display_dashboard_content(
         sub_tab1, sub_tab2, sub_tab3 = st.tabs(["📊 Sent./Gênero", "📝 Conteúdo", "⏰ Timeline/Amostra"])
         with sub_tab1:
              if not df_filtered_B.empty:
-                col1, col2 = st.columns(2)
-                with col1: st.plotly_chart(get_fig_pie_chart(df_filtered_B), use_container_width=True)
-                with col2: st.plotly_chart(get_fig_gender_chart(df_filtered_B), use_container_width=True)
+                 col1, col2 = st.columns(2)
+                 with col1: st.plotly_chart(get_fig_pie_chart(df_filtered_B), use_container_width=True)
+                 with col2: st.plotly_chart(get_fig_gender_chart(df_filtered_B), use_container_width=True)
              else: st.info(f"Sem dados de sentimento/gênero para os filtros.")
         with sub_tab2:
             if not df_filtered_B.empty:
@@ -528,15 +529,42 @@ def display_dashboard_content(
         dl_link = get_binary_file_downloader_html(st.session_state[dl_path_key], f'Download {st.session_state[dl_name_key]}')
         if dl_link: st.sidebar.markdown(dl_link, unsafe_allow_html=True)
 
-# --- LÓGICA PRINCIPAL (REVISADA) ---
+# --- <<< CORREÇÃO PRINCIPAL: LÓGICA DE PERFIS >>> ---
 try:
-    db_files = sorted([f for f in os.listdir(DB_DIR) if f.endswith('.db') and not f.startswith('.')], key=lambda f: os.path.getmtime(os.path.join(DB_DIR, f)), reverse=True)
-except FileNotFoundError: st.error(f"ERRO: Pasta '{DB_DIR}' não encontrada."); os.makedirs(DB_DIR, exist_ok=True); st.stop()
+    # 1. Procura perfis nos dados JSON processados (fonte primária)
+    json_files = glob.glob(os.path.join(PROCESSED_DATA_DIR, "*.json"))
+    profile_set = set()
+    
+    if json_files:
+        for f in json_files:
+            basename = os.path.basename(f)
+            # Extrai o nome do perfil
+            # Ex: "MeuPerfil_20251030-174551.json" -> "MeuPerfil"
+            profile_name_match = basename.rsplit('_', 1)
+            if len(profile_name_match) == 2 and profile_name_match[0]:
+                profile_set.add(profile_name_match[0])
 
-if not db_files: st.warning(f"Nenhum DB em '{DB_DIR}'. Execute 'run_all.py'."); st.stop()
+    # 2. Procura perfis nos arquivos .db (para o caso de só existir o DB)
+    db_files = [f for f in os.listdir(DB_DIR) if f.endswith('.db') and not f.startswith('.')]
+    for f in db_files:
+        profile_set.add(f.replace(".db", ""))
+        
+except FileNotFoundError:
+    st.error(f"ERRO: Pasta '{PROCESSED_DATA_DIR}' ou '{DB_DIR}' não encontrada.")
+    os.makedirs(PROCESSED_DATA_DIR, exist_ok=True)
+    os.makedirs(DB_DIR, exist_ok=True)
+    st.stop()
 
-profile_names = [f.replace(".db", "") for f in db_files]
+# 3. Verifica se encontrou algum perfil
+if not profile_set:
+    # Esta era a mensagem de erro que você via, agora ela só aparece se AMBAS as pastas estiverem vazias
+    st.warning(f"Nenhum dado encontrado em '{PROCESSED_DATA_DIR}' ou DB em '{DB_DIR}'. Execute 'run_all.py'.")
+    st.stop()
+
+# 4. Cria a lista de opções
+profile_names = sorted(list(profile_set))
 options_list = ["--- Selecione um Perfil ---"] + profile_names
+# --- <<< FIM DA CORREÇÃO PRINCIPAL >>> ---
 
 selected_profile_name = st.sidebar.selectbox(
     "Selecione o Perfil:",
@@ -568,6 +596,8 @@ if selected_profile_name != "--- Selecione um Perfil ---":
 
     all_metadata = load_run_metadata()
     profile_metadata = all_metadata.get(profile_name, {})
+    
+    # Esta função agora vai ser chamada corretamente
     _df_full = load_processed_data_for_profile(profile_name)
 
     if not _df_full.empty and 'data_hora' in _df_full.columns and not _df_full['data_hora'].isnull().all():
@@ -595,6 +625,7 @@ if selected_profile_name != "--- Selecione um Perfil ---":
             if st.sidebar.button("Gerar Resumo IA (Período Principal)", key=f"btn_ai_{profile_name}", use_container_width=True, help=f"Analisa {start_B_ai.strftime('%d/%m')} a {end_B_ai.strftime('%d/%m')} (TODAS as redes)."):
                 st.session_state['ai_failed'] = False; st.session_state['last_ai_log_stderr'] = "Executando..."
                 with st.spinner("Gerando Resumo IA..."):
+                    # Esta função vai checar se o db_path existe e mostrar um erro se não existir
                     summary_result = run_ai_summary_generation(db_path, profile_name, start_B_ai, end_B_ai)
                     if summary_result: st.session_state['generated_summary'] = summary_result; st.session_state['summary_period_key'] = summary_key_current; st.session_state['ai_failed'] = False; st.rerun()
                     else: st.session_state['ai_failed'] = True
@@ -631,7 +662,7 @@ if selected_profile_name != "--- Selecione um Perfil ---":
             st.warning("Nenhuma rede social conhecida encontrada nos dados.")
 
     elif selected_profile_name:
-        st.error(f"Falha ao carregar dados do perfil '{selected_profile_name}'. Verifique JSONs ou execute coleta.")
+        st.error(f"Falha ao carregar dados do perfil '{selected_profile_name}'. Verifique JSONs em '{PROCESSED_DATA_DIR}' ou execute coleta.")
 
 else:
     st.info("Por favor, selecione um perfil na barra lateral para carregar os dados.")
