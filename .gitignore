@@ -3,10 +3,18 @@
 # =============================================================================
 
 # --- 1. CÓDIGO FONTE DO PIPELINE ---
-# IGNORA o "motor" (coletores, scripts de análise, etc.)
+# Ignora TUDO dentro da pasta src/...
 src/
 
+# ...EXCETO os 5 arquivos que o dashboard PRECISA para funcionar:
+!src/__init__.py
+!src/utils/__init__.py
+!src/utils/config.py
+!src/relatorios/__init__.py
+!src/relatorios/gerar_relatorio.py
+
 # --- 2. SEGREDOS ---
+# (Restante do seu .gitignore continua igual)
 # Ignora o arquivo de chaves de API e senhas.
 .env
 
