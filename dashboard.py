@@ -1,4 +1,4 @@
-# dashboard.py (CORRIGIDO: IA usa Gemini e JSONs)
+# dashboard.py (CORRIGIDO: spaCy _md para memória)
 # -*- coding: utf-8 -*-
 import streamlit as st
 import pandas as pd
@@ -8,7 +8,7 @@ import os
 import spacy
 from collections import Counter
 import emoji
-import subprocess # (Não é mais usado pela IA, mas pode ser útil para outros)
+import subprocess
 import sys
 import locale
 import base64
@@ -20,36 +20,26 @@ import json
 import glob
 from jinja2 import Environment, FileSystemLoader
 import re
-
-# --- NOVOS IMPORTS PARA A IA DO GEMINI ---
 import google.generativeai as genai
 import time
 import logging
-from src.utils.config import CONFIG # Você precisa do CONFIG para os prompts
-
-# --- Importa as funções de IA do seu outro arquivo ---
+from src.utils.config import CONFIG
 try:
     from src.relatorios.gerar_relatorio import gerar_resumo_com_gemini, gerar_resumo_executivo
 except ImportError:
     st.error("ERRO CRÍTICO: Falha ao importar 'gerar_resumo_com_gemini' ou 'gerar_resumo_executivo' de 'src.relatorios.gerar_relatorio'.")
-    # Define funções "falsas" para evitar que o app quebre
     def gerar_resumo_com_gemini(*args): 
         st.session_state['last_ai_log_stderr'] = "Erro: Falha ao importar 'gerar_resumo_com_gemini'."
         return "[ERRO DE IMPORTAÇÃO]"
     def gerar_resumo_executivo(*args): 
         st.session_state['last_ai_log_stderr'] = "Erro: Falha ao importar 'gerar_resumo_executivo'."
         return "[ERRO DE IMPORTAÇÃO]"
-# --- FIM DOS NOVOS IMPORTS ---
 
-
-# Configura o logging (útil para debug das funções importadas)
 logging.basicConfig(level=logging.INFO, format='[%(levelname)s] [%(asctime)s] - %(message)s')
 
 
-# --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(page_title="Dashboard de Análise", layout="wide")
 
-# --- CSS INJETADO ---
 st.markdown("""<style>
 .summary-box { border-left: 6px solid #1e88e5; padding: 1.5rem; border-radius: 5px; margin-bottom: 2rem; min-height: 100px; }
 .critical-alert { background-color: #ffebee; border: 2px solid #F44336; color: #c62828; font-weight: bold; padding: 1rem; border-radius: 5px; margin-bottom: 1rem; text-align: center; }
@@ -61,31 +51,28 @@ div[data-testid="column"]:nth-child(4) div[data-testid="metric-value"] { color: 
 
 st.title("📊 Dashboard de Análise de Mídias Sociais")
 
-# --- CONSTANTES E CONFIGURAÇÕES ---
 COLOR_MAP = {'Negativo': '#F44336', 'Neutro': '#9E9E9E', 'Positivo': '#4CAF50'}
 HTML_OUTPUT_DIR = "relatorios_html"
 DB_DIR = "dados"
-PROCESSED_DATA_DIR = "relatorios_processados" # <- Fonte principal de dados
+PROCESSED_DATA_DIR = "relatorios_processados"
 AI_SCRIPT_TIMEOUT = 180
 CRITICAL_NEG_THRESHOLD = 25.0
 STOP_WORDS_PT = [ "rapaz", "gente", "ruma", "coisa", "tudo", "nada", "disse", "mano", "cara", "vei", "tipo", "aí", "ne", "pra", "pro", "tá", "q", "vc", "vcs", "ja", "la", "ter", "ser", "ir", "fazer", "dizer", "querer", "ficar", "deixar", "dar", "assim", "então", "aqui", "agora", "hoje", "sempre", "muito", "pouco", "grande", "pequeno", "bom", "mau", "dia", "noite", "mês", "ano", "vez" ]
 
-# Cria diretórios se não existirem
 for dir_path in [DB_DIR, HTML_OUTPUT_DIR, PROCESSED_DATA_DIR]:
     os.makedirs(dir_path, exist_ok=True)
 
-# --- FUNÇÕES UTILITÁRIAS E DE CARREGAMENTO ---
 @st.cache_resource
 def load_spacy_model():
-    try: model = spacy.load("pt_core_news_lg"); print("Modelo Spacy carregado."); return model
+    try: model = spacy.load("pt_core_news_md"); print("Modelo Spacy (Medium) carregado."); return model
     except OSError:
-        st.error("Modelo Spacy 'pt_core_news_lg' não encontrado."); st.info("Tentando baixar...");
-        try: from spacy.cli import download; download("pt_core_news_lg"); st.success("Modelo baixado!"); model = spacy.load("pt_core_news_lg"); st.rerun(); return model
+        st.error("Modelo Spacy 'pt_core_news_md' não encontrado."); st.info("Tentando baixar...");
+        try: from spacy.cli import download; download("pt_core_news_md"); st.success("Modelo baixado!"); model = spacy.load("pt_core_news_md"); st.rerun(); return model
         except Exception as e: st.error(f"Falha ao baixar/carregar: {e}"); return None
 
 @st.cache_data(ttl=60)
 def load_run_metadata():
-    metadata_path = os.path.join(DB_DIR, "run_metadata.json") # Metadata ainda pode vir da pasta 'dados'
+    metadata_path = os.path.join(DB_DIR, "run_metadata.json") 
     if os.path.exists(metadata_path):
         try:
             with open(metadata_path, 'r', encoding='utf-8') as f: return json.load(f)
@@ -222,17 +209,14 @@ def get_fig_top_emojis(df):
     fig = px.bar(freq_emojis, x=freq_emojis.values, y=freq_emojis.index, orientation='h', title="Top 15 Emojis", labels={'x': 'Freq.', 'y': 'Emoji'}); fig.update_layout(yaxis={'categoryorder':'total ascending', 'tickfont':{'size':18}}); return fig
 
 
-# --- <<< INÍCIO DA CORREÇÃO DE IA (GEMINI) >>> ---
-
-@st.cache_data(ttl=900) # Cacheia o resumo por 15 minutos
+@st.cache_data(ttl=900)
 def _run_gemini_logic_on_dataframe(df_filtrado: pd.DataFrame) -> str:
     """
     Nova função que replica a lógica de 'gerar_relatorio.py' mas usando um DataFrame.
     """
     print("Iniciando _run_gemini_logic_on_dataframe...")
-    st.session_state['last_ai_log_stderr'] = "" # Limpa log antigo
+    st.session_state['last_ai_log_stderr'] = ""
     try:
-        # 1. Pegar a API Key dos Secrets do Streamlit
         gemini_key = st.secrets["GEMINI_API_KEY"]
         if not gemini_key:
             logging.error("ERRO_API_CONFIG: 'GEMINI_API_KEY' não encontrada nos segredos (secrets) do Streamlit.")
@@ -252,28 +236,22 @@ def _run_gemini_logic_on_dataframe(df_filtrado: pd.DataFrame) -> str:
          logging.error(f"ERRO_API_CONFIG: Falha ao configurar a API Gemini: {e}")
          return f"ERRO_API_CONFIG: Falha ao configurar a API Gemini: {e}"
 
-    # 2. Replicar a lógica de 'carregar_conteudo_periodo'
-    #    (mas usando o DataFrame em memória)
     if df_filtrado.empty:
         logging.warning("DataFrame vazio fornecido para IA.")
         return "Não há dados no período selecionado para gerar o resumo."
     
     df_analise = df_filtrado.copy()
     
-    # Baseado no seu JSON de exemplo, os itens são posts/comentários e o 
-    # texto está em 'texto_puro'. Vamos analisar tudo o que for passado.
     if 'texto_puro' not in df_analise.columns:
          logging.error("Erro: Coluna 'texto_puro' não encontrada no DataFrame.")
          return "Erro: Coluna 'texto_puro' não encontrada no DataFrame."
          
-    # Agrupa por fonte_coleta e cria o dicionário, assim como o script original
     grupos_de_conteudo = df_analise.groupby('fonte_coleta')['texto_puro'].apply(list).to_dict()
 
     if not grupos_de_conteudo:
         logging.warning("Nenhum grupo de conteúdo encontrado após agrupar.")
         return "Não foram encontrados textos válidos para o período."
 
-    # 3. Chamar a lógica de IA (exatamente como no gerar_relatorio.py)
     try:
         logging.info(f"Iniciando análise com Gemini para {len(grupos_de_conteudo)} fontes.")
         detailed_analysis_results = {
@@ -298,14 +276,12 @@ def _run_gemini_logic_on_dataframe(df_filtrado: pd.DataFrame) -> str:
         return f"Erro inesperado durante a chamada da IA: {e}"
 
 
-# --- FUNÇÃO WRAPPER ATUALIZADA ---
-# Substitua sua antiga função run_ai_summary_generation por esta
 def run_ai_summary_generation(df_filtrado: pd.DataFrame):
     """
     Wrapper para a nova função de IA do Gemini, que usa DataFrame.
     """
     st.info("Executando resumo IA (Gemini)...")
-    st.session_state['last_ai_log_stderr'] = "" # Limpa log antigo
+    st.session_state['last_ai_log_stderr'] = "" 
     st.session_state['last_ai_log_stdout'] = ""
 
     if df_filtrado.empty:
@@ -314,8 +290,6 @@ def run_ai_summary_generation(df_filtrado: pd.DataFrame):
         return None
     
     try:
-        # Chama a nova função de lógica do Gemini
-        # A função _run_gemini_logic_on_dataframe é cacheada
         summary = _run_gemini_logic_on_dataframe(df_filtrado)
         
         if summary.startswith(("ERRO_API_CONFIG", "Erro", "Não há dados", "[ERRO")):
@@ -334,9 +308,6 @@ def run_ai_summary_generation(df_filtrado: pd.DataFrame):
         st.session_state['last_ai_log_stderr'] = str(e)
         print(error_msg)
         return None
-
-# --- <<< FIM DA CORREÇÃO DE IA (GEMINI) >>> ---
-
 
 def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_name_for_file: str,
                          start_date: date, end_date: date, original_profile_basename: str): 
@@ -590,9 +561,7 @@ def display_dashboard_content(
         dl_link = get_binary_file_downloader_html(st.session_state[dl_path_key], f'Download {st.session_state[dl_name_key]}')
         if dl_link: st.sidebar.markdown(dl_link, unsafe_allow_html=True)
 
-# --- LÓGICA PRINCIPAL (REVISADA) ---
 try:
-    # 1. Procura perfis nos dados JSON processados (fonte primária)
     json_files = glob.glob(os.path.join(PROCESSED_DATA_DIR, "*.json"))
     profile_set = set()
     
@@ -603,7 +572,6 @@ try:
             if len(profile_name_match) == 2 and profile_name_match[0]:
                 profile_set.add(profile_name_match[0])
 
-    # 2. Procura perfis nos arquivos .db (para o caso de só existir o DB)
     if os.path.exists(DB_DIR):
         db_files = [f for f in os.listdir(DB_DIR) if f.endswith('.db') and not f.startswith('.')]
         for f in db_files:
@@ -615,12 +583,10 @@ except FileNotFoundError:
     os.makedirs(DB_DIR, exist_ok=True)
     st.stop()
 
-# 3. Verifica se encontrou algum perfil
 if not profile_set:
     st.warning(f"Nenhum dado encontrado em '{PROCESSED_DATA_DIR}' ou DB em '{DB_DIR}'. Execute 'run_all.py'.")
     st.stop()
 
-# 4. Cria a lista de opções
 profile_names = sorted(list(profile_set))
 options_list = ["--- Selecione um Perfil ---"] + profile_names
 
@@ -638,7 +604,7 @@ st.session_state.setdefault('ai_failed', False)
 
 if selected_profile_name != "--- Selecione um Perfil ---":
     profile_name = selected_profile_name
-    db_path = os.path.join(DB_DIR, f"{profile_name}.db") # O db_path ainda é útil para a 'load_run_metadata'
+    db_path = os.path.join(DB_DIR, f"{profile_name}.db")
 
     if st.session_state.get('last_profile_name') != profile_name:
         last_profile_name = st.session_state.get("last_profile_name", "")
@@ -655,7 +621,6 @@ if selected_profile_name != "--- Selecione um Perfil ---":
     all_metadata = load_run_metadata()
     profile_metadata = all_metadata.get(profile_name, {})
     
-    # Carrega o DataFrame dos JSONs
     _df_full = load_processed_data_for_profile(profile_name)
 
     if not _df_full.empty and 'data_hora' in _df_full.columns and not _df_full['data_hora'].isnull().all():
@@ -680,13 +645,10 @@ if selected_profile_name != "--- Selecione um Perfil ---":
         if valid_B_global:
             start_B_ai, end_B_ai = date_range_B
             
-            # --- <<< INÍCIO DA CORREÇÃO DO BOTÃO IA (GEMINI) >>> ---
             if st.sidebar.button("Gerar Resumo IA (Período Principal)", key=f"btn_ai_{profile_name}", use_container_width=True, help=f"Analisa {start_B_ai.strftime('%d/%m')} a {end_B_ai.strftime('%d/%m')} (TODAS as redes)."):
                 st.session_state['ai_failed'] = False; st.session_state['last_ai_log_stderr'] = "Executando..."
                 
-                df_para_ia = pd.DataFrame() # Inicia vazio
-                
-                # 1. Filtramos o DataFrame principal (_df_full) com as datas
+                df_para_ia = pd.DataFrame()
                 try:
                     df_para_ia = _df_full[
                         (_df_full['data_hora'].dt.date >= start_B_ai) & 
@@ -695,11 +657,8 @@ if selected_profile_name != "--- Selecione um Perfil ---":
                     print(f"Filtrados {len(df_para_ia)} registros para IA.")
                 except Exception as e:
                     st.error(f"Erro ao filtrar dados para IA: {e}")
-                    df_para_ia = pd.DataFrame() # Garante que está vazio em caso de erro
-
-                # 2. Passamos o DataFrame filtrado para a função
+                    df_para_ia = pd.DataFrame()
                 with st.spinner("Gerando Resumo IA (Gemini)..."):
-                    # A função agora só precisa do DataFrame
                     summary_result = run_ai_summary_generation(df_para_ia) 
                     
                     if summary_result: 
@@ -709,7 +668,6 @@ if selected_profile_name != "--- Selecione um Perfil ---":
                         st.rerun()
                     else: 
                         st.session_state['ai_failed'] = True
-            # --- <<< FIM DA CORREÇÃO DO BOTÃO IA (GEMINI) >>> ---
 
         st.header("Resumo Executivo (Gerado por IA)")
         if st.session_state.get('summary_period_key') == summary_key_current and st.session_state.get('generated_summary'):
