@@ -43,7 +43,6 @@ def get_env_variable(var_name: str) -> str:
 try:
     CONFIG = load_config()
     GEMINI_API_KEY = get_env_variable("GEMINI_API_KEY")
-    GMAIL_APP_PASSWORD = get_env_variable("GMAIL_APP_PASSWORD")
 except (ValueError, FileNotFoundError) as e:
     print(f"ERRO CRÍTICO NA CONFIGURAÇÃO: {e}")
     sys.exit(1)
