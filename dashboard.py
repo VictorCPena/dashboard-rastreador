@@ -1,4 +1,4 @@
-# dashboard.py (CORRIGIDO E AJUSTADO)
+# dashboard.py (CORRIGIDO: IA usa Gemini e JSONs)
 # -*- coding: utf-8 -*-
 import streamlit as st
 import pandas as pd
@@ -8,7 +8,7 @@ import os
 import spacy
 from collections import Counter
 import emoji
-import subprocess
+import subprocess # (Não é mais usado pela IA, mas pode ser útil para outros)
 import sys
 import locale
 import base64
@@ -21,6 +21,31 @@ import glob
 from jinja2 import Environment, FileSystemLoader
 import re
 
+# --- NOVOS IMPORTS PARA A IA DO GEMINI ---
+import google.generativeai as genai
+import time
+import logging
+from src.utils.config import CONFIG # Você precisa do CONFIG para os prompts
+
+# --- Importa as funções de IA do seu outro arquivo ---
+try:
+    from src.relatorios.gerar_relatorio import gerar_resumo_com_gemini, gerar_resumo_executivo
+except ImportError:
+    st.error("ERRO CRÍTICO: Falha ao importar 'gerar_resumo_com_gemini' ou 'gerar_resumo_executivo' de 'src.relatorios.gerar_relatorio'.")
+    # Define funções "falsas" para evitar que o app quebre
+    def gerar_resumo_com_gemini(*args): 
+        st.session_state['last_ai_log_stderr'] = "Erro: Falha ao importar 'gerar_resumo_com_gemini'."
+        return "[ERRO DE IMPORTAÇÃO]"
+    def gerar_resumo_executivo(*args): 
+        st.session_state['last_ai_log_stderr'] = "Erro: Falha ao importar 'gerar_resumo_executivo'."
+        return "[ERRO DE IMPORTAÇÃO]"
+# --- FIM DOS NOVOS IMPORTS ---
+
+
+# Configura o logging (útil para debug das funções importadas)
+logging.basicConfig(level=logging.INFO, format='[%(levelname)s] [%(asctime)s] - %(message)s')
+
+
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(page_title="Dashboard de Análise", layout="wide")
 
@@ -28,29 +53,10 @@ st.set_page_config(page_title="Dashboard de Análise", layout="wide")
 st.markdown("""<style>
 .summary-box { border-left: 6px solid #1e88e5; padding: 1.5rem; border-radius: 5px; margin-bottom: 2rem; min-height: 100px; }
 .critical-alert { background-color: #ffebee; border: 2px solid #F44336; color: #c62828; font-weight: bold; padding: 1rem; border-radius: 5px; margin-bottom: 1rem; text-align: center; }
-/* Ajuste opcional para espaçamento das abas */
 .stTabs [data-baseweb="tab-list"] { gap: 24px; }
-
-
-/* --- INÍCIO: REGRAS PARA COLORIR MÉTRICAS --- */
-
-/* Coluna 2 (Positivos) - Cor do número principal */
-div[data-testid="column"]:nth-child(2) div[data-testid="metric-value"] {
-    color: #4CAF50;
-}
-
-/* Coluna 3 (Neutros) - Cor do número principal */
-div[data-testid="column"]:nth-child(3) div[data-testid="metric-value"] {
-    color: #9E9E9E;
-}
-
-/* Coluna 4 (Negativos) - Cor do número principal */
-div[data-testid="column"]:nth-child(4) div[data-testid="metric-value"] {
-    color: #F44336;
-}
-
-/* --- FIM: REGRAS PARA COLORIR MÉTRICAS --- */
-
+div[data-testid="column"]:nth-child(2) div[data-testid="metric-value"] { color: #4CAF50; }
+div[data-testid="column"]:nth-child(3) div[data-testid="metric-value"] { color: #9E9E9E; }
+div[data-testid="column"]:nth-child(4) div[data-testid="metric-value"] { color: #F44336; }
 </style>""", unsafe_allow_html=True)
 
 st.title("📊 Dashboard de Análise de Mídias Sociais")
@@ -59,7 +65,7 @@ st.title("📊 Dashboard de Análise de Mídias Sociais")
 COLOR_MAP = {'Negativo': '#F44336', 'Neutro': '#9E9E9E', 'Positivo': '#4CAF50'}
 HTML_OUTPUT_DIR = "relatorios_html"
 DB_DIR = "dados"
-PROCESSED_DATA_DIR = "relatorios_processados" # <- Você usa esta pasta
+PROCESSED_DATA_DIR = "relatorios_processados" # <- Fonte principal de dados
 AI_SCRIPT_TIMEOUT = 180
 CRITICAL_NEG_THRESHOLD = 25.0
 STOP_WORDS_PT = [ "rapaz", "gente", "ruma", "coisa", "tudo", "nada", "disse", "mano", "cara", "vei", "tipo", "aí", "ne", "pra", "pro", "tá", "q", "vc", "vcs", "ja", "la", "ter", "ser", "ir", "fazer", "dizer", "querer", "ficar", "deixar", "dar", "assim", "então", "aqui", "agora", "hoje", "sempre", "muito", "pouco", "grande", "pequeno", "bom", "mau", "dia", "noite", "mês", "ano", "vez" ]
@@ -79,7 +85,7 @@ def load_spacy_model():
 
 @st.cache_data(ttl=60)
 def load_run_metadata():
-    metadata_path = os.path.join(DB_DIR, "run_metadata.json")
+    metadata_path = os.path.join(DB_DIR, "run_metadata.json") # Metadata ainda pode vir da pasta 'dados'
     if os.path.exists(metadata_path):
         try:
             with open(metadata_path, 'r', encoding='utf-8') as f: return json.load(f)
@@ -93,7 +99,6 @@ def _load_data_from_json_files(search_path: str) -> pd.DataFrame:
     df_list = []
     for f_path in json_files:
         try: 
-            # pd.read_json converte strings ISO (com 'Z') para datetime[ns, UTC]
             df_list.append(pd.read_json(f_path, orient='records', lines=False, encoding='utf-8'))
         except Exception as e: st.error(f"Erro ao ler '{os.path.basename(f_path)}': {e}")
     if not df_list: st.error("Falha ao carregar JSONs."); return pd.DataFrame()
@@ -104,30 +109,20 @@ def _preprocess_dataframe(df_full: pd.DataFrame) -> pd.DataFrame:
     if df_full.empty: return pd.DataFrame()
     if 'sentimento_final' in df_full.columns: df_full.rename(columns={'sentimento_final': 'sentimento'}, inplace=True)
     if 'genero_final' in df_full.columns: df_full.rename(columns={'genero_final': 'genero_previsto'}, inplace=True)
-    default_values = { 'conteudo': "", 'data_hora': pd.NaT, 'sentimento': 'Neutro', 'genero_previsto': 'Desconhecido', 'fonte_coleta': 'N/A', 'run_id': 'N/A', 'emojis': [], 'texto_puro': "", 'tamanho_comentario': 0 }
+    default_values = { 'conteudo': "", 'data_hora': pd.NaT, 'sentimento': 'Neutro', 'genero_previsto': 'Desconhecido', 'fonte_coleta': 'N/A', 'run_id': 'N/A', 'emojis': [], 'texto_puro': "", 'tamanho_comentario': 0, 'parent_url': None }
     for col, default in default_values.items():
         if col not in df_full.columns: df_full[col] = default
 
-    # --- <<< CORREÇÃO 1 (DATA) >>> ---
-    # Esta linha CONVERTE a string da data (que vem com 'Z') para um 
-    # objeto datetime ciente do fuso horário (UTC).
     df_full['data_hora'] = pd.to_datetime(df_full['data_hora'], errors='coerce')
     
-    # --- <<< FIM DA CORREÇÃO 1 >>> ---
-
     for col in ['sentimento', 'genero_previsto', 'fonte_coleta', 'run_id']: df_full[col] = df_full[col].fillna(default_values[col])
     df_full['genero_previsto'] = df_full['genero_previsto'].replace(['indeterminado', 'unknown'], 'Desconhecido', regex=False)
+    
     if 'emojis' not in df_full.columns or df_full['emojis'].apply(lambda x: not isinstance(x, list)).any(): df_full['emojis'] = df_full['conteudo'].apply(lambda t: [e['emoji'] for e in emoji.emoji_list(str(t))] if pd.notna(t) else [])
     if 'texto_puro' not in df_full.columns or df_full['texto_puro'].isnull().all(): df_full['texto_puro'] = df_full['conteudo'].apply(lambda t: emoji.replace_emoji(str(t), replace='') if pd.notna(t) else "")
     if 'tamanho_comentario' not in df_full.columns or (df_full['tamanho_comentario']==0).all(): df_full['tamanho_comentario'] = df_full['texto_puro'].str.len().fillna(0).astype(int)
     
-    # --- <<< CORREÇÃO 2 (FILTRO PARENT_URL) >>> ---
-    # Removemos o filtro 'parent_url.notnull()' para incluir posts e comentários.
     df_comments = df_full.copy()
-    
-    # --- <<< FIM DA CORREÇÃO 2 >>> ---
-    
-    # Esta linha agora filtra quaisquer datas que falharam na conversão (errors='coerce')
     initial_count = len(df_comments)
     df_comments.dropna(subset=['data_hora'], inplace=True)
     dropped_count = initial_count - len(df_comments)
@@ -138,7 +133,6 @@ def _preprocess_dataframe(df_full: pd.DataFrame) -> pd.DataFrame:
 @st.cache_data(ttl=300)
 def load_processed_data_for_profile(profile_name: str) -> pd.DataFrame:
     print(f"Carregando dados para: {profile_name}")
-    # Esta é a função correta que você criou
     search_path = os.path.join(PROCESSED_DATA_DIR, f"{profile_name}_*.json") 
     df_raw = _load_data_from_json_files(search_path)
     if df_raw.empty: return pd.DataFrame()
@@ -172,14 +166,9 @@ def plot_metrics(df_period_B, df_period_A):
     percents = { "pos": f"{round((b_pos*100)/total_calc_b if total_calc_b > 0 else 0, 1)}%", "neu": f"{round((b_neu*100)/total_calc_b if total_calc_b > 0 else 0, 1)}%", "neg": f"{round((b_neg*100)/total_calc_b if total_calc_b > 0 else 0, 1)}%" }
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Total", b_total, delta=delta_strs["total"], delta_color="off")
-    
-    # --- <<< CORREÇÃO 3 (DELTA COLOR) >>> ---
-    # Alterado para "off" para que o CSS controle a cor do número principal
     col2.metric(f"Positivos ({percents['pos']})", b_pos, delta=delta_strs["pos"], delta_color="off")
     col3.metric(f"Neutros ({percents['neu']})", b_neu, delta=delta_strs["neu"], delta_color="off")
     col4.metric(f"Negativos ({percents['neg']})", b_neg, delta=delta_strs["neg"], delta_color="off")
-    # --- <<< FIM DA CORREÇÃO 3 >>> ---
-    
     st.caption("Variação (Δ) vs. Período Comparação.")
 
 def _create_empty_fig(title: str, message: str = "Sem dados") -> go.Figure:
@@ -216,10 +205,8 @@ def get_fig_timeline(df):
     df_copy = df.copy(); df_copy['data_hora'] = pd.to_datetime(df_copy['data_hora'], errors='coerce'); df_copy.dropna(subset=['data_hora'], inplace=True)
     if df_copy.empty: return _create_empty_fig("Linha do Tempo", "Sem datas válidas")
     try:
-        # A data já é UTC-aware, converte para o fuso local (None)
         df_copy['data_hora'] = df_copy['data_hora'].dt.tz_convert(None) 
     except TypeError:
-        # Se for naive (o que não deve acontecer), apenas passa
         pass
     df_copy['data'] = df_copy['data_hora'].dt.date
     timeline_counts = df_copy.groupby('data').size().sort_index()
@@ -234,29 +221,122 @@ def get_fig_top_emojis(df):
     freq_emojis = pd.Series(all_emojis).value_counts().nlargest(15).sort_values(ascending=True)
     fig = px.bar(freq_emojis, x=freq_emojis.values, y=freq_emojis.index, orientation='h', title="Top 15 Emojis", labels={'x': 'Freq.', 'y': 'Emoji'}); fig.update_layout(yaxis={'categoryorder':'total ascending', 'tickfont':{'size':18}}); return fig
 
-def run_ai_summary_generation(db_path, profile_name, start_date, end_date):
-    project_root = os.getcwd()
-    abs_db_path = os.path.join(project_root, db_path)
-    if not os.path.exists(abs_db_path): st.error(f"Erro IA: DB '{abs_db_path}' não encontrado."); st.session_state['last_ai_log_stderr'] = f"Erro: {abs_db_path} não encontrado."; return None
-    command = [ sys.executable, "-m", "src.relatorios.gerar_relatorio", "--db-path", abs_db_path, "--profile-name", profile_name, "--start-date", start_date.strftime('%Y-%m-%d'), "--end-date", end_date.strftime('%Y-%m-%d') ]
-    st.info("Executando script de resumo IA...")
-    print(f"Executando comando IA: {' '.join(command)}")
-    stdout_str, stderr_str = "", ""
+
+# --- <<< INÍCIO DA CORREÇÃO DE IA (GEMINI) >>> ---
+
+@st.cache_data(ttl=900) # Cacheia o resumo por 15 minutos
+def _run_gemini_logic_on_dataframe(df_filtrado: pd.DataFrame) -> str:
+    """
+    Nova função que replica a lógica de 'gerar_relatorio.py' mas usando um DataFrame.
+    """
+    print("Iniciando _run_gemini_logic_on_dataframe...")
+    st.session_state['last_ai_log_stderr'] = "" # Limpa log antigo
     try:
-        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=project_root)
-        stdout_bytes, stderr_bytes = process.communicate(timeout=AI_SCRIPT_TIMEOUT)
-        if stdout_bytes: stdout_str = stdout_bytes.decode('utf-8', errors='replace')
-        if stderr_bytes: stderr_str = stderr_bytes.decode('utf-8', errors='replace')
-        st.session_state['last_ai_log_stdout'] = stdout_str; st.session_state['last_ai_log_stderr'] = stderr_str
-        if process.returncode != 0: st.error("Falha IA. Verifique o log."); return None
-        summary = stdout_str.strip()
-        if not summary: st.warning("IA não retornou resumo. Verifique logs."); return None
-        print(f"Resumo IA extraído: {summary[:200]}...");
-        if summary.startswith(("ERRO_API_CONFIG", "Não foi possível gerar")): st.error(f"Falha IA: {summary}"); return None
+        # 1. Pegar a API Key dos Secrets do Streamlit
+        gemini_key = st.secrets["GEMINI_API_KEY"]
+        if not gemini_key:
+            logging.error("ERRO_API_CONFIG: 'GEMINI_API_KEY' não encontrada nos segredos (secrets) do Streamlit.")
+            return "ERRO_API_CONFIG: 'GEMINI_API_KEY' não encontrada nos segredos (secrets) do Streamlit."
+        
+        genai.configure(api_key=gemini_key)
+        modelo = genai.GenerativeModel(
+            model_name=CONFIG['gemini']['model_name'],
+            generation_config=CONFIG['gemini']['generation_config']
+        )
+        print("API Gemini configurada com sucesso.")
+    
+    except KeyError:
+         logging.error("ERRO_API_CONFIG: 'GEMINI_API_KEY' não encontrada nos segredos (secrets) do Streamlit.")
+         return "ERRO_API_CONFIG: 'GEMINI_API_KEY' não encontrada nos segredos (secrets) do Streamlit."
+    except Exception as e:
+         logging.error(f"ERRO_API_CONFIG: Falha ao configurar a API Gemini: {e}")
+         return f"ERRO_API_CONFIG: Falha ao configurar a API Gemini: {e}"
+
+    # 2. Replicar a lógica de 'carregar_conteudo_periodo'
+    #    (mas usando o DataFrame em memória)
+    if df_filtrado.empty:
+        logging.warning("DataFrame vazio fornecido para IA.")
+        return "Não há dados no período selecionado para gerar o resumo."
+    
+    df_analise = df_filtrado.copy()
+    
+    # Baseado no seu JSON de exemplo, os itens são posts/comentários e o 
+    # texto está em 'texto_puro'. Vamos analisar tudo o que for passado.
+    if 'texto_puro' not in df_analise.columns:
+         logging.error("Erro: Coluna 'texto_puro' não encontrada no DataFrame.")
+         return "Erro: Coluna 'texto_puro' não encontrada no DataFrame."
+         
+    # Agrupa por fonte_coleta e cria o dicionário, assim como o script original
+    grupos_de_conteudo = df_analise.groupby('fonte_coleta')['texto_puro'].apply(list).to_dict()
+
+    if not grupos_de_conteudo:
+        logging.warning("Nenhum grupo de conteúdo encontrado após agrupar.")
+        return "Não foram encontrados textos válidos para o período."
+
+    # 3. Chamar a lógica de IA (exatamente como no gerar_relatorio.py)
+    try:
+        logging.info(f"Iniciando análise com Gemini para {len(grupos_de_conteudo)} fontes.")
+        detailed_analysis_results = {
+            nome: gerar_resumo_com_gemini(conteudos, nome, modelo)
+            for nome, conteudos in grupos_de_conteudo.items()
+        }
+        resumos_validos = [res for res in detailed_analysis_results.values() if not res.startswith("[")]
+        
+        if not resumos_validos:
+            logging.warning("Nenhum resumo detalhado válido foi gerado pela IA.")
+            st.session_state['last_ai_log_stderr'] = "Todos os resumos detalhados falharam ou foram bloqueados."
+            return "Não foi possível gerar resumos (provavelmente bloqueados pela API)."
+
+        executive_summary = gerar_resumo_executivo(resumos_validos, modelo)
+        logging.info("Resumo executivo gerado pela IA.")
+        
+        return executive_summary
+        
+    except Exception as e:
+        logging.error(f"Erro inesperado durante a chamada da lógica Gemini: {e}")
+        st.session_state['last_ai_log_stderr'] = f"Erro inesperado na IA: {e}"
+        return f"Erro inesperado durante a chamada da IA: {e}"
+
+
+# --- FUNÇÃO WRAPPER ATUALIZADA ---
+# Substitua sua antiga função run_ai_summary_generation por esta
+def run_ai_summary_generation(df_filtrado: pd.DataFrame):
+    """
+    Wrapper para a nova função de IA do Gemini, que usa DataFrame.
+    """
+    st.info("Executando resumo IA (Gemini)...")
+    st.session_state['last_ai_log_stderr'] = "" # Limpa log antigo
+    st.session_state['last_ai_log_stdout'] = ""
+
+    if df_filtrado.empty:
+        st.warning("Não há dados no período selecionado para o resumo IA.")
+        st.session_state['last_ai_log_stderr'] = "DataFrame vazio fornecido."
+        return None
+    
+    try:
+        # Chama a nova função de lógica do Gemini
+        # A função _run_gemini_logic_on_dataframe é cacheada
+        summary = _run_gemini_logic_on_dataframe(df_filtrado)
+        
+        if summary.startswith(("ERRO_API_CONFIG", "Erro", "Não há dados", "[ERRO")):
+            st.error(f"Falha IA: {summary}")
+            st.session_state['last_ai_log_stderr'] = summary
+            return None
+        
+        log_success = f"Resumo (Gemini) gerado com sucesso ({len(summary)} caracteres)."
+        st.session_state['last_ai_log_stdout'] = log_success
+        print(log_success)
         return summary
-    except subprocess.TimeoutExpired: st.error("Timeout IA."); st.session_state['last_ai_log_stderr'] = "Erro: Timeout"; return None
-    except FileNotFoundError: st.error(f"Erro IA: '{sys.executable}' não encontrado."); st.session_state['last_ai_log_stderr'] = f"Erro: '{sys.executable}' não encontrado."; return None
-    except Exception as e: st.error(f"Erro inesperado IA: {e}"); st.session_state['last_ai_log_stderr'] = str(e); return None
+    
+    except Exception as e:
+        error_msg = f"Erro inesperado ao chamar IA (Gemini): {e}"
+        st.error(error_msg)
+        st.session_state['last_ai_log_stderr'] = str(e)
+        print(error_msg)
+        return None
+
+# --- <<< FIM DA CORREÇÃO DE IA (GEMINI) >>> ---
+
 
 def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_name_for_file: str,
                          start_date: date, end_date: date, original_profile_basename: str): 
@@ -327,8 +407,6 @@ def extract_network_name(source_string: str) -> str:
     if not isinstance(source_string, str): return "Desconhecida"
     match = re.match(r"^(.*?):", source_string); return match.group(1) if match else "Desconhecida"
 
-# --- <<< CORREÇÃO 4 (display_dashboard_content) >>> ---
-# ESTA É A FUNÇÃO ATUALIZADA PARA MOSTRAR OS NOMES AMIGÁVEIS
 def display_dashboard_content(
     df_display: pd.DataFrame,
     profile_name: str,
@@ -353,43 +431,32 @@ def display_dashboard_content(
             
             run_id_options_map = {}
             
-            # --- Início da Lógica de Nome Amigável ---
             for r_id in sorted_run_ids:
-                full_f_name = profile_metadata.get(r_id) # Pega o nome amigável completo
+                full_f_name = profile_metadata.get(r_id) 
                 
                 filtered_name_parts = []
-                f_name = "" # Nome final a ser usado
+                f_name = "" 
                 
                 if full_f_name:
                     parts = full_f_name.split(' | ')
                     for part in parts:
-                        # Compara o início da "part" com o "network_name" (Ex: "Instagram" com "Instagram: opovo")
                         if part.lower().startswith(network_name.lower()):
                             filtered_name_parts.append(part)
                 
-                # Se, após filtrar, sobrou alguma coisa, usa o nome filtrado.
                 if filtered_name_parts:
                     f_name = " | ".join(filtered_name_parts)
                 else:
-                    # Se não sobrou (ex: aba "Twitter" e a coleta só rodou "Instagram"),
-                    # usa o nome completo original, ou o ID como fallback.
                     f_name = full_f_name if full_f_name else r_id 
                 
-                # Agora, o resto do código que formata a data
                 try:
-                    # Tenta extrair a data do run_id (pode falhar se o formato for diferente)
-                    date_part = r_id.split('_')[-1] # Pega a última parte do ID (ex: 20251030-174551)
+                    date_part = r_id.split('_')[-1] 
                     date_obj = datetime.strptime(date_part, '%Y%m%d-%H%M%S')
-                    # Formata para (DD/MM/YYYY HH:MM)
                     friendly_date = date_obj.strftime('%d/%m/%Y %H:%M')
-                    # Usa o 'f_name' (que agora está filtrado)
                     display = f"{f_name}  ({friendly_date})" 
                 except (ValueError, IndexError):
-                    # Se o run_id não tiver um timestamp (ex: "run_teste_123"), usa o ID
-                    display = f"{f_name} ({r_id})" # Fallback
+                    display = f"{f_name} ({r_id})" 
                 
                 run_id_options_map[display] = r_id
-            # --- Fim da Lógica de Nome Amigável ---
 
             if 'N/A' in run_ids: run_id_options_map['N/A'] = 'N/A'
             
@@ -411,11 +478,7 @@ def display_dashboard_content(
 
     active_filters_list = []
     
-    # --- Título mais limpo: remove "Rede: ..." ---
-    # if network_name != "Visão Geral": active_filters_list.append(f"Rede: {network_name}")
-    
     if selected_run_id != "All Runs": 
-        # Mostra o nome limpo (selected_run_id_display) no título
         active_filters_list.append(f"Coleta: {selected_run_id_display}")
     
     filter_title_string = f" ({', '.join(active_filters_list)})" if active_filters_list else ""
@@ -434,7 +497,6 @@ def display_dashboard_content(
         if start_B and end_B:
             if start_B > end_B: start_B, end_B = end_B, start_B
             try:
-                # O filtro de data agora usa .dt.date, que funciona com datas timezone-aware
                 df_filtered_B = _df_final_filtered[(_df_final_filtered['data_hora'].dt.date >= start_B) & (_df_final_filtered['data_hora'].dt.date <= end_B)].copy()
                 valid_B = True
                 print(f"[{network_name}] Período B OK: {len(df_filtered_B)} linhas.")
@@ -494,7 +556,6 @@ def display_dashboard_content(
             profile_name_for_report += f"_({network_name})"
             
         if selected_run_id != "All Runs":
-            # Usa o nome limpo (selected_run_id_display) para o nome do arquivo
             f_name = selected_run_id_display
             safe_r = ''.join(c for c in f_name if c.isalnum() or c in (' ', '_', '-', '(', ')', ':', '/')).rstrip().replace(' ', '_')
             profile_name_for_report += f"_({safe_r})"
@@ -529,7 +590,7 @@ def display_dashboard_content(
         dl_link = get_binary_file_downloader_html(st.session_state[dl_path_key], f'Download {st.session_state[dl_name_key]}')
         if dl_link: st.sidebar.markdown(dl_link, unsafe_allow_html=True)
 
-# --- <<< CORREÇÃO PRINCIPAL: LÓGICA DE PERFIS >>> ---
+# --- LÓGICA PRINCIPAL (REVISADA) ---
 try:
     # 1. Procura perfis nos dados JSON processados (fonte primária)
     json_files = glob.glob(os.path.join(PROCESSED_DATA_DIR, "*.json"))
@@ -538,16 +599,15 @@ try:
     if json_files:
         for f in json_files:
             basename = os.path.basename(f)
-            # Extrai o nome do perfil
-            # Ex: "MeuPerfil_20251030-174551.json" -> "MeuPerfil"
             profile_name_match = basename.rsplit('_', 1)
             if len(profile_name_match) == 2 and profile_name_match[0]:
                 profile_set.add(profile_name_match[0])
 
     # 2. Procura perfis nos arquivos .db (para o caso de só existir o DB)
-    db_files = [f for f in os.listdir(DB_DIR) if f.endswith('.db') and not f.startswith('.')]
-    for f in db_files:
-        profile_set.add(f.replace(".db", ""))
+    if os.path.exists(DB_DIR):
+        db_files = [f for f in os.listdir(DB_DIR) if f.endswith('.db') and not f.startswith('.')]
+        for f in db_files:
+            profile_set.add(f.replace(".db", ""))
         
 except FileNotFoundError:
     st.error(f"ERRO: Pasta '{PROCESSED_DATA_DIR}' ou '{DB_DIR}' não encontrada.")
@@ -557,14 +617,12 @@ except FileNotFoundError:
 
 # 3. Verifica se encontrou algum perfil
 if not profile_set:
-    # Esta era a mensagem de erro que você via, agora ela só aparece se AMBAS as pastas estiverem vazias
     st.warning(f"Nenhum dado encontrado em '{PROCESSED_DATA_DIR}' ou DB em '{DB_DIR}'. Execute 'run_all.py'.")
     st.stop()
 
 # 4. Cria a lista de opções
 profile_names = sorted(list(profile_set))
 options_list = ["--- Selecione um Perfil ---"] + profile_names
-# --- <<< FIM DA CORREÇÃO PRINCIPAL >>> ---
 
 selected_profile_name = st.sidebar.selectbox(
     "Selecione o Perfil:",
@@ -580,7 +638,7 @@ st.session_state.setdefault('ai_failed', False)
 
 if selected_profile_name != "--- Selecione um Perfil ---":
     profile_name = selected_profile_name
-    db_path = os.path.join(DB_DIR, f"{profile_name}.db")
+    db_path = os.path.join(DB_DIR, f"{profile_name}.db") # O db_path ainda é útil para a 'load_run_metadata'
 
     if st.session_state.get('last_profile_name') != profile_name:
         last_profile_name = st.session_state.get("last_profile_name", "")
@@ -597,7 +655,7 @@ if selected_profile_name != "--- Selecione um Perfil ---":
     all_metadata = load_run_metadata()
     profile_metadata = all_metadata.get(profile_name, {})
     
-    # Esta função agora vai ser chamada corretamente
+    # Carrega o DataFrame dos JSONs
     _df_full = load_processed_data_for_profile(profile_name)
 
     if not _df_full.empty and 'data_hora' in _df_full.columns and not _df_full['data_hora'].isnull().all():
@@ -605,7 +663,6 @@ if selected_profile_name != "--- Selecione um Perfil ---":
         st.sidebar.header("Filtros por Período 🗓️")
         date_range_A, date_range_B = (), ()
         try:
-            # O .dt.date funciona em datas com fuso horário
             min_date_limit_full = _df_full['data_hora'].min().date() 
             max_date_limit_full = _df_full['data_hora'].max().date()
             date_range_B = st.sidebar.date_input( "Período Principal (B):", (min_date_limit_full, max_date_limit_full), min_value=min_date_limit_full, max_value=max_date_limit_full, key=f"date_filter_B_{profile_name}" )
@@ -622,13 +679,37 @@ if selected_profile_name != "--- Selecione um Perfil ---":
 
         if valid_B_global:
             start_B_ai, end_B_ai = date_range_B
+            
+            # --- <<< INÍCIO DA CORREÇÃO DO BOTÃO IA (GEMINI) >>> ---
             if st.sidebar.button("Gerar Resumo IA (Período Principal)", key=f"btn_ai_{profile_name}", use_container_width=True, help=f"Analisa {start_B_ai.strftime('%d/%m')} a {end_B_ai.strftime('%d/%m')} (TODAS as redes)."):
                 st.session_state['ai_failed'] = False; st.session_state['last_ai_log_stderr'] = "Executando..."
-                with st.spinner("Gerando Resumo IA..."):
-                    # Esta função vai checar se o db_path existe e mostrar um erro se não existir
-                    summary_result = run_ai_summary_generation(db_path, profile_name, start_B_ai, end_B_ai)
-                    if summary_result: st.session_state['generated_summary'] = summary_result; st.session_state['summary_period_key'] = summary_key_current; st.session_state['ai_failed'] = False; st.rerun()
-                    else: st.session_state['ai_failed'] = True
+                
+                df_para_ia = pd.DataFrame() # Inicia vazio
+                
+                # 1. Filtramos o DataFrame principal (_df_full) com as datas
+                try:
+                    df_para_ia = _df_full[
+                        (_df_full['data_hora'].dt.date >= start_B_ai) & 
+                        (_df_full['data_hora'].dt.date <= end_B_ai)
+                    ].copy()
+                    print(f"Filtrados {len(df_para_ia)} registros para IA.")
+                except Exception as e:
+                    st.error(f"Erro ao filtrar dados para IA: {e}")
+                    df_para_ia = pd.DataFrame() # Garante que está vazio em caso de erro
+
+                # 2. Passamos o DataFrame filtrado para a função
+                with st.spinner("Gerando Resumo IA (Gemini)..."):
+                    # A função agora só precisa do DataFrame
+                    summary_result = run_ai_summary_generation(df_para_ia) 
+                    
+                    if summary_result: 
+                        st.session_state['generated_summary'] = summary_result
+                        st.session_state['summary_period_key'] = summary_key_current
+                        st.session_state['ai_failed'] = False
+                        st.rerun()
+                    else: 
+                        st.session_state['ai_failed'] = True
+            # --- <<< FIM DA CORREÇÃO DO BOTÃO IA (GEMINI) >>> ---
 
         st.header("Resumo Executivo (Gerado por IA)")
         if st.session_state.get('summary_period_key') == summary_key_current and st.session_state.get('generated_summary'):

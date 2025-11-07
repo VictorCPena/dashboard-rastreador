@@ -1,19 +1,16 @@
 # Core do Dashboard (para Streamlit Cloud)
 streamlit
-pandas==2.1.4  # Trava o pandas
-plotly==5.18.0 # Trava o plotly
+pandas==2.1.4
+plotly==5.18.0
 emoji
 Jinja2
 
-# --- Processamento de Texto (AQUI É O PULO DO GATO) ---
+# --- ADICIONE ESTA LINHA ---
+openai>=1.0.0
 
-# Trava o numpy numa versão compatível com tudo
+# Processamento de Texto
 numpy==1.26.4 
-
-# Trava o spaCy na versão EXATA do seu modelo
 spacy==3.7.0
-
-# Trava o Thinc (motor do spaCy) na versão que o spacy 3.7.0 espera
 thinc==8.1.12
 
 # Link direto para o modelo de linguagem em português
