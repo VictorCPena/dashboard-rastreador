@@ -1,18 +1,12 @@
-# Core do Dashboard (para Streamlit Cloud)
 streamlit
 pandas==2.1.4
 plotly==5.18.0
 emoji
 Jinja2
 google-generativeai>=0.4.0
-
-# --- ADICIONE ESTA LINHA ---
-PyYAML>=6.0 # Para o 'import yaml' funcionar
-
-# Processamento de Texto
+PyYAML>=6.0 
+python-dotenv>=1.0.0
 numpy==1.26.4 
 spacy==3.7.0
 thinc==8.1.12
-
-# Link direto para o modelo de linguagem em português
 https://github.com/explosion/spacy-models/releases/download/pt_core_news_lg-3.7.0/pt_core_news_lg-3.7.0.tar.gz#egg=pt_core_news_lg
