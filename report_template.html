@@ -75,6 +75,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             margin-top: 1rem;
+            min-height: 400px; /* Garante altura mínima */
         }
         /* Cores dos cards (baseadas no seu Python) */
         .card-total { background-color: #17a2b8; }
@@ -150,11 +151,16 @@
                         <canvas id="emojiFreqChart"></canvas>
                     </div>
                 </div>
+                <div class="col-lg-6">
+                    <div class="chart-container">
+                        <canvas id="avgLengthChart"></canvas>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section>
-            <h2>Amostra de Dados</h2>
+            <h2>Amostra de Dados (10 mais recentes)</h2>
             <div class="table-responsive">
                 {{ tabela_amostra | safe }}
             </div>
@@ -200,7 +206,7 @@
             const chartColors = reportData.sentiment_counts ? reportData.sentiment_counts.labels.map(label => colorMap[label] || '#cccccc') : [];
 
             // Gráfico de Pizza: Sentimentos
-            if (reportData.sentiment_counts) {
+            if (reportData.sentiment_counts && document.getElementById('sentimentPieChart')) {
                 new Chart(document.getElementById('sentimentPieChart'), {
                     type: 'pie',
                     data: {
@@ -221,7 +227,7 @@
             }
             
             // Gráfico de Pizza: Gênero
-            if (reportData.gender_pie_counts) {
+            if (reportData.gender_pie_counts && document.getElementById('genderPieChart')) {
                 new Chart(document.getElementById('genderPieChart'), {
                     type: 'doughnut',
                     data: {
@@ -241,7 +247,7 @@
             }
 
             // Gráfico de Linha: Timeline
-            if (reportData.timeline) {
+            if (reportData.timeline && document.getElementById('timelineChart')) {
                 new Chart(document.getElementById('timelineChart'), {
                     type: 'line',
                     data: {
@@ -266,7 +272,7 @@
             }
 
             // Gráfico de Barras: Gênero e Sentimento
-            if (reportData.gender_bar_counts) {
+            if (reportData.gender_bar_counts && document.getElementById('genderBarChart')) {
                 new Chart(document.getElementById('genderBarChart'), {
                     type: 'bar',
                     data: {
@@ -288,7 +294,7 @@
             }
 
             // Gráfico de Barras: Termos Frequentes
-            if (reportData.word_freq) {
+            if (reportData.word_freq && document.getElementById('wordFreqChart')) {
                 new Chart(document.getElementById('wordFreqChart'), {
                     type: 'bar',
                     data: {
@@ -311,7 +317,7 @@
             }
             
             // Gráfico de Barras: Emojis Frequentes
-            if (reportData.emoji_freq) {
+            if (reportData.emoji_freq && document.getElementById('emojiFreqChart')) {
                 new Chart(document.getElementById('emojiFreqChart'), {
                     type: 'bar',
                     data: {
@@ -332,6 +338,31 @@
                     }
                 });
             }
+
+            // --- <<< INÍCIO DA CORREÇÃO (Gráfico Faltando) >>> ---
+            // Gráfico de Barras: Tamanho Médio por Sentimento
+            if (reportData.avg_length && document.getElementById('avgLengthChart')) {
+                new Chart(document.getElementById('avgLengthChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: reportData.avg_length.labels,
+                        datasets: [{
+                            label: 'Tamanho Médio (caracteres)',
+                            data: reportData.avg_length.data,
+                            backgroundColor: reportData.avg_length.labels.map(label => colorMap[label] || '#cccccc')
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'x', // Pode ser 'x' ou 'y'
+                        responsive: true,
+                        plugins: {
+                            legend: { display: false },
+                            title: { display: true, text: 'Tamanho Médio por Sentimento', font: { size: 16 } }
+                        }
+                    }
+                });
+            }
+            // --- <<< FIM DA CORREÇÃO >>> ---
 
         });
     </script>
