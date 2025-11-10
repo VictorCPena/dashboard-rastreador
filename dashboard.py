@@ -1,4 +1,4 @@
-# dashboard.py (CORRIGIDO: Erros de HTML, Jinja2, width E int64)
+# dashboard.py (CORRIGIDO: Erros de HTML, Jinja2, int64 e use_container_width)
 # -*- coding: utf-8 -*-
 import streamlit as st
 import pandas as pd
@@ -222,7 +222,7 @@ def get_fig_top_emojis(df):
     fig = px.bar(freq_emojis, x=freq_emojis.values, y=freq_emojis.index, orientation='h', title="Top 15 Emojis", labels={'x': 'Freq.', 'y': 'Emoji'}); fig.update_layout(yaxis={'categoryorder':'total ascending', 'tickfont':{'size':18}}); return fig
 
 
-# --- <<< INÍCIO DA CORREÇÃO DE IA (GEMINI) >>> ---
+# --- <<< INÍCIO DA LÓGICA DE IA (GEMINI) >>> ---
 
 @st.cache_data(ttl=900) # Cacheia o resumo por 15 minutos
 def _run_gemini_logic_on_dataframe(df_filtrado: pd.DataFrame) -> str:
@@ -299,7 +299,6 @@ def _run_gemini_logic_on_dataframe(df_filtrado: pd.DataFrame) -> str:
 
 
 # --- FUNÇÃO WRAPPER ATUALIZADA ---
-# Substitua sua antiga função run_ai_summary_generation por esta
 def run_ai_summary_generation(df_filtrado: pd.DataFrame):
     """
     Wrapper para a nova função de IA do Gemini, que usa DataFrame.
@@ -335,10 +334,10 @@ def run_ai_summary_generation(df_filtrado: pd.DataFrame):
         print(error_msg)
         return None
 
-# --- <<< FIM DA CORREÇÃO DE IA (GEMINI) >>> ---
+# --- <<< FIM DA LÓGICA DE IA >>> ---
 
 
-# --- <<< INÍCIO DA CORREÇÃO: HTML (Gráficos + int64) >>> ---
+# --- <<< INÍCIO DA CORREÇÃO DEFINITIVA: HTML (Gráficos + int64 em TUDO) >>> ---
 def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_name_for_file: str,
                          start_date: date, end_date: date, original_profile_basename: str): 
     
@@ -351,23 +350,25 @@ def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_na
     # --- 1. Métricas e Pizza de Sentimento (Bloco Try/Except individual) ---
     try:
         counts_b = df_to_save['sentimento'].value_counts()
-        b_total = len(df_to_save)                     # Este é um Python int
-        b_pos = counts_b.get('Positivo', 0)   # Este é um numpy.int64
-        b_neu = counts_b.get('Neutro', 0)     # Este é um numpy.int64
-        b_neg = counts_b.get('Negativo', 0)   # Este é um numpy.int64
+        b_total = len(df_to_save)
+        b_pos = counts_b.get('Positivo', 0)
+        b_neu = counts_b.get('Neutro', 0)
+        b_neg = counts_b.get('Negativo', 0)
         
-        # --- CORREÇÃO (int64): Convertemos para Python int() ---
+        # CORREÇÃO (int64): Convertemos para Python int()
         metric_data = [ 
             ("Total Comentários", int(b_total), "#17a2b8", "fa-comments"), 
             ("Positivos", int(b_pos), COLOR_MAP['Positivo'], "fa-smile"), 
             ("Neutros", int(b_neu), COLOR_MAP['Neutro'], "fa-meh"), 
             ("Negativos", int(b_neg), COLOR_MAP['Negativo'], "fa-frown") 
         ]
-        # Agora 'val' será um int nativo, seguro para JSON
         report_data['metrics'] = [ {"label": lbl, "value": val, "delta": f"{round((val*100)/b_total if b_total > 0 else 0, 1)}%", "color": col, "icon": ico} for lbl, val, col, ico in metric_data ]
         
-        # .tolist() converte o array de numpy.int64 para lista de int
-        report_data['sentiment_counts'] = {"labels": counts_b.index.tolist(), "data": counts_b.values.tolist()}
+        # CORREÇÃO (int64): Conversão explícita para lista de 'int'
+        report_data['sentiment_counts'] = {
+            "labels": counts_b.index.tolist(), 
+            "data": [int(v) for v in counts_b.values]
+        }
     except Exception as e:
         print(f"Erro ao gerar métricas/sentimento HTML: {e}")
         st.warning(f"Falha ao gerar dados de métricas/sentimento para o HTML: {e}")
@@ -376,19 +377,30 @@ def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_na
     try:
         gender_counts = df_to_save['genero_previsto'].value_counts()
         if not gender_counts.empty:
-            report_data['gender_pie_counts'] = {"labels": gender_counts.index.tolist(), "data": gender_counts.values.tolist()}
+            # CORREÇÃO (int64): Conversão explícita para lista de 'int'
+            report_data['gender_pie_counts'] = {
+                "labels": gender_counts.index.tolist(), 
+                "data": [int(v) for v in gender_counts.values]
+            }
     except Exception as e:
         print(f"Erro ao gerar gender_pie HTML: {e}")
         st.warning(f"Falha ao gerar dados de gênero (pizza) para o HTML: {e}")
 
     # --- 3. Barras Gênero x Sentimento (Bloco Try/Except individual) ---
     try:
-        # Esta agregação (com unstack) é sensível e pode falhar se houver poucos dados
         gender_sentiment = df_to_save.groupby(['genero_previsto', 'sentimento']).size().unstack(fill_value=0)
         if not gender_sentiment.empty:
+            # CORREÇÃO (int64): Conversão explícita para lista de 'int' DENTRO do loop
+            datasets = []
+            for sent in gender_sentiment.columns:
+                datasets.append({
+                    "label": str(sent), 
+                    "data": [int(v) for v in gender_sentiment[sent].values] # <-- AQUI
+                })
+            
             report_data['gender_bar_counts'] = {
                 "labels": gender_sentiment.index.tolist(), 
-                "datasets": [{"label": str(sent), "data": gender_sentiment[sent].values.tolist()} for sent in gender_sentiment.columns]
+                "datasets": datasets
             }
     except Exception as e:
         print(f"Erro ao gerar gender_bar HTML: {e}")
@@ -399,7 +411,11 @@ def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_na
         palavras = get_cleaned_words_for_freq(tuple(df_to_save["texto_puro"].astype(str).tolist()))
         if palavras: 
             freq_p = pd.Series(palavras).value_counts().nlargest(20)
-            report_data['word_freq'] = {"labels": freq_p.index.tolist(), "data": freq_p.values.tolist()}
+            # CORREÇÃO (int64): Conversão explícita para lista de 'int'
+            report_data['word_freq'] = {
+                "labels": freq_p.index.tolist(), 
+                "data": [int(v) for v in freq_p.values]
+            }
     except Exception as e:
         print(f"Erro ao gerar word_freq HTML: {e}")
         st.warning(f"Falha ao gerar dados de frequência de palavras para o HTML: {e}")
@@ -410,7 +426,11 @@ def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_na
         all_emojis = [e for sublist in df_to_save['emojis'] for e in sublist]
         if all_emojis: 
             freq_e = pd.Series(all_emojis).value_counts().nlargest(15)
-            report_data['emoji_freq'] = {"labels": freq_e.index.tolist(), "data": freq_e.values.tolist()}
+            # CORREÇÃO (int64): Conversão explícita para lista de 'int'
+            report_data['emoji_freq'] = {
+                "labels": freq_e.index.tolist(), 
+                "data": [int(v) for v in freq_e.values]
+            }
     except Exception as e:
         print(f"Erro ao gerar emoji_freq HTML: {e}")
         st.warning(f"Falha ao gerar dados de frequência de emojis para o HTML: {e}")
@@ -427,31 +447,34 @@ def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_na
         if not df_copy.empty: 
             t_counts = df_copy.groupby('data').size().sort_index()
             if not t_counts.empty:
-                # CORREÇÃO 'strftime' (já estava no seu código)
                 labels_index = pd.to_datetime(t_counts.index)
-                report_data['timeline'] = {"labels": labels_index.strftime('%Y-%m-%d').tolist(), "data": t_counts.values.tolist()}
+                # CORREÇÃO (int64): Conversão explícita para lista de 'int'
+                report_data['timeline'] = {
+                    "labels": labels_index.strftime('%Y-%m-%d').tolist(), 
+                    "data": [int(v) for v in t_counts.values]
+                }
     except Exception as e:
         print(f"Erro ao gerar timeline HTML: {e}")
         st.warning(f"Falha ao gerar dados da timeline para o HTML: {e}")
         
-    # --- 7. [NOVO] Gráfico de Tamanho Médio (Bloco Try/Except individual) ---
-    # Este era o gráfico que faltava (avg_length)
+    # --- 7. Gráfico de Tamanho Médio (Bloco Try/Except individual) ---
     try:
         if 'tamanho_comentario' in df_to_save.columns and 'sentimento' in df_to_save.columns:
-            # O template espera um gráfico de barras simples, então calculamos a média
             avg_length = df_to_save.groupby('sentimento')['tamanho_comentario'].mean().round(1)
             if not avg_length.empty:
-                # .tolist() aqui converte float64 para float nativo
-                report_data['avg_length'] = {"labels": avg_length.index.tolist(), "data": avg_length.values.tolist()}
+                # CORREÇÃO (float64): Conversão explícita para lista de 'float'
+                report_data['avg_length'] = {
+                    "labels": avg_length.index.tolist(), 
+                    "data": [float(v) for v in avg_length.values]
+                }
     except Exception as e:
         print(f"Erro ao gerar avg_length HTML: {e}")
         st.warning(f"Falha ao gerar dados de tamanho médio para o HTML: {e}")
 
-    # --- Geração da Tabela e JSON (sem o 'except' geral) ---
+    # --- Geração da Tabela e JSON ---
     try:
         cols = ['usuario', 'conteudo', 'sentimento', 'genero_previsto', 'data_hora', 'fonte_coleta']
         ex_cols = [c for c in cols if c in df_to_save.columns]
-        # Pegando os 10 mais recentes para a amostra do HTML
         df_d = df_to_save.sort_values(by='data_hora', ascending=False)[ex_cols].head(10).copy()
         
         if 'data_hora' in df_d.columns:
@@ -460,13 +483,12 @@ def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_na
             except: 
                 df_d['data_hora'] = df_d['data_hora'].dt.strftime('%d/%m/%Y %H:%M')
         
-        # Correção na classe da tabela para melhor visualização
         tabela_html = df_d.to_html(classes='table table-striped table-hover table-sm', index=False, escape=True, border=0)
     except Exception as e_table: 
         st.error(f"Erro tabela HTML: {e_table}"); tabela_html = "<p>Erro ao gerar tabela de amostra.</p>"
         
     try: 
-        # Esta linha é a que dava o erro 'int64'
+        # Agora esta linha é segura, pois todos os valores são 'int' ou 'float' nativos
         report_data_json = json.dumps(report_data, ensure_ascii=False)
     except Exception as e_json: 
         st.error(f"Erro JSON HTML: {e_json}"); report_data_json = "{}"
@@ -483,7 +505,6 @@ def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_na
     out_folder = os.path.join(HTML_OUTPUT_DIR, original_profile_basename); os.makedirs(out_folder, exist_ok=True); html_filepath = os.path.join(out_folder, html_filename)
     
     try:
-        # CORREÇÃO 'Jinja2 path' (já estava no seu código)
         project_root = os.getcwd() 
         env = Environment(loader=FileSystemLoader(project_root), autoescape=True)
         template = env.get_template("report_template.html")
@@ -496,7 +517,7 @@ def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_na
     except Exception as e: 
         st.error(f"Erro final ao renderizar Jinja2 HTML: {e}"); return None
 
-# --- <<< FIM DAS CORREÇÕES >>> ---
+# --- <<< FIM DA CORREÇÃO DEFINITIVA >>> ---
 
 
 def get_binary_file_downloader_html(bin_file, file_label='Arquivo'):
@@ -625,11 +646,10 @@ def display_dashboard_content(
 
         sub_tab1, sub_tab2, sub_tab3 = st.tabs(["📊 Sent./Gênero", "📝 Conteúdo", "⏰ Timeline/Amostra"])
         
-        # --- CORREÇÃO: width='stretch' (já estava no seu código) ---
+        # --- CORREÇÃO: width='stretch' -> use_container_width=True ---
         with sub_tab1:
              if not df_filtered_B.empty:
                  col1, col2 = st.columns(2)
-                 # A sintaxe correta é 'use_container_width=True'
                  with col1: st.plotly_chart(get_fig_pie_chart(df_filtered_B), use_container_width=True)
                  with col2: st.plotly_chart(get_fig_gender_chart(df_filtered_B), use_container_width=True)
              else: st.info(f"Sem dados de sentimento/gênero para os filtros.")
@@ -680,8 +700,7 @@ def display_dashboard_content(
 
         summary_key_current = f"summary_{profile_name}_{date_range_B[0]}_{date_range_B[1]}"
         
-        # --- CORREÇÃO: width='stretch' (já estava no seu código) ---
-        # A sintaxe correta é 'use_container_width=True' para st.button
+        # --- CORREÇÃO: width='stretch' -> use_container_width=True ---
         if st.sidebar.button("Gerar Relatório HTML (Visão Atual)", key=f"btn_gen_{profile_name}_{network_name}", use_container_width=True, help=html_button_help):
             summary_for_html = st.session_state.get('generated_summary') if st.session_state.get('summary_period_key') == summary_key_current else "Resumo IA não gerado/válido para este período."
             
@@ -698,7 +717,6 @@ def display_dashboard_content(
                         st.session_state[f'download_name_{profile_name}_{network_name}'] = os.path.basename(generated_html_path)
                         st.rerun()
                     else:
-                        # --- MELHORIA: Feedback de erro ---
                         st.sidebar.error("Falha ao gerar o arquivo HTML. Verifique os logs.")
                         
             else:
@@ -800,8 +818,7 @@ if selected_profile_name != "--- Selecione um Perfil ---":
         if valid_B_global:
             start_B_ai, end_B_ai = date_range_B
             
-            # --- CORREÇÃO: width='stretch' (já estava no seu código) ---
-            # A sintaxe correta é 'use_container_width=True'
+            # --- CORREÇÃO: width='stretch' -> use_container_width=True ---
             if st.sidebar.button("Gerar Resumo IA (Período Principal)", key=f"btn_ai_{profile_name}", use_container_width=True, help=f"Analisa {start_B_ai.strftime('%d/%m')} a {end_B_ai.strftime('%d/%m')} (TODAS as redes)."):
                 st.session_state['ai_failed'] = False; st.session_state['last_ai_log_stderr'] = "Executando..."
                 
