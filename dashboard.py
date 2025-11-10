@@ -1,4 +1,4 @@
-# dashboard.py (CORRIGIDO: spaCy _md para memória)
+# dashboard.py (CORRIGIDO: Erros de HTML, Jinja2 e width)
 # -*- coding: utf-8 -*-
 import streamlit as st
 import pandas as pd
@@ -20,26 +20,36 @@ import json
 import glob
 from jinja2 import Environment, FileSystemLoader
 import re
+
+# --- NOVOS IMPORTS PARA A IA DO GEMINI ---
 import google.generativeai as genai
 import time
 import logging
-from src.utils.config import CONFIG
+from src.utils.config import CONFIG # Você precisa do CONFIG para os prompts
+
+# --- Importa as funções de IA do seu outro arquivo ---
 try:
     from src.relatorios.gerar_relatorio import gerar_resumo_com_gemini, gerar_resumo_executivo
 except ImportError:
     st.error("ERRO CRÍTICO: Falha ao importar 'gerar_resumo_com_gemini' ou 'gerar_resumo_executivo' de 'src.relatorios.gerar_relatorio'.")
+    # Define funções "falsas" para evitar que o app quebre
     def gerar_resumo_com_gemini(*args): 
         st.session_state['last_ai_log_stderr'] = "Erro: Falha ao importar 'gerar_resumo_com_gemini'."
         return "[ERRO DE IMPORTAÇÃO]"
     def gerar_resumo_executivo(*args): 
         st.session_state['last_ai_log_stderr'] = "Erro: Falha ao importar 'gerar_resumo_executivo'."
         return "[ERRO DE IMPORTAÇÃO]"
+# --- FIM DOS NOVOS IMPORTS ---
 
+
+# Configura o logging (útil para debug das funções importadas)
 logging.basicConfig(level=logging.INFO, format='[%(levelname)s] [%(asctime)s] - %(message)s')
 
 
+# --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(page_title="Dashboard de Análise", layout="wide")
 
+# --- CSS INJETADO ---
 st.markdown("""<style>
 .summary-box { border-left: 6px solid #1e88e5; padding: 1.5rem; border-radius: 5px; margin-bottom: 2rem; min-height: 100px; }
 .critical-alert { background-color: #ffebee; border: 2px solid #F44336; color: #c62828; font-weight: bold; padding: 1rem; border-radius: 5px; margin-bottom: 1rem; text-align: center; }
@@ -51,17 +61,20 @@ div[data-testid="column"]:nth-child(4) div[data-testid="metric-value"] { color: 
 
 st.title("📊 Dashboard de Análise de Mídias Sociais")
 
+# --- CONSTANTES E CONFIGURAÇÕES ---
 COLOR_MAP = {'Negativo': '#F44336', 'Neutro': '#9E9E9E', 'Positivo': '#4CAF50'}
 HTML_OUTPUT_DIR = "relatorios_html"
 DB_DIR = "dados"
-PROCESSED_DATA_DIR = "relatorios_processados"
+PROCESSED_DATA_DIR = "relatorios_processados" # <- Fonte principal de dados
 AI_SCRIPT_TIMEOUT = 180
 CRITICAL_NEG_THRESHOLD = 25.0
 STOP_WORDS_PT = [ "rapaz", "gente", "ruma", "coisa", "tudo", "nada", "disse", "mano", "cara", "vei", "tipo", "aí", "ne", "pra", "pro", "tá", "q", "vc", "vcs", "ja", "la", "ter", "ser", "ir", "fazer", "dizer", "querer", "ficar", "deixar", "dar", "assim", "então", "aqui", "agora", "hoje", "sempre", "muito", "pouco", "grande", "pequeno", "bom", "mau", "dia", "noite", "mês", "ano", "vez" ]
 
+# Cria diretórios se não existirem
 for dir_path in [DB_DIR, HTML_OUTPUT_DIR, PROCESSED_DATA_DIR]:
     os.makedirs(dir_path, exist_ok=True)
 
+# --- FUNÇÕES UTILITÁRIAS E DE CARREGAMENTO ---
 @st.cache_resource
 def load_spacy_model():
     try: model = spacy.load("pt_core_news_md"); print("Modelo Spacy (Medium) carregado."); return model
@@ -72,7 +85,7 @@ def load_spacy_model():
 
 @st.cache_data(ttl=60)
 def load_run_metadata():
-    metadata_path = os.path.join(DB_DIR, "run_metadata.json") 
+    metadata_path = os.path.join(DB_DIR, "run_metadata.json") # Metadata ainda pode vir da pasta 'dados'
     if os.path.exists(metadata_path):
         try:
             with open(metadata_path, 'r', encoding='utf-8') as f: return json.load(f)
@@ -209,14 +222,17 @@ def get_fig_top_emojis(df):
     fig = px.bar(freq_emojis, x=freq_emojis.values, y=freq_emojis.index, orientation='h', title="Top 15 Emojis", labels={'x': 'Freq.', 'y': 'Emoji'}); fig.update_layout(yaxis={'categoryorder':'total ascending', 'tickfont':{'size':18}}); return fig
 
 
-@st.cache_data(ttl=900)
+# --- <<< INÍCIO DA CORREÇÃO DE IA (GEMINI) >>> ---
+
+@st.cache_data(ttl=900) # Cacheia o resumo por 15 minutos
 def _run_gemini_logic_on_dataframe(df_filtrado: pd.DataFrame) -> str:
     """
     Nova função que replica a lógica de 'gerar_relatorio.py' mas usando um DataFrame.
     """
     print("Iniciando _run_gemini_logic_on_dataframe...")
-    st.session_state['last_ai_log_stderr'] = ""
+    st.session_state['last_ai_log_stderr'] = "" # Limpa log antigo
     try:
+        # 1. Pegar a API Key dos Secrets do Streamlit
         gemini_key = st.secrets["GEMINI_API_KEY"]
         if not gemini_key:
             logging.error("ERRO_API_CONFIG: 'GEMINI_API_KEY' não encontrada nos segredos (secrets) do Streamlit.")
@@ -236,22 +252,28 @@ def _run_gemini_logic_on_dataframe(df_filtrado: pd.DataFrame) -> str:
          logging.error(f"ERRO_API_CONFIG: Falha ao configurar a API Gemini: {e}")
          return f"ERRO_API_CONFIG: Falha ao configurar a API Gemini: {e}"
 
+    # 2. Replicar a lógica de 'carregar_conteudo_periodo'
+    #    (mas usando o DataFrame em memória)
     if df_filtrado.empty:
         logging.warning("DataFrame vazio fornecido para IA.")
         return "Não há dados no período selecionado para gerar o resumo."
     
     df_analise = df_filtrado.copy()
     
+    # Baseado no seu JSON de exemplo, os itens são posts/comentários e o 
+    # texto está em 'texto_puro'. Vamos analisar tudo o que for passado.
     if 'texto_puro' not in df_analise.columns:
          logging.error("Erro: Coluna 'texto_puro' não encontrada no DataFrame.")
          return "Erro: Coluna 'texto_puro' não encontrada no DataFrame."
          
+    # Agrupa por fonte_coleta e cria o dicionário, assim como o script original
     grupos_de_conteudo = df_analise.groupby('fonte_coleta')['texto_puro'].apply(list).to_dict()
 
     if not grupos_de_conteudo:
         logging.warning("Nenhum grupo de conteúdo encontrado após agrupar.")
         return "Não foram encontrados textos válidos para o período."
 
+    # 3. Chamar a lógica de IA (exatamente como no gerar_relatorio.py)
     try:
         logging.info(f"Iniciando análise com Gemini para {len(grupos_de_conteudo)} fontes.")
         detailed_analysis_results = {
@@ -276,12 +298,14 @@ def _run_gemini_logic_on_dataframe(df_filtrado: pd.DataFrame) -> str:
         return f"Erro inesperado durante a chamada da IA: {e}"
 
 
+# --- FUNÇÃO WRAPPER ATUALIZADA ---
+# Substitua sua antiga função run_ai_summary_generation por esta
 def run_ai_summary_generation(df_filtrado: pd.DataFrame):
     """
     Wrapper para a nova função de IA do Gemini, que usa DataFrame.
     """
     st.info("Executando resumo IA (Gemini)...")
-    st.session_state['last_ai_log_stderr'] = "" 
+    st.session_state['last_ai_log_stderr'] = "" # Limpa log antigo
     st.session_state['last_ai_log_stdout'] = ""
 
     if df_filtrado.empty:
@@ -290,6 +314,8 @@ def run_ai_summary_generation(df_filtrado: pd.DataFrame):
         return None
     
     try:
+        # Chama a nova função de lógica do Gemini
+        # A função _run_gemini_logic_on_dataframe é cacheada
         summary = _run_gemini_logic_on_dataframe(df_filtrado)
         
         if summary.startswith(("ERRO_API_CONFIG", "Erro", "Não há dados", "[ERRO")):
@@ -309,6 +335,10 @@ def run_ai_summary_generation(df_filtrado: pd.DataFrame):
         print(error_msg)
         return None
 
+# --- <<< FIM DA CORREÇÃO DE IA (GEMINI) >>> ---
+
+
+# --- <<< INÍCIO DAS CORREÇÕES: strftime E Jinja2 path >>> ---
 def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_name_for_file: str,
                          start_date: date, end_date: date, original_profile_basename: str): 
     report_data = {}
@@ -332,8 +362,17 @@ def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_na
                 pass
             df_copy['data'] = pd.to_datetime(df_copy['data_hora'], errors='coerce').dt.date
             df_copy.dropna(subset=['data'], inplace=True)
-            if not df_copy.empty: t_counts = df_copy.groupby('data').size().sort_index(); report_data['timeline'] = {"labels": t_counts.index.strftime('%Y-%m-%d').tolist(), "data": t_counts.values.tolist()}
-        except Exception as e_agg: st.error(f"Erro dados HTML: {e_agg}"); report_data = {}
+            if not df_copy.empty: 
+                t_counts = df_copy.groupby('data').size().sort_index()
+                
+                # --- CORREÇÃO 1: 'strftime' ---
+                # Converte o índice de datas (que é um ObjectIndex) para DateTimeIndex antes de formatar
+                labels_index = pd.to_datetime(t_counts.index)
+                report_data['timeline'] = {"labels": labels_index.strftime('%Y-%m-%d').tolist(), "data": t_counts.values.tolist()}
+                
+        except Exception as e_agg: 
+            st.error(f"Erro dados HTML: {e_agg}"); # <-- Este é o erro que você viu
+            report_data = {}
     
     try:
         cols = ['usuario', 'conteudo', 'sentimento', 'genero_previsto', 'data_hora', 'fonte_coleta']
@@ -353,13 +392,24 @@ def generate_html_report(df_to_save: pd.DataFrame, summary_text: str, profile_na
     context = { "report_name": f"{profile_name_for_file} ({start_date.strftime('%d/%m/%Y')} a {end_date.strftime('%d/%m/%Y')})", "resumo_executivo": summary_text.replace('\n', '<br>') if summary_text else "N/A.", "report_data_json": report_data_json, "tabela_amostra": tabela_html }
     safe_name = ''.join(c for c in profile_name_for_file if c.isalnum() or c in (' ', '_', '-')).rstrip().replace(' ', '_'); html_filename = f"{safe_name}_relatorio_{start_date.strftime('%Y%m%d')}_a_{end_date.strftime('%Y%m%d')}.html"
     out_folder = os.path.join(HTML_OUTPUT_DIR, original_profile_basename); os.makedirs(out_folder, exist_ok=True); html_filepath = os.path.join(out_folder, html_filename)
+    
     try:
-        env = Environment(loader=FileSystemLoader(os.path.dirname(__file__)), autoescape=True); template = env.get_template("report_template.html")
+        # --- CORREÇÃO 2: 'Jinja2 path' ---
+        # Usa os.getcwd() para garantir que a raiz do projeto seja usada
+        project_root = os.getcwd() # Ex: /mount/src/dashboard-rastreador
+        env = Environment(loader=FileSystemLoader(project_root), autoescape=True)
+        template = env.get_template("report_template.html")
+        
         html_content = template.render(context);
         with open(html_filepath, 'w', encoding='utf-8') as f: f.write(html_content)
         st.success(f"Relatório HTML '{html_filename}' gerado!"); return html_filepath
-    except FileNotFoundError: st.error("ERRO: 'report_template.html' não encontrado."); return None
-    except Exception as e: st.error(f"Erro Jinja2 HTML: {e}"); return None
+    except FileNotFoundError: 
+        st.error("ERRO: 'report_template.html' não encontrado. Verifique se ele está na raiz do seu repositório GitHub."); return None
+    except Exception as e: 
+        st.error(f"Erro Jinja2 HTML: {e}"); return None # <-- Este é o erro que você viu
+
+# --- <<< FIM DAS CORREÇÕES >>> ---
+
 
 def get_binary_file_downloader_html(bin_file, file_label='Arquivo'):
     try:
@@ -486,24 +536,26 @@ def display_dashboard_content(
         st.header(f"Análise Detalhada (Período Principal{filter_title_string})")
 
         sub_tab1, sub_tab2, sub_tab3 = st.tabs(["📊 Sent./Gênero", "📝 Conteúdo", "⏰ Timeline/Amostra"])
+        
+        # --- CORREÇÃO: width='stretch' ---
         with sub_tab1:
              if not df_filtered_B.empty:
                  col1, col2 = st.columns(2)
-                 with col1: st.plotly_chart(get_fig_pie_chart(df_filtered_B), use_container_width=True)
-                 with col2: st.plotly_chart(get_fig_gender_chart(df_filtered_B), use_container_width=True)
+                 with col1: st.plotly_chart(get_fig_pie_chart(df_filtered_B), width='stretch')
+                 with col2: st.plotly_chart(get_fig_gender_chart(df_filtered_B), width='stretch')
              else: st.info(f"Sem dados de sentimento/gênero para os filtros.")
         with sub_tab2:
             if not df_filtered_B.empty:
                 col3, col4 = st.columns(2)
                 with col3:
                     with st.spinner("Analisando freq..."):
-                        st.plotly_chart(get_word_frequency_fig(df_filtered_B), use_container_width=True) 
-                with col4: st.plotly_chart(get_fig_top_emojis(df_filtered_B), use_container_width=True)
-                st.plotly_chart(get_fig_comment_length(df_filtered_B), use_container_width=True)
+                        st.plotly_chart(get_word_frequency_fig(df_filtered_B), width='stretch') 
+                with col4: st.plotly_chart(get_fig_top_emojis(df_filtered_B), width='stretch')
+                st.plotly_chart(get_fig_comment_length(df_filtered_B), width='stretch')
             else: st.info(f"Sem dados de conteúdo para os filtros.")
         with sub_tab3:
             if not df_filtered_B.empty:
-                st.plotly_chart(get_fig_timeline(df_filtered_B), use_container_width=True)
+                st.plotly_chart(get_fig_timeline(df_filtered_B), width='stretch')
                 st.subheader(f"Amostra de Dados (Período Principal{filter_title_string})")
                 cols_s = ['usuario', 'conteudo', 'sentimento', 'genero_previsto', 'data_hora', 'fonte_coleta', 'run_id']; ex_s = [c for c in cols_s if c in df_filtered_B.columns]
                 df_ds = df_filtered_B[ex_s].head(20).copy()
@@ -513,8 +565,10 @@ def display_dashboard_content(
                         df_ds['data_hora'] = df_ds['data_hora'].dt.tz_convert('America/Fortaleza').dt.strftime('%d/%m/%Y %H:%M')
                     except: 
                         df_ds['data_hora'] = df_ds['data_hora'].dt.strftime('%d/%m/%Y %H:%M')
-                st.dataframe(df_ds, use_container_width=True)
+                st.dataframe(df_ds, width='stretch')
             else: st.info(f"Sem dados de timeline/amostra para os filtros.")
+        # --- FIM DA CORREÇÃO ---
+
 
     st.sidebar.header(f"Exportar ({network_name}) 📄")
     valid_B_global = len(date_range_B) == 2 and date_range_B[0] and date_range_B[1]
@@ -537,7 +591,8 @@ def display_dashboard_content(
 
         summary_key_current = f"summary_{profile_name}_{date_range_B[0]}_{date_range_B[1]}"
         
-        if st.sidebar.button("Gerar Relatório HTML (Visão Atual)", key=f"btn_gen_{profile_name}_{network_name}", use_container_width=True, help=html_button_help):
+        # --- CORREÇÃO: width='stretch' ---
+        if st.sidebar.button("Gerar Relatório HTML (Visão Atual)", key=f"btn_gen_{profile_name}_{network_name}", width='stretch', help=html_button_help):
             summary_for_html = st.session_state.get('generated_summary') if st.session_state.get('summary_period_key') == summary_key_current else "Resumo IA não gerado/válido para este período."
             
             df_to_export = df_filtered_B 
@@ -552,6 +607,10 @@ def display_dashboard_content(
                         st.session_state[f'download_path_{profile_name}_{network_name}'] = generated_html_path
                         st.session_state[f'download_name_{profile_name}_{network_name}'] = os.path.basename(generated_html_path)
                         st.rerun()
+                    else:
+                        # --- MELHORIA: Feedback de erro ---
+                        st.sidebar.error("Falha ao gerar o arquivo HTML. Verifique os logs.")
+                        
             else:
                 st.warning(f"Sem dados na visão atual para gerar HTML.")
 
@@ -561,7 +620,9 @@ def display_dashboard_content(
         dl_link = get_binary_file_downloader_html(st.session_state[dl_path_key], f'Download {st.session_state[dl_name_key]}')
         if dl_link: st.sidebar.markdown(dl_link, unsafe_allow_html=True)
 
+# --- LÓGICA PRINCIPAL (REVISADA) ---
 try:
+    # 1. Procura perfis nos dados JSON processados (fonte primária)
     json_files = glob.glob(os.path.join(PROCESSED_DATA_DIR, "*.json"))
     profile_set = set()
     
@@ -572,6 +633,7 @@ try:
             if len(profile_name_match) == 2 and profile_name_match[0]:
                 profile_set.add(profile_name_match[0])
 
+    # 2. Procura perfis nos arquivos .db (para o caso de só existir o DB)
     if os.path.exists(DB_DIR):
         db_files = [f for f in os.listdir(DB_DIR) if f.endswith('.db') and not f.startswith('.')]
         for f in db_files:
@@ -583,10 +645,12 @@ except FileNotFoundError:
     os.makedirs(DB_DIR, exist_ok=True)
     st.stop()
 
+# 3. Verifica se encontrou algum perfil
 if not profile_set:
     st.warning(f"Nenhum dado encontrado em '{PROCESSED_DATA_DIR}' ou DB em '{DB_DIR}'. Execute 'run_all.py'.")
     st.stop()
 
+# 4. Cria a lista de opções
 profile_names = sorted(list(profile_set))
 options_list = ["--- Selecione um Perfil ---"] + profile_names
 
@@ -604,7 +668,7 @@ st.session_state.setdefault('ai_failed', False)
 
 if selected_profile_name != "--- Selecione um Perfil ---":
     profile_name = selected_profile_name
-    db_path = os.path.join(DB_DIR, f"{profile_name}.db")
+    db_path = os.path.join(DB_DIR, f"{profile_name}.db") # O db_path ainda é útil para a 'load_run_metadata'
 
     if st.session_state.get('last_profile_name') != profile_name:
         last_profile_name = st.session_state.get("last_profile_name", "")
@@ -621,6 +685,7 @@ if selected_profile_name != "--- Selecione um Perfil ---":
     all_metadata = load_run_metadata()
     profile_metadata = all_metadata.get(profile_name, {})
     
+    # Carrega o DataFrame dos JSONs
     _df_full = load_processed_data_for_profile(profile_name)
 
     if not _df_full.empty and 'data_hora' in _df_full.columns and not _df_full['data_hora'].isnull().all():
@@ -645,10 +710,13 @@ if selected_profile_name != "--- Selecione um Perfil ---":
         if valid_B_global:
             start_B_ai, end_B_ai = date_range_B
             
-            if st.sidebar.button("Gerar Resumo IA (Período Principal)", key=f"btn_ai_{profile_name}", use_container_width=True, help=f"Analisa {start_B_ai.strftime('%d/%m')} a {end_B_ai.strftime('%d/%m')} (TODAS as redes)."):
+            # --- CORREÇÃO: width='stretch' ---
+            if st.sidebar.button("Gerar Resumo IA (Período Principal)", key=f"btn_ai_{profile_name}", width='stretch', help=f"Analisa {start_B_ai.strftime('%d/%m')} a {end_B_ai.strftime('%d/%m')} (TODAS as redes)."):
                 st.session_state['ai_failed'] = False; st.session_state['last_ai_log_stderr'] = "Executando..."
                 
-                df_para_ia = pd.DataFrame()
+                df_para_ia = pd.DataFrame() # Inicia vazio
+                
+                # 1. Filtramos o DataFrame principal (_df_full) com as datas
                 try:
                     df_para_ia = _df_full[
                         (_df_full['data_hora'].dt.date >= start_B_ai) & 
@@ -657,8 +725,11 @@ if selected_profile_name != "--- Selecione um Perfil ---":
                     print(f"Filtrados {len(df_para_ia)} registros para IA.")
                 except Exception as e:
                     st.error(f"Erro ao filtrar dados para IA: {e}")
-                    df_para_ia = pd.DataFrame()
+                    df_para_ia = pd.DataFrame() # Garante que está vazio em caso de erro
+
+                # 2. Passamos o DataFrame filtrado para a função
                 with st.spinner("Gerando Resumo IA (Gemini)..."):
+                    # A função agora só precisa do DataFrame
                     summary_result = run_ai_summary_generation(df_para_ia) 
                     
                     if summary_result: 
@@ -668,6 +739,7 @@ if selected_profile_name != "--- Selecione um Perfil ---":
                         st.rerun()
                     else: 
                         st.session_state['ai_failed'] = True
+            # --- FIM DA CORREÇÃO ---
 
         st.header("Resumo Executivo (Gerado por IA)")
         if st.session_state.get('summary_period_key') == summary_key_current and st.session_state.get('generated_summary'):
