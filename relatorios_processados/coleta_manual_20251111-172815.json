@@ -1,0 +1,2637 @@
+[
+    {
+        "id":1,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/luanhoolanda22\/status\/1987871431103848876",
+        "usuario":"luanhoolanda22",
+        "conteudo":"Fico impressionado com o Ceará, consegue ganhar uns jogos incríveis. Porém perde uns ridículos demais, porém independente de tudo eu amo esse time !",
+        "data_hora":"2025-11-10T13:14:16.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Fico impressionado com o Ceará, consegue ganhar uns jogos incríveis. Porém perde uns ridículos demais, porém independente de tudo eu amo esse time !",
+        "tamanho_comentario":148
+    },
+    {
+        "id":2,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/1910danii_\/status\/1988293771667402800",
+        "usuario":"1910danii_",
+        "conteudo":"Estou tão puta com esse elenco vagabundo do Corinthians que nem dá vontade de acompanhar mais nada esse ano.\n\nA partida que eles apresentaram contra o Ceará na Neo Química Arena foi dar nojo.\n\nAlém, dessa contra o Sport tbm. Um futebolzinho de MERDA!",
+        "data_hora":"2025-11-11T17:12:30.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Estou tão puta com esse elenco vagabundo do Corinthians que nem dá vontade de acompanhar mais nada esse ano.\n\nA partida que eles apresentaram contra o Ceará na Neo Química Arena foi dar nojo.\n\nAlém, dessa contra o Sport tbm. Um futebolzinho de MERDA!",
+        "tamanho_comentario":250
+    },
+    {
+        "id":3,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/crf_surtada33\/status\/1988030757634535868",
+        "usuario":"crf_surtada33",
+        "conteudo":"ceará me tira da graça",
+        "data_hora":"2025-11-10T23:47:23.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"ceará me tira da graça",
+        "tamanho_comentario":22
+    },
+    {
+        "id":4,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/didizocaa\/status\/1988273687762485716",
+        "usuario":"didizocaa",
+        "conteudo":"Nunca vou esquecer a mack acre e mack ceará, pqp quebrei demais",
+        "data_hora":"2025-11-11T15:52:42.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Nunca vou esquecer a mack acre e mack ceará, pqp quebrei demais",
+        "tamanho_comentario":63
+    },
+    {
+        "id":5,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/vkwarriorss\/status\/1987952549026996435",
+        "usuario":"vkwarriorss",
+        "conteudo":"O inter vai ganhar do Ceará no Castelão, anotem.",
+        "data_hora":"2025-11-10T18:36:36.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"O inter vai ganhar do Ceará no Castelão, anotem.",
+        "tamanho_comentario":48
+    },
+    {
+        "id":6,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/FranciscoNoroe4\/status\/1988229665673154878",
+        "usuario":"FranciscoNoroe4",
+        "conteudo":"Tela ceará\/ Telamar\/OI\/Nio",
+        "data_hora":"2025-11-11T12:57:46.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Tela ceará\/ Telamar\/OI\/Nio",
+        "tamanho_comentario":26
+    },
+    {
+        "id":7,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/vv1ckz\/status\/1988302872057180582",
+        "usuario":"vv1ckz",
+        "conteudo":"esse jogador do ceará é lindo msm",
+        "data_hora":"2025-11-11T17:48:40.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"esse jogador do ceará é lindo msm",
+        "tamanho_comentario":33
+    },
+    {
+        "id":8,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/AgoraAudiencia\/status\/1987991196770136449",
+        "usuario":"AgoraAudiencia",
+        "conteudo":"18h10 Volta do Break #CoraçãoIndomável\n\nTv jangadeiro\/ Ceará",
+        "data_hora":"2025-11-10T21:10:11.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"18h10 Volta do Break #CoraçãoIndomável\n\nTv jangadeiro\/ Ceará",
+        "tamanho_comentario":60
+    },
+    {
+        "id":9,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/_al1n3zz\/status\/1987951450446852282",
+        "usuario":"_al1n3zz",
+        "conteudo":"Mano, eu recebi uma mensagem muito escrota de manhã cedo.\nUm cara aleatório,me chama no privado do WhatsApp e mete essa \"Olá Aline tudo bem, me chamo fulano vim do Ceará pro PE em busca de emprego, e estou nesses grupos de emprego e n consigo nada. Vc já conseguiu alguma coisa?\"",
+        "data_hora":"2025-11-10T18:32:14.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Mano, eu recebi uma mensagem muito escrota de manhã cedo.\nUm cara aleatório,me chama no privado do WhatsApp e mete essa \"Olá Aline tudo bem, me chamo fulano vim do Ceará pro PE em busca de emprego, e estou nesses grupos de emprego e n consigo nada. Vc já conseguiu alguma coisa?\"",
+        "tamanho_comentario":279
+    },
+    {
+        "id":10,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/AgoraAudiencia\/status\/1987951169294017022",
+        "usuario":"AgoraAudiencia",
+        "conteudo":"Ainda a pouco passou na TV jangadeiro (SBT\/Ceará) a chamada de reestréia de #coracaoindomavel",
+        "data_hora":"2025-11-10T18:31:07.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Ainda a pouco passou na TV jangadeiro (SBT\/Ceará) a chamada de reestréia de #coracaoindomavel",
+        "tamanho_comentario":93
+    },
+    {
+        "id":11,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/jb6islive\/status\/1987867075193327997",
+        "usuario":"jb6islive",
+        "conteudo":"Graças a Deus existe o nordeste, O CEARÁ mais especificamente, para salvar essa prova. Pq se não fosse as escolas públicas de lá, só ia ter gente do ensino particular nas universidades públicas. Santo Deus viu",
+        "data_hora":"2025-11-10T12:56:58.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Graças a Deus existe o nordeste, O CEARÁ mais especificamente, para salvar essa prova. Pq se não fosse as escolas públicas de lá, só ia ter gente do ensino particular nas universidades públicas. Santo Deus viu",
+        "tamanho_comentario":209
+    },
+    {
+        "id":12,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/tuitaaluan\/status\/1988310804467515754",
+        "usuario":"tuitaaluan",
+        "conteudo":"Vendo essa microcausa aí da moça que reclamou do atendimento da Bahia e feliz que aqui no Ceará só vejo vídeos do pessoal elogiando o quanto a gente é receptivo. Kkk é o melhor estado do nordeste mesmo, tem igual não kkk",
+        "data_hora":"2025-11-11T18:20:11.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Vendo essa microcausa aí da moça que reclamou do atendimento da Bahia e feliz que aqui no Ceará só vejo vídeos do pessoal elogiando o quanto a gente é receptivo. Kkk é o melhor estado do nordeste mesmo, tem igual não kkk",
+        "tamanho_comentario":220
+    },
+    {
+        "id":13,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/mariav7_vv\/status\/1988055978424877416",
+        "usuario":"mariav7_vv",
+        "conteudo":"meus pais mandaram doce de leite, queijo, castanhas, quebra queixo e outro docinho que não sei o nome\ne eu amo issooooooo, amo comidinhas da minha terra ceará",
+        "data_hora":"2025-11-11T01:27:36.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"meus pais mandaram doce de leite, queijo, castanhas, quebra queixo e outro docinho que não sei o nome\ne eu amo issooooooo, amo comidinhas da minha terra ceará",
+        "tamanho_comentario":158
+    },
+    {
+        "id":14,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/JottaLira7\/status\/1987859898567434528",
+        "usuario":"JottaLira7",
+        "conteudo":"Ceará claramente em duas linha de 4 e às vezes até seus atacantes viraram volantes.\nTime do Dorival não tem drible, passe ou jogadas para quebrar isso .\nEsse time é um catado, mas tem que defenda com unhas e dentes.",
+        "data_hora":"2025-11-10T12:28:27.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Ceará claramente em duas linha de 4 e às vezes até seus atacantes viraram volantes.\nTime do Dorival não tem drible, passe ou jogadas para quebrar isso .\nEsse time é um catado, mas tem que defenda com unhas e dentes.",
+        "tamanho_comentario":215
+    },
+    {
+        "id":15,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/VIAGGOT\/status\/1988282893588983973",
+        "usuario":"VIAGGOT",
+        "conteudo":"Ai morro com um pessoal falando \"aqui no nordeste tal coisa é comum\" aí vai ver e essa pessoa mora numa roça de 2000 habitantes no Ceará vsf KKKKKKKKKK",
+        "data_hora":"2025-11-11T16:29:16.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Ai morro com um pessoal falando \"aqui no nordeste tal coisa é comum\" aí vai ver e essa pessoa mora numa roça de 2000 habitantes no Ceará vsf KKKKKKKKKK",
+        "tamanho_comentario":151
+    },
+    {
+        "id":16,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/try_myy\/status\/1987995386448146606",
+        "usuario":"try_myy",
+        "conteudo":"Aproveitando que falaram mal da Bahia no atendimento pra dizer que tive uma pessoa que passou por experiências muito ruins no Ceará durante o Carnaval. \nE também alguns amigos tiveram experiências muito ruins no Rio de Janeiro e Balneário Camboriú.\nTodas experiências diferentes.",
+        "data_hora":"2025-11-10T21:26:49.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Aproveitando que falaram mal da Bahia no atendimento pra dizer que tive uma pessoa que passou por experiências muito ruins no Ceará durante o Carnaval. \nE também alguns amigos tiveram experiências muito ruins no Rio de Janeiro e Balneário Camboriú.\nTodas experiências diferentes.",
+        "tamanho_comentario":279
+    },
+    {
+        "id":17,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/brilhabrilhab\/status\/1988006407682314591",
+        "usuario":"brilhabrilhab",
+        "conteudo":"a mãe indignada até agora que a primeira coisa que eu falei quando sai do local de prova foi “cadê o ceará ganhou?”",
+        "data_hora":"2025-11-10T22:10:37.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"a mãe indignada até agora que a primeira coisa que eu falei quando sai do local de prova foi “cadê o ceará ganhou?”",
+        "tamanho_comentario":115
+    },
+    {
+        "id":18,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/kaymosquito\/status\/1988027083948188152",
+        "usuario":"kaymosquito",
+        "conteudo":"fleabag do interior do ceará",
+        "data_hora":"2025-11-10T23:32:47.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"fleabag do interior do ceará",
+        "tamanho_comentario":28
+    },
+    {
+        "id":19,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/georhfly\/status\/1987903590401204583",
+        "usuario":"georhfly",
+        "conteudo":"sonhei aue a coreia do norte atacou o Ceará",
+        "data_hora":"2025-11-10T15:22:04.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"sonhei aue a coreia do norte atacou o Ceará",
+        "tamanho_comentario":43
+    },
+    {
+        "id":20,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/1ur1_ams\/status\/1988257527935410636",
+        "usuario":"1ur1_ams",
+        "conteudo":"E o time do ceara?.... JA PASSOU NO ENEM???",
+        "data_hora":"2025-11-11T14:48:29.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"E o time do ceara?.... JA PASSOU NO ENEM???",
+        "tamanho_comentario":43
+    },
+    {
+        "id":21,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/mathmachadu\/status\/1987879375283298545",
+        "usuario":"mathmachadu",
+        "conteudo":"Seria maravilhoso ganhar do Ceará (não sei como).",
+        "data_hora":"2025-11-10T13:45:50.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Seria maravilhoso ganhar do Ceará (não sei como).",
+        "tamanho_comentario":49
+    },
+    {
+        "id":22,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/gregolhp\/status\/1988047524767334771",
+        "usuario":"gregolhp",
+        "conteudo":"O Ceará pra fazer média com a lacração resolveu fazer campanha pras minas em contra ponto a entrevista do Ramon, esses times do nordeste são todos umas merdas historicamente, mas pra lacração eles são campeões",
+        "data_hora":"2025-11-11T00:54:00.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"O Ceará pra fazer média com a lacração resolveu fazer campanha pras minas em contra ponto a entrevista do Ramon, esses times do nordeste são todos umas merdas historicamente, mas pra lacração eles são campeões",
+        "tamanho_comentario":209
+    },
+    {
+        "id":23,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/pedrolindsaao\/status\/1987903893943026090",
+        "usuario":"pedrolindsaao",
+        "conteudo":"comida da bahia é ruim. do ceará é uma das piores que eu já provei, junto da do rio de janeiro",
+        "data_hora":"2025-11-10T15:23:16.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"comida da bahia é ruim. do ceará é uma das piores que eu já provei, junto da do rio de janeiro",
+        "tamanho_comentario":94
+    },
+    {
+        "id":24,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/LeoMessi1903\/status\/1988251212941062164",
+        "usuario":"LeoMessi1903",
+        "conteudo":"O Ceará que enfrenta o inter, tem 42 pontos no Brasileirão e precisa de mais 3 pra chegar no número de 45 que elimina as chances de rebaixamento e depois do inter ele enfrenta Mirassol, Cruzeiro, Flamengo e Palmeiras.\nDito isso o Ceará não sendo bobo \nVai pra cima do inter kkkkk",
+        "data_hora":"2025-11-11T14:23:23.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"O Ceará que enfrenta o inter, tem 42 pontos no Brasileirão e precisa de mais 3 pra chegar no número de 45 que elimina as chances de rebaixamento e depois do inter ele enfrenta Mirassol, Cruzeiro, Flamengo e Palmeiras.\nDito isso o Ceará não sendo bobo \nVai pra cima do inter kkkkk",
+        "tamanho_comentario":279
+    },
+    {
+        "id":25,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/duarteog_\/status\/1987872162137395474",
+        "usuario":"duarteog_",
+        "conteudo":"Mancho tem um perfil corintiano que fez umas 50 postagens pq aparentemente ontem no jogo teve 45 pênaltis pro Corinthians que n foi marcado e 5 cartões vermelhos que n foram dados pro Ceará kkkkkkkkk meu amigo vá tomar nesse teu cu bem muito",
+        "data_hora":"2025-11-10T13:17:10.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Mancho tem um perfil corintiano que fez umas 50 postagens pq aparentemente ontem no jogo teve 45 pênaltis pro Corinthians que n foi marcado e 5 cartões vermelhos que n foram dados pro Ceará kkkkkkkkk meu amigo vá tomar nesse teu cu bem muito",
+        "tamanho_comentario":241
+    },
+    {
+        "id":26,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/magazzord\/status\/1987968731406877137",
+        "usuario":"magazzord",
+        "conteudo":"tava achando até agora que o jogo do ceará ia ser quinta feira agora e não dia 20",
+        "data_hora":"2025-11-10T19:40:54.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"tava achando até agora que o jogo do ceará ia ser quinta feira agora e não dia 20",
+        "tamanho_comentario":81
+    },
+    {
+        "id":27,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/vilmar_v7\/status\/1987976800199147580",
+        "usuario":"vilmar_v7",
+        "conteudo":"Ramon Diaz deu motivo para o Ceará fazer uma promoção para a sua torcida feminina. As vezes é preciso ter cuidado com as coisas que a gente diz.",
+        "data_hora":"2025-11-10T20:12:58.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Ramon Diaz deu motivo para o Ceará fazer uma promoção para a sua torcida feminina. As vezes é preciso ter cuidado com as coisas que a gente diz.",
+        "tamanho_comentario":144
+    },
+    {
+        "id":28,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/JasielSant55903\/status\/1987853051953119409",
+        "usuario":"JasielSant55903",
+        "conteudo":"02 meses jogando só brasileiro, derrotado em casa pelo Ceará, mas nem \n@gavioesoficial\n, nem \n@Camisa12oficial\n e nenhuma outra TO cobrando ninguém,e vcs acham mesmo q as organizadas tbm não tem rabo preso c pessoas dentro do clube!!!",
+        "data_hora":"2025-11-10T12:01:14.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"02 meses jogando só brasileiro, derrotado em casa pelo Ceará, mas nem \n@gavioesoficial\n, nem \n@Camisa12oficial\n e nenhuma outra TO cobrando ninguém,e vcs acham mesmo q as organizadas tbm não tem rabo preso c pessoas dentro do clube!!!",
+        "tamanho_comentario":234
+    },
+    {
+        "id":29,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/isadoorinhaaa\/status\/1988040963324047532",
+        "usuario":"isadoorinhaaa",
+        "conteudo":"acho tao micoso a turma daqui do ceará querer imitar e copiar a cultura de pernambuco kkkkk aceite q a gente é peso amor",
+        "data_hora":"2025-11-11T00:27:56.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"acho tao micoso a turma daqui do ceará querer imitar e copiar a cultura de pernambuco kkkkk aceite q a gente é peso amor",
+        "tamanho_comentario":120
+    },
+    {
+        "id":30,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/andreii_cmpo\/status\/1988061483037872593",
+        "usuario":"andreii_cmpo",
+        "conteudo":"peguei um avenida ceara lotado, fui em pé (tava com uma bolsa, uma ecobag e um capacete), um cara ficou roçando a perna em mim dentro do sobral de propósito e quando cheguei em casa derrubei os dois ovos que iria comer no chão pois vai todo mundo tomar no cu nessa porra",
+        "data_hora":"2025-11-11T01:49:28.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"peguei um avenida ceara lotado, fui em pé (tava com uma bolsa, uma ecobag e um capacete), um cara ficou roçando a perna em mim dentro do sobral de propósito e quando cheguei em casa derrubei os dois ovos que iria comer no chão pois vai todo mundo tomar no cu nessa porra",
+        "tamanho_comentario":270
+    },
+    {
+        "id":31,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Fabrici70242229\/status\/1987966397235032534",
+        "usuario":"Fabrici70242229",
+        "conteudo":"Vai começar a melhor época do ano. Especulações sobre contratações. Vão fervilhar especulações no \n@CearaSC\n . Prato cheio pros torcedores. Só o Ceará escapar definitivamente e aí podem esperar. Ainda bem q o nível deve aumentar.",
+        "data_hora":"2025-11-10T19:31:38.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Vai começar a melhor época do ano. Especulações sobre contratações. Vão fervilhar especulações no \n@CearaSC\n . Prato cheio pros torcedores. Só o Ceará escapar definitivamente e aí podem esperar. Ainda bem q o nível deve aumentar.",
+        "tamanho_comentario":229
+    },
+    {
+        "id":32,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/fandaNour\/status\/1987994907298926889",
+        "usuario":"fandaNour",
+        "conteudo":"Brasília é quente em, nem no interior do Ceará eu fico suada no ar condicionado e aqui fiquei",
+        "data_hora":"2025-11-10T21:24:55.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Brasília é quente em, nem no interior do Ceará eu fico suada no ar condicionado e aqui fiquei",
+        "tamanho_comentario":93
+    },
+    {
+        "id":33,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/DivadMartins\/status\/1987945593118072908",
+        "usuario":"DivadMartins",
+        "conteudo":"Sport tem 2 vitórias no campeonato e 1 é contra o Corinthians kkkkkk\nPerder do Ceará em casa \nToma um cacete do santos \nQue trabalho horrível do Dorival.",
+        "data_hora":"2025-11-10T18:08:58.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Sport tem 2 vitórias no campeonato e 1 é contra o Corinthians kkkkkk\nPerder do Ceará em casa \nToma um cacete do santos \nQue trabalho horrível do Dorival.",
+        "tamanho_comentario":153
+    },
+    {
+        "id":34,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/briedismo\/status\/1988219363040915670",
+        "usuario":"briedismo",
+        "conteudo":"E o time todo do Ceará já passou no enem, #homembrabo",
+        "data_hora":"2025-11-11T12:16:50.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"E o time todo do Ceará já passou no enem, #homembrabo",
+        "tamanho_comentario":53
+    },
+    {
+        "id":35,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Hanashiro90\/status\/1988022589361397807",
+        "usuario":"Hanashiro90",
+        "conteudo":"imagina as reclamações se o linkin park tivesse perdido pro ceará",
+        "data_hora":"2025-11-10T23:14:55.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"imagina as reclamações se o linkin park tivesse perdido pro ceará",
+        "tamanho_comentario":65
+    },
+    {
+        "id":36,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/szlies\/status\/1987894263313777088",
+        "usuario":"szlies",
+        "conteudo":"PRA QUE EU FUI VER SE ESSA PORRA DE CORINTHIANS GANHOU DO CEARÁ",
+        "data_hora":"2025-11-10T14:45:00.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"PRA QUE EU FUI VER SE ESSA PORRA DE CORINTHIANS GANHOU DO CEARÁ",
+        "tamanho_comentario":63
+    },
+    {
+        "id":37,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Daniel22_\/status\/1987873537764295121",
+        "usuario":"Daniel22_",
+        "conteudo":"Cenário ideal para o Cruzeiro visando as semis da Copa do Brasil: fazer 4 pontos contra Juventude e Corinthians(vaga direta assegurada na Libertadores).E depois o rodízio(time reserva contra o Ceará,titulares contra o Botafogo e reservas contra o Santos)",
+        "data_hora":"2025-11-10T13:22:38.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Cenário ideal para o Cruzeiro visando as semis da Copa do Brasil: fazer 4 pontos contra Juventude e Corinthians(vaga direta assegurada na Libertadores).E depois o rodízio(time reserva contra o Ceará,titulares contra o Botafogo e reservas contra o Santos)",
+        "tamanho_comentario":254
+    },
+    {
+        "id":38,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/richardvozao\/status\/1988031647585870028",
+        "usuario":"richardvozao",
+        "conteudo":"eu to sem acreditar que o ronaldy me proibiu mesmo de ir p casa dele no jogo do ceará contra o inter",
+        "data_hora":"2025-11-10T23:50:55.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"eu to sem acreditar que o ronaldy me proibiu mesmo de ir p casa dele no jogo do ceará contra o inter",
+        "tamanho_comentario":100
+    },
+    {
+        "id":39,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/lacerdixx_\/status\/1988253779079135567",
+        "usuario":"lacerdixx_",
+        "conteudo":"série B é loucura, ne ninguém tem crtz de nada até a última rodada do campeonato, graças a Deus o Ceará não faz mais parte dessa bomba e espero q nunca mais volte",
+        "data_hora":"2025-11-11T14:33:35.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"série B é loucura, ne ninguém tem crtz de nada até a última rodada do campeonato, graças a Deus o Ceará não faz mais parte dessa bomba e espero q nunca mais volte",
+        "tamanho_comentario":162
+    },
+    {
+        "id":40,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/seucarlin\/status\/1988022604398305428",
+        "usuario":"seucarlin",
+        "conteudo":"foi muito bom viver esses 8 anos de primeira divisão, porque mesmo caindo ainda vamos ter vários motivos para mijar no Ceará ó KKKKKKKK",
+        "data_hora":"2025-11-10T23:14:59.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"foi muito bom viver esses 8 anos de primeira divisão, porque mesmo caindo ainda vamos ter vários motivos para mijar no Ceará ó KKKKKKKK",
+        "tamanho_comentario":135
+    },
+    {
+        "id":41,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/gia_moreira\/status\/1987984602133074012",
+        "usuario":"gia_moreira",
+        "conteudo":"o pessoal reclamando do atendimento da Bahia é porque não conheceu o do Ceará. eu, que vim do RIO, me surpreendi com a falta de educação daqui, parece que tudo vc estão te fazendo favor, tudo eles empurram pra outra pessoa resolver, nada é culpa deles.",
+        "data_hora":"2025-11-10T20:43:58.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"o pessoal reclamando do atendimento da Bahia é porque não conheceu o do Ceará. eu, que vim do RIO, me surpreendi com a falta de educação daqui, parece que tudo vc estão te fazendo favor, tudo eles empurram pra outra pessoa resolver, nada é culpa deles.",
+        "tamanho_comentario":252
+    },
+    {
+        "id":42,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/171Eldiablo\/status\/1987976734835437974",
+        "usuario":"171Eldiablo",
+        "conteudo":"Deixem falar e vamos focar no campo , que é o que realmente interessa \n\nAjeite esse time Ramón Díaz, precisamos vencer o Ceará fora de casa \n\nArruma o time nessa parada e volte melhor \n\nNão me resta outra alternativa, APOIO TOTAL A RAMÓN DÍAZ",
+        "data_hora":"2025-11-10T20:12:43.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Deixem falar e vamos focar no campo , que é o que realmente interessa \n\nAjeite esse time Ramón Díaz, precisamos vencer o Ceará fora de casa \n\nArruma o time nessa parada e volte melhor \n\nNão me resta outra alternativa, APOIO TOTAL A RAMÓN DÍAZ",
+        "tamanho_comentario":242
+    },
+    {
+        "id":43,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/konedmicha\/status\/1987953745359954020",
+        "usuario":"konedmicha",
+        "conteudo":"mãe quero viajar pro ceará aprender a cozinhar com o meu ídolo",
+        "data_hora":"2025-11-10T18:41:21.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"mãe quero viajar pro ceará aprender a cozinhar com o meu ídolo",
+        "tamanho_comentario":62
+    },
+    {
+        "id":44,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/dudahhmelo\/status\/1987858786883674540",
+        "usuario":"dudahhmelo",
+        "conteudo":"As praias do Ceará são uma delícia \n\n🪾",
+        "data_hora":"2025-11-10T12:24:02.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+            "🪾"
+        ],
+        "texto_puro":"As praias do Ceará são uma delícia \n\n",
+        "tamanho_comentario":37
+    },
+    {
+        "id":45,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Palmeirasso51\/status\/1988074096337293766",
+        "usuario":"Palmeirasso51",
+        "conteudo":"Flamengo pode perder ponto pra bragantino em casa e ceará em casa e Palmeiras pra Vitória e Flu em casa\n\nAmbos tão no limite\n\nTá TD ultra aberto e acho que até Cruzeiro tem chance",
+        "data_hora":"2025-11-11T02:39:35.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Flamengo pode perder ponto pra bragantino em casa e ceará em casa e Palmeiras pra Vitória e Flu em casa\n\nAmbos tão no limite\n\nTá TD ultra aberto e acho que até Cruzeiro tem chance",
+        "tamanho_comentario":179
+    },
+    {
+        "id":46,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/8Kdola\/status\/1988031448285126854",
+        "usuario":"8Kdola",
+        "conteudo":"Dado interessante toda a folha salarial do ceará custa 6 milhões de reais e sabem o que também custa 6 milhões de reais todos os meses ao Corinthians? O Memphis Depay!\n\nBizarro demais",
+        "data_hora":"2025-11-10T23:50:07.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Dado interessante toda a folha salarial do ceará custa 6 milhões de reais e sabem o que também custa 6 milhões de reais todos os meses ao Corinthians? O Memphis Depay!\n\nBizarro demais",
+        "tamanho_comentario":183
+    },
+    {
+        "id":47,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/gigantegabolas\/status\/1987952362351206571",
+        "usuario":"gigantegabolas",
+        "conteudo":"tem uma loja de acessorios aqui dentro do atacadao que alem de vender acessorio dos 4 grandes do rio tambem vende boné do Ceará e do Borussia Dortmund\n\nmais nenhum time. só esses",
+        "data_hora":"2025-11-10T18:35:52.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"tem uma loja de acessorios aqui dentro do atacadao que alem de vender acessorio dos 4 grandes do rio tambem vende boné do Ceará e do Borussia Dortmund\n\nmais nenhum time. só esses",
+        "tamanho_comentario":178
+    },
+    {
+        "id":48,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/RafaelPolitik\/status\/1987905224128823354",
+        "usuario":"RafaelPolitik",
+        "conteudo":"Não deem pix pra bolsonarista. Estão usando uma tragedia no Ceará pra arrecadar dinheiro. Não sabemos se realmente irá para a pessoa. Dado o histórico dessa corja, provavelmente servirá pra financiar o golpista Bolsonaro e sua família.",
+        "data_hora":"2025-11-10T15:28:33.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Não deem pix pra bolsonarista. Estão usando uma tragedia no Ceará pra arrecadar dinheiro. Não sabemos se realmente irá para a pessoa. Dado o histórico dessa corja, provavelmente servirá pra financiar o golpista Bolsonaro e sua família.",
+        "tamanho_comentario":235
+    },
+    {
+        "id":49,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/rofrigo_\/status\/1988331805741887649",
+        "usuario":"rofrigo_",
+        "conteudo":"queria ver aquela planilha que o cara fez dos jogos do ceará pra ver qnts q ele acertou ainda",
+        "data_hora":"2025-11-11T19:43:38.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"queria ver aquela planilha que o cara fez dos jogos do ceará pra ver qnts q ele acertou ainda",
+        "tamanho_comentario":93
+    },
+    {
+        "id":50,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/oswinbells\/status\/1988308422677450915",
+        "usuario":"oswinbells",
+        "conteudo":"Engraçado que aqui aonde eu moro no interior do Ceará, tem bastante gente que vem do Rio de Janeiro, uma mulher parou da rua pra falar comigo e disse que aqui é paraíso kkkk comparado ao que ta acontecendo do Rio aqui é o paraíso mesmo",
+        "data_hora":"2025-11-11T18:10:43.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Engraçado que aqui aonde eu moro no interior do Ceará, tem bastante gente que vem do Rio de Janeiro, uma mulher parou da rua pra falar comigo e disse que aqui é paraíso kkkk comparado ao que ta acontecendo do Rio aqui é o paraíso mesmo",
+        "tamanho_comentario":235
+    },
+    {
+        "id":51,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/paulombrado_\/status\/1988071009032040479",
+        "usuario":"paulombrado_",
+        "conteudo":"mds lembrei q o kay virou mestre de um rpg como assim um gay kpopeiro fã de ordem no conjunto ceará",
+        "data_hora":"2025-11-11T02:27:19.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"mds lembrei q o kay virou mestre de um rpg como assim um gay kpopeiro fã de ordem no conjunto ceará",
+        "tamanho_comentario":99
+    },
+    {
+        "id":52,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/reginattobel\/status\/1988245157263638681",
+        "usuario":"reginattobel",
+        "conteudo":"nomes para técnico do grêmio.  Guanaes do Mirassol,  Carpini Do Juventude, Léo Conde Do Ceará, Guto Ferreira do Remo, Lisca sem clube , Gilmar Dalpozzo. Jair Ventura do Vitória.",
+        "data_hora":"2025-11-11T13:59:19.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"nomes para técnico do grêmio.  Guanaes do Mirassol,  Carpini Do Juventude, Léo Conde Do Ceará, Guto Ferreira do Remo, Lisca sem clube , Gilmar Dalpozzo. Jair Ventura do Vitória.",
+        "tamanho_comentario":177
+    },
+    {
+        "id":53,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/exomengo\/status\/1987904587546685918",
+        "usuario":"exomengo",
+        "conteudo":"ceará ganhou do corinthians?????????",
+        "data_hora":"2025-11-10T15:26:01.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"ceará ganhou do corinthians?????????",
+        "tamanho_comentario":36
+    },
+    {
+        "id":54,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/lovelylillii\/status\/1987915683364012458",
+        "usuario":"lovelylillii",
+        "conteudo":"Bia Fofolete Gueixa Lenda do Ceará Cabelo de Playmobil Debaixo das Asas da Mamãe Moedas",
+        "data_hora":"2025-11-10T16:10:07.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Bia Fofolete Gueixa Lenda do Ceará Cabelo de Playmobil Debaixo das Asas da Mamãe Moedas",
+        "tamanho_comentario":87
+    },
+    {
+        "id":55,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/CBrenooo__\/status\/1988305492146581704",
+        "usuario":"CBrenooo__",
+        "conteudo":"Trair é igual torcer pro kanal (ceará), não consigo.",
+        "data_hora":"2025-11-11T17:59:04.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Trair é igual torcer pro kanal (ceará), não consigo.",
+        "tamanho_comentario":52
+    },
+    {
+        "id":56,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/dannyfetamina\/status\/1988303865947779229",
+        "usuario":"dannyfetamina",
+        "conteudo":"3o dia no Ceará e já estou acostumada com a água mineral daqui que é salgada kkkkkk",
+        "data_hora":"2025-11-11T17:52:37.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"3o dia no Ceará e já estou acostumada com a água mineral daqui que é salgada kkkkkk",
+        "tamanho_comentario":83
+    },
+    {
+        "id":57,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/jao_Kartolero\/status\/1987889626086830318",
+        "usuario":"jao_Kartolero",
+        "conteudo":"JOGOS VÁLIDOS PARA A RODADA #34\nQuarta-feira, 19 de novembro\n21h30 - Fluminense x Flamengo\n21h30 - Santos x Mirassol\n21h30 - Grêmio x Vasco\n\nQuinta-feira, 20 de novembro\n16h - Juventude x Cruzeiro\n18h - Bahia x Fortaleza\n19h30 - Corinthians x São Paulo\n21h30 - Ceará x Inter",
+        "data_hora":"2025-11-10T14:26:34.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"JOGOS VÁLIDOS PARA A RODADA #34\nQuarta-feira, 19 de novembro\n21h30 - Fluminense x Flamengo\n21h30 - Santos x Mirassol\n21h30 - Grêmio x Vasco\n\nQuinta-feira, 20 de novembro\n16h - Juventude x Cruzeiro\n18h - Bahia x Fortaleza\n19h30 - Corinthians x São Paulo\n21h30 - Ceará x Inter",
+        "tamanho_comentario":274
+    },
+    {
+        "id":58,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/CaparelliCarlos\/status\/1987875255533056499",
+        "usuario":"CaparelliCarlos",
+        "conteudo":"Nós:\n\nFora: Santos, Galo, Grêmio e Ceará.\nCasa: Flu e Vitória. \n\nSoma das posições dos adversários na tabela: 75 (quanto maior, melhor).\n\nFla:\n\nFora: Galo e Mirassol \nNeutro: Sport e Flu\nCasa: Red Bull e Ceará\n\nSoma das posições dos adversários na tabela: 63 (qto maior, melhor).",
+        "data_hora":"2025-11-10T13:29:28.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Nós:\n\nFora: Santos, Galo, Grêmio e Ceará.\nCasa: Flu e Vitória. \n\nSoma das posições dos adversários na tabela: 75 (quanto maior, melhor).\n\nFla:\n\nFora: Galo e Mirassol \nNeutro: Sport e Flu\nCasa: Red Bull e Ceará\n\nSoma das posições dos adversários na tabela: 63 (qto maior, melhor).",
+        "tamanho_comentario":279
+    },
+    {
+        "id":59,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/stfulothus\/status\/1988024908316897324",
+        "usuario":"stfulothus",
+        "conteudo":"mds vou ficar maluca de tanto pensar, prefiro ver o corinthians perder pro ceará dnv doq continuar pensando",
+        "data_hora":"2025-11-10T23:24:08.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"mds vou ficar maluca de tanto pensar, prefiro ver o corinthians perder pro ceará dnv doq continuar pensando",
+        "tamanho_comentario":107
+    },
+    {
+        "id":60,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/RoseCarvalhoTe1\/status\/1987896553244144027",
+        "usuario":"RoseCarvalhoTe1",
+        "conteudo":"1)O avanço científico pode impulsionar o Ceará como  polo nacional de inovação em materiais de alta performance, com aplicações em baterias, sensores, tintas condutivas e filtros ambientais. A transformação do grafite em nanoplacas pode oferecer uma alternativa viável e mais",
+        "data_hora":"2025-11-10T14:54:06.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"1)O avanço científico pode impulsionar o Ceará como  polo nacional de inovação em materiais de alta performance, com aplicações em baterias, sensores, tintas condutivas e filtros ambientais. A transformação do grafite em nanoplacas pode oferecer uma alternativa viável e mais",
+        "tamanho_comentario":275
+    },
+    {
+        "id":61,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/odanyllopereira\/status\/1988301498057716143",
+        "usuario":"odanyllopereira",
+        "conteudo":"Deixem Salvador e o povo baiano em paz. Visitem Fortaleza e as praias e serras do Ceará, o atendimento é de qualidade e o povo é bem acolhedor, sem grosserias! #paz",
+        "data_hora":"2025-11-11T17:43:12.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Deixem Salvador e o povo baiano em paz. Visitem Fortaleza e as praias e serras do Ceará, o atendimento é de qualidade e o povo é bem acolhedor, sem grosserias! #paz",
+        "tamanho_comentario":164
+    },
+    {
+        "id":62,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/FaelMedeir54565\/status\/1987938958173487198",
+        "usuario":"FaelMedeir54565",
+        "conteudo":"O Vozão vai disputar pela 9ª vez os pontos corridos na Série A !! \n\n 2010, 2011, 2017, 2018, 2019, 2020, 2021, 2022, 2025 e 2026\n\n Nunca fez “bate e volta” — toda vez que subiu, ficou!\n\n Recorde de participações seguidas: 5 temporadas (2017-2022)\n#Ceará #Vozão #SerieA",
+        "data_hora":"2025-11-10T17:42:36.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"O Vozão vai disputar pela 9ª vez os pontos corridos na Série A !! \n\n 2010, 2011, 2017, 2018, 2019, 2020, 2021, 2022, 2025 e 2026\n\n Nunca fez “bate e volta” — toda vez que subiu, ficou!\n\n Recorde de participações seguidas: 5 temporadas (2017-2022)\n#Ceará #Vozão #SerieA",
+        "tamanho_comentario":268
+    },
+    {
+        "id":63,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Paulinzera\/status\/1987867771011567714",
+        "usuario":"Paulinzera",
+        "conteudo":"Se o Ceará não fosse cabaço\n\nSport 1x1 Ceará = 3 pontos\nCeará 1x1 Bahia = 3 pontos\nCeará 0x1 Juventude = 1 ponto\nBragantino 2x2 Ceará = 3 pontos\n\n7º 52 pontos",
+        "data_hora":"2025-11-10T12:59:44.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Se o Ceará não fosse cabaço\n\nSport 1x1 Ceará = 3 pontos\nCeará 1x1 Bahia = 3 pontos\nCeará 0x1 Juventude = 1 ponto\nBragantino 2x2 Ceará = 3 pontos\n\n7º 52 pontos",
+        "tamanho_comentario":158
+    },
+    {
+        "id":64,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/larboSNews\/status\/1987933356214865984",
+        "usuario":"larboSNews",
+        "conteudo":"Mais uma CIDADE DO CEARÁ (Prefeito do PT) está sob o DOMÍNIO DE FACÇÃO.",
+        "data_hora":"2025-11-10T17:20:20.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Mais uma CIDADE DO CEARÁ (Prefeito do PT) está sob o DOMÍNIO DE FACÇÃO.",
+        "tamanho_comentario":71
+    },
+    {
+        "id":65,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/quel_pires\/status\/1987856363884572731",
+        "usuario":"quel_pires",
+        "conteudo":"Inda bem que ontem, meu niver, o ceara me deu uma vitória de presente. Ufaaaa\nVamos vozao.",
+        "data_hora":"2025-11-10T12:14:24.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Inda bem que ontem, meu niver, o ceara me deu uma vitória de presente. Ufaaaa\nVamos vozao.",
+        "tamanho_comentario":90
+    },
+    {
+        "id":66,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/ChucruteGragas\/status\/1987862423970218122",
+        "usuario":"ChucruteGragas",
+        "conteudo":"gente eu fiz a line do pos jogo contra o ceará mas to deprimido, n quero finalizar...\n\ndevo finalizar?",
+        "data_hora":"2025-11-10T12:38:29.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"gente eu fiz a line do pos jogo contra o ceará mas to deprimido, n quero finalizar...\n\ndevo finalizar?",
+        "tamanho_comentario":102
+    },
+    {
+        "id":67,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/franciscopato\/status\/1987988690077991368",
+        "usuario":"franciscopato",
+        "conteudo":"Corinthians 0X1 Ceará Sporting Club, olha o que estão falando: Tiraram o cara do Hotel de luxo e puseram na CAB 2!  Tão querendo o que? Kkkkkkkkkk kkkkkkkkkk kkkkkkkkkk Cabe no teu, eu não queria rir,mas como não rir véi? Mas tá tudo certo,diga se de passagem, pés de ratos",
+        "data_hora":"2025-11-10T21:00:13.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Corinthians 0X1 Ceará Sporting Club, olha o que estão falando: Tiraram o cara do Hotel de luxo e puseram na CAB 2!  Tão querendo o que? Kkkkkkkkkk kkkkkkkkkk kkkkkkkkkk Cabe no teu, eu não queria rir,mas como não rir véi? Mas tá tudo certo,diga se de passagem, pés de ratos",
+        "tamanho_comentario":273
+    },
+    {
+        "id":68,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/_erbinho\/status\/1988238661196939328",
+        "usuario":"_erbinho",
+        "conteudo":"desisti de fazer crisma na matriz do conjunto ceará pq eu vi o padre de lá fazendo banheirao no assaí da parangaba",
+        "data_hora":"2025-11-11T13:33:31.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"desisti de fazer crisma na matriz do conjunto ceará pq eu vi o padre de lá fazendo banheirao no assaí da parangaba",
+        "tamanho_comentario":114
+    },
+    {
+        "id":69,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/franciscopato\/status\/1988270764190052612",
+        "usuario":"franciscopato",
+        "conteudo":"Véi teve uns idiotas da TV que não falaram na vitória do Ceará Sporting Club aqui em São Paulo contra o Corinthians,ou não falaram  na derrota do Corinthians para o Ceará Sporting Club, Umas porras desses não são esportistas, tá pensado e falado",
+        "data_hora":"2025-11-11T15:41:05.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Véi teve uns idiotas da TV que não falaram na vitória do Ceará Sporting Club aqui em São Paulo contra o Corinthians,ou não falaram  na derrota do Corinthians para o Ceará Sporting Club, Umas porras desses não são esportistas, tá pensado e falado",
+        "tamanho_comentario":245
+    },
+    {
+        "id":70,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/FlaFemInfo\/status\/1987997617536504010",
+        "usuario":"FlaFemInfo",
+        "conteudo":"Primeiros jogos da Superliga B 25\/26\n\n - 09\/12 – 18h- Gávea (RJ)\nFla x ASCADE\n\n - 13\/12 – 19h30 no Ginásio Aécio de Borba – Fortaleza (CE)\nCeará x Fla\n\n - 19\/12 as 17h - Fla x Asa Alumínio Vôlei - Gávea (RJ)\n\nObs: mais um ano, jogaremos com a Base!",
+        "data_hora":"2025-11-10T21:35:41.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Primeiros jogos da Superliga B 25\/26\n\n - 09\/12 – 18h- Gávea (RJ)\nFla x ASCADE\n\n - 13\/12 – 19h30 no Ginásio Aécio de Borba – Fortaleza (CE)\nCeará x Fla\n\n - 19\/12 as 17h - Fla x Asa Alumínio Vôlei - Gávea (RJ)\n\nObs: mais um ano, jogaremos com a Base!",
+        "tamanho_comentario":248
+    },
+    {
+        "id":71,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/nabrubjj\/status\/1988233616305123587",
+        "usuario":"nabrubjj",
+        "conteudo":"So queria poder ir embora do Rio, voltar pro Ceará. Mas no momento 2 coisas me prende nesse lugar",
+        "data_hora":"2025-11-11T13:13:28.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"So queria poder ir embora do Rio, voltar pro Ceará. Mas no momento 2 coisas me prende nesse lugar",
+        "tamanho_comentario":97
+    },
+    {
+        "id":72,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/YODAH0402\/status\/1987958184414248963",
+        "usuario":"YODAH0402",
+        "conteudo":"Decisão do TJ- Ceará causou a expulsão de 2 mil pessoas de suas casas!\n\nO traficante José Witals estava preso por integrar facção criminosa.\nFoi ABSOLVIDO e SOLTO!\nMESES DEPOIS, ele e sua facção expulsaram os 2 mil moradores de Uiraponga\n\nLocal segue vazio!\nFonte -  \n@Metropoles",
+        "data_hora":"2025-11-10T18:59:00.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Decisão do TJ- Ceará causou a expulsão de 2 mil pessoas de suas casas!\n\nO traficante José Witals estava preso por integrar facção criminosa.\nFoi ABSOLVIDO e SOLTO!\nMESES DEPOIS, ele e sua facção expulsaram os 2 mil moradores de Uiraponga\n\nLocal segue vazio!\nFonte -  \n@Metropoles",
+        "tamanho_comentario":279
+    },
+    {
+        "id":73,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/ellenziiinh4\/status\/1988301637166014957",
+        "usuario":"ellenziiinh4",
+        "conteudo":"shawn mendes agr venha para fortaleza ceará eu serei sua guia turistica te levarei nos melhores restaurantes e praias e minha casa meu quarto minha cama",
+        "data_hora":"2025-11-11T17:43:45.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"shawn mendes agr venha para fortaleza ceará eu serei sua guia turistica te levarei nos melhores restaurantes e praias e minha casa meu quarto minha cama",
+        "tamanho_comentario":152
+    },
+    {
+        "id":74,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/ghwstchrma\/status\/1987986092826509518",
+        "usuario":"ghwstchrma",
+        "conteudo":"ceara é sua obrigacao dar uma pisa no inter",
+        "data_hora":"2025-11-10T20:49:54.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"ceara é sua obrigacao dar uma pisa no inter",
+        "tamanho_comentario":43
+    },
+    {
+        "id":75,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/PauloMancini4\/status\/1987900529914053110",
+        "usuario":"PauloMancini4",
+        "conteudo":"#g4bandsports Corinthians 0X1 Ceará   não é anormal,mais de 15 anos de presidentes petistas,onde a INCOMPETÊNCIA (pra falar vem pouco) foi a tônica,  estamos num BURACO enorme,e não sairemos de um hora pra outra,será um caminho dificílimo, se tivermos pessoas sérias e competentes",
+        "data_hora":"2025-11-10T15:09:54.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"#g4bandsports Corinthians 0X1 Ceará   não é anormal,mais de 15 anos de presidentes petistas,onde a INCOMPETÊNCIA (pra falar vem pouco) foi a tônica,  estamos num BURACO enorme,e não sairemos de um hora pra outra,será um caminho dificílimo, se tivermos pessoas sérias e competentes",
+        "tamanho_comentario":280
+    },
+    {
+        "id":76,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/oquesejaser\/status\/1988031156197982301",
+        "usuario":"oquesejaser",
+        "conteudo":"Quero ver quem vai me pagar pela tortura que foi Corinthians mas x Ceará e agora Corinthians fem no primeiro tempo assistindo o Palmeiras jogar\n\nEu sou uma corn@ mesmo, só pode",
+        "data_hora":"2025-11-10T23:48:58.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Quero ver quem vai me pagar pela tortura que foi Corinthians mas x Ceará e agora Corinthians fem no primeiro tempo assistindo o Palmeiras jogar\n\nEu sou uma corn@ mesmo, só pode",
+        "tamanho_comentario":176
+    },
+    {
+        "id":77,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/amadahcsc14\/status\/1987977414920855553",
+        "usuario":"amadahcsc14",
+        "conteudo":"Temos que torcer para o Ceará ganhar mais umas 3 partidas \n\nE Atlético MG terminar no G8, pois, irá abrir mais uma vaga de pré liberta",
+        "data_hora":"2025-11-10T20:15:25.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Temos que torcer para o Ceará ganhar mais umas 3 partidas \n\nE Atlético MG terminar no G8, pois, irá abrir mais uma vaga de pré liberta",
+        "tamanho_comentario":134
+    },
+    {
+        "id":78,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Denaro_Oficial\/status\/1987876164816298133",
+        "usuario":"Denaro_Oficial",
+        "conteudo":"Excelente Corinthians perdeu pro Ceará",
+        "data_hora":"2025-11-10T13:33:05.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Excelente Corinthians perdeu pro Ceará",
+        "tamanho_comentario":38
+    },
+    {
+        "id":79,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/kauanr_l\/status\/1988282256436473959",
+        "usuario":"kauanr_l",
+        "conteudo":"galera acho q levei a sério dms o negócio de fazer um filho dps dos jogos do Ceará...",
+        "data_hora":"2025-11-11T16:26:45.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"galera acho q levei a sério dms o negócio de fazer um filho dps dos jogos do Ceará...",
+        "tamanho_comentario":85
+    },
+    {
+        "id":80,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/b13lgm\/status\/1987989920770597142",
+        "usuario":"b13lgm",
+        "conteudo":"só msm o cj ceará para ter um local vendendo salgado a 1,25",
+        "data_hora":"2025-11-10T21:05:06.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"só msm o cj ceará para ter um local vendendo salgado a 1,25",
+        "tamanho_comentario":59
+    },
+    {
+        "id":81,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/mel_deux\/status\/1988040043420610817",
+        "usuario":"mel_deux",
+        "conteudo":"Duas colheradas de mel do Ceará, agora a garganta não arranha",
+        "data_hora":"2025-11-11T00:24:17.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Duas colheradas de mel do Ceará, agora a garganta não arranha",
+        "tamanho_comentario":61
+    },
+    {
+        "id":82,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/AgoraAudiencia\/status\/1987989599575068955",
+        "usuario":"AgoraAudiencia",
+        "conteudo":"18h03 Break (TV Jangadeiro\/Ceará)\n#coraçãoindomável",
+        "data_hora":"2025-11-10T21:03:50.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"18h03 Break (TV Jangadeiro\/Ceará)\n#coraçãoindomável",
+        "tamanho_comentario":51
+    },
+    {
+        "id":83,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/cscmari_\/status\/1987932376584892812",
+        "usuario":"cscmari_",
+        "conteudo":"Povo falando demais do horário do jogo de Ceará x Inter, mas tão esquecendo que nosso maior público foi as 21h45 de uma SEGUNDA-FEIRA.\n\nTem desculpa não, glr..",
+        "data_hora":"2025-11-10T17:16:27.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Povo falando demais do horário do jogo de Ceará x Inter, mas tão esquecendo que nosso maior público foi as 21h45 de uma SEGUNDA-FEIRA.\n\nTem desculpa não, glr..",
+        "tamanho_comentario":159
+    },
+    {
+        "id":84,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/osonial\/status\/1987916951721549961",
+        "usuario":"osonial",
+        "conteudo":"nessas web amizades do twitter ja meteram pra mim q eu tinha muito dinheiro pra alguem q mora no interior do ceara",
+        "data_hora":"2025-11-10T16:15:09.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"nessas web amizades do twitter ja meteram pra mim q eu tinha muito dinheiro pra alguem q mora no interior do ceara",
+        "tamanho_comentario":114
+    },
+    {
+        "id":85,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/carlydamasceno2\/status\/1987854003099562254",
+        "usuario":"carlydamasceno2",
+        "conteudo":"Ao que tudo indica O Clássico Rei Ceará x Fortaleza em 2026 só pelo Campeonato Cearense",
+        "data_hora":"2025-11-10T12:05:01.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Ao que tudo indica O Clássico Rei Ceará x Fortaleza em 2026 só pelo Campeonato Cearense",
+        "tamanho_comentario":87
+    },
+    {
+        "id":86,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/giselletanajura\/status\/1988287661417857125",
+        "usuario":"giselletanajura",
+        "conteudo":"vc é do ceará?",
+        "data_hora":"2025-11-11T16:48:13.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"vc é do ceará?",
+        "tamanho_comentario":14
+    },
+    {
+        "id":87,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/audiilene\/status\/1987992418722214046",
+        "usuario":"audiilene",
+        "conteudo":"nunca que eu SAIRIA da minha casa (Ceará) pra falar mal da casa dos outros na internet isso é tipo de coisa que se comenta com uma pessoa do seu lado e olhe lá ainda tá errado o certo era ficar calado mesmo",
+        "data_hora":"2025-11-10T21:15:02.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"nunca que eu SAIRIA da minha casa (Ceará) pra falar mal da casa dos outros na internet isso é tipo de coisa que se comenta com uma pessoa do seu lado e olhe lá ainda tá errado o certo era ficar calado mesmo",
+        "tamanho_comentario":206
+    },
+    {
+        "id":88,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/cronicaalvinegr\/status\/1987852097677639735",
+        "usuario":"cronicaalvinegr",
+        "conteudo":"Corinthians x Piores times do Campeonato, 20º ao 11º colocado.\n\nSport \nFortaleza \nJuventude \nSantos \nVitória \nInternacional \nGrêmio \nCeará  \nBragantino \n\n 16 jogos\n 6 vitórias\n 4 empates\n 6 derrotas\n\nÉ bem vergonhosa essa estatística, contra o Z4, só venceu duas até o momento.",
+        "data_hora":"2025-11-10T11:57:27.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Corinthians x Piores times do Campeonato, 20º ao 11º colocado.\n\nSport \nFortaleza \nJuventude \nSantos \nVitória \nInternacional \nGrêmio \nCeará  \nBragantino \n\n 16 jogos\n 6 vitórias\n 4 empates\n 6 derrotas\n\nÉ bem vergonhosa essa estatística, contra o Z4, só venceu duas até o momento.",
+        "tamanho_comentario":277
+    },
+    {
+        "id":89,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/paulospetin\/status\/1987889884816986495",
+        "usuario":"paulospetin",
+        "conteudo":"É massa a diferença dos torcedores do Ceará de 35- pros de 35+.",
+        "data_hora":"2025-11-10T14:27:36.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"É massa a diferença dos torcedores do Ceará de 35- pros de 35+.",
+        "tamanho_comentario":63
+    },
+    {
+        "id":90,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/VanteLady\/status\/1988334522291958195",
+        "usuario":"VanteLady",
+        "conteudo":"em reunião com o pessoal do ceará sc já falei q eles mereceram ganhar mesmo do todo poderoso meu time lindo corinthians paulista pq meu time arrastou demais no domingo é isso kkkkkkkk",
+        "data_hora":"2025-11-11T19:54:26.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"em reunião com o pessoal do ceará sc já falei q eles mereceram ganhar mesmo do todo poderoso meu time lindo corinthians paulista pq meu time arrastou demais no domingo é isso kkkkkkkk",
+        "tamanho_comentario":183
+    },
+    {
+        "id":91,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/_toFeel\/status\/1987893385890353407",
+        "usuario":"_toFeel",
+        "conteudo":"o foda é que se o corinthians tivesse feito o minimo = ganhar do sport e do ceará ontem\nagora a gente estaria com 48 pontos, na frente do são paulo e chegando tranquilo pra jogo de 6 pontos contra os trikas \nmas nãaaao, meu time insiste em ser um time de merda",
+        "data_hora":"2025-11-10T14:41:31.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"o foda é que se o corinthians tivesse feito o minimo = ganhar do sport e do ceará ontem\nagora a gente estaria com 48 pontos, na frente do são paulo e chegando tranquilo pra jogo de 6 pontos contra os trikas \nmas nãaaao, meu time insiste em ser um time de merda",
+        "tamanho_comentario":260
+    },
+    {
+        "id":92,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/ellputin69\/status\/1988200002288840961",
+        "usuario":"ellputin69",
+        "conteudo":"Algum ativo de fortaleza ou Ceará no geral afim de foder o rabo de um novinho rabudo? Chama dm se quiser um depositozinho e for de fortal\n#PINTOAWARDS \n#PINTOSAWARDS  \n#RABAAWARDS\n#troconude\n#PINTOAWARDS \n#PINTOAWARD \n#TROCONUDS \n#brotheragem \n#BRODERAGEM",
+        "data_hora":"2025-11-11T10:59:54.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Algum ativo de fortaleza ou Ceará no geral afim de foder o rabo de um novinho rabudo? Chama dm se quiser um depositozinho e for de fortal\n#PINTOAWARDS \n#PINTOSAWARDS  \n#RABAAWARDS\n#troconude\n#PINTOAWARDS \n#PINTOAWARD \n#TROCONUDS \n#brotheragem \n#BRODERAGEM",
+        "tamanho_comentario":255
+    },
+    {
+        "id":93,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/carolinerdc_\/status\/1987989313708302569",
+        "usuario":"carolinerdc_",
+        "conteudo":"ceará não pode participar da trend de mal educação pois conhecido internacionalmente como o estado mais caloroso e simpático do país amo",
+        "data_hora":"2025-11-10T21:02:42.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"ceará não pode participar da trend de mal educação pois conhecido internacionalmente como o estado mais caloroso e simpático do país amo",
+        "tamanho_comentario":136
+    },
+    {
+        "id":94,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/chaoticw1ll\/status\/1988086294099198248",
+        "usuario":"chaoticw1ll",
+        "conteudo":"ninguém joga trails no ceará",
+        "data_hora":"2025-11-11T03:28:04.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"ninguém joga trails no ceará",
+        "tamanho_comentario":28
+    },
+    {
+        "id":95,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/putobonzin\/status\/1987879671199826229",
+        "usuario":"putobonzin",
+        "conteudo":"Algum ativo de fortaleza ou Ceará no geral afim de foder o rabo de um novinho rabudo? Chama dm se quiser um depositozinho e for de fortall\n#PINTOAWARDS \n#PINTOSAWARDS  \n#RABAAWARDS\n#troconude\n#PINTOAWARDS \n#PINTOAWARD \n#TROCONUDS \n#brotheragem \n#BRODERAGEM",
+        "data_hora":"2025-11-10T13:47:01.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Algum ativo de fortaleza ou Ceará no geral afim de foder o rabo de um novinho rabudo? Chama dm se quiser um depositozinho e for de fortall\n#PINTOAWARDS \n#PINTOSAWARDS  \n#RABAAWARDS\n#troconude\n#PINTOAWARDS \n#PINTOAWARD \n#TROCONUDS \n#brotheragem \n#BRODERAGEM",
+        "tamanho_comentario":256
+    },
+    {
+        "id":96,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/leiatheinvestor\/status\/1987884478048461070",
+        "usuario":"leiatheinvestor",
+        "conteudo":"++ Justiça soltou narcoterrorista que expulsou 2 mil moradores no Ceará (CD)",
+        "data_hora":"2025-11-10T14:06:07.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"++ Justiça soltou narcoterrorista que expulsou 2 mil moradores no Ceará (CD)",
+        "tamanho_comentario":76
+    },
+    {
+        "id":97,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/amadahcsc14\/status\/1988010535309504626",
+        "usuario":"amadahcsc14",
+        "conteudo":"O Ceará tá fazendo a Sétima Melhor campanha nos últimos 10 jogos\n\nSe ele mantiver isso e contar com tropeços, com certeza, vai pra Sula e quem sabe algo a mais\n\nPorém, muito difícil, devido os próximos adversários serem candidatos ao título\n\nVale mt pra mt gente o Ceará ganhar",
+        "data_hora":"2025-11-10T22:27:01.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"O Ceará tá fazendo a Sétima Melhor campanha nos últimos 10 jogos\n\nSe ele mantiver isso e contar com tropeços, com certeza, vai pra Sula e quem sabe algo a mais\n\nPorém, muito difícil, devido os próximos adversários serem candidatos ao título\n\nVale mt pra mt gente o Ceará ganhar",
+        "tamanho_comentario":277
+    },
+    {
+        "id":98,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/yaaszxd\/status\/1988032953226797448",
+        "usuario":"yaaszxd",
+        "conteudo":"se eu ver mais um edit da Carol com aquela música do bilhete, a taxa de suicídio do Ceará vai aumentar",
+        "data_hora":"2025-11-10T23:56:06.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"se eu ver mais um edit da Carol com aquela música do bilhete, a taxa de suicídio do Ceará vai aumentar",
+        "tamanho_comentario":102
+    },
+    {
+        "id":99,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/maze2216\/status\/1988281393575805355",
+        "usuario":"maze2216",
+        "conteudo":"EM 2021, 16 CIDADES DO CEARÁ DEIXARAM VENCER VACINAS!\nUma cidade venceram mais de 5 mil doses! O MP tinha que ter investigado os genocidas. Era proposital? As esquerdas são capazes de tudo.\nO governo Bolsonaro foi boicotado em tudo por essa essa gente, mesmo que matassem o povo!",
+        "data_hora":"2025-11-11T16:23:19.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"EM 2021, 16 CIDADES DO CEARÁ DEIXARAM VENCER VACINAS!\nUma cidade venceram mais de 5 mil doses! O MP tinha que ter investigado os genocidas. Era proposital? As esquerdas são capazes de tudo.\nO governo Bolsonaro foi boicotado em tudo por essa essa gente, mesmo que matassem o povo!",
+        "tamanho_comentario":279
+    },
+    {
+        "id":100,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Robert8_Kazo\/status\/1987943785356268009",
+        "usuario":"Robert8_Kazo",
+        "conteudo":"Pedro; o salario do Memphis não paga o time inteiro do Ceará? Dorival em um mês recebe o que recebe Leo Condé em um ano? O Guanaes recebe 5% do salario do Abel e dá uma lição de futebol? Vitor Roque,F.Anderson, Andreas custa mais que o time inteiro do Mirassol! #Fshow",
+        "data_hora":"2025-11-10T18:01:47.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Pedro; o salario do Memphis não paga o time inteiro do Ceará? Dorival em um mês recebe o que recebe Leo Condé em um ano? O Guanaes recebe 5% do salario do Abel e dá uma lição de futebol? Vitor Roque,F.Anderson, Andreas custa mais que o time inteiro do Mirassol! #Fshow",
+        "tamanho_comentario":268
+    },
+    {
+        "id":101,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/luannyrdrgs_\/status\/1987950681970667749",
+        "usuario":"luannyrdrgs_",
+        "conteudo":"eu mostrando as novas camisas dos países pra copa do mundo pra keillyane e ela me solta “e cadê a do ceará?” BICHA??",
+        "data_hora":"2025-11-10T18:29:11.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"eu mostrando as novas camisas dos países pra copa do mundo pra keillyane e ela me solta “e cadê a do ceará?” BICHA??",
+        "tamanho_comentario":116
+    },
+    {
+        "id":102,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/LEOYYZ\/status\/1988075673391698273",
+        "usuario":"LEOYYZ",
+        "conteudo":"Info: Mengao campeão brasileiro x Ceará.",
+        "data_hora":"2025-11-11T02:45:51.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Info: Mengao campeão brasileiro x Ceará.",
+        "tamanho_comentario":40
+    },
+    {
+        "id":103,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/amadahcsc14\/status\/1987979204432929279",
+        "usuario":"amadahcsc14",
+        "conteudo":"O Marcos Victor \n\nTudo bem contarmos com a saída\n\nMas, os caras ficam fazendo postagem já contando com a saída certa do William Machado\n\nPrecisamos mudar essa mentalidade de clube e torcida \n\nTem que MANTER o William MACHADO ! \n\nE ele só combina com o Ceará !",
+        "data_hora":"2025-11-10T20:22:31.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"O Marcos Victor \n\nTudo bem contarmos com a saída\n\nMas, os caras ficam fazendo postagem já contando com a saída certa do William Machado\n\nPrecisamos mudar essa mentalidade de clube e torcida \n\nTem que MANTER o William MACHADO ! \n\nE ele só combina com o Ceará !",
+        "tamanho_comentario":259
+    },
+    {
+        "id":104,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/christuiter\/status\/1988256991534326206",
+        "usuario":"christuiter",
+        "conteudo":"Fui no retorno da médica hoje. A diva não sabe nada que tá acontecendo no mundo do crime. Não sabe de gangue dominando o ceará, não sabe das mortes e assaltos da cidade... achei incrível. Quero ser assim.",
+        "data_hora":"2025-11-11T14:46:21.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Fui no retorno da médica hoje. A diva não sabe nada que tá acontecendo no mundo do crime. Não sabe de gangue dominando o ceará, não sabe das mortes e assaltos da cidade... achei incrível. Quero ser assim.",
+        "tamanho_comentario":204
+    },
+    {
+        "id":105,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/derby_du\/status\/1988251042270626302",
+        "usuario":"derby_du",
+        "conteudo":"E o Vojvoda, que depois de anos morando na praia e sol do Ceará e sendo o melhor treinador da história do Fortaleza, agora é mais uma vítima do Monstro de Renê Simões?",
+        "data_hora":"2025-11-11T14:22:43.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"E o Vojvoda, que depois de anos morando na praia e sol do Ceará e sendo o melhor treinador da história do Fortaleza, agora é mais uma vítima do Monstro de Renê Simões?",
+        "tamanho_comentario":167
+    },
+    {
+        "id":106,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/hablarmesmo_\/status\/1988309689780892125",
+        "usuario":"hablarmesmo_",
+        "conteudo":"meus neurônios na hora de estudar\n“um no Ceará…outro em Alagoas”",
+        "data_hora":"2025-11-11T18:15:45.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"meus neurônios na hora de estudar\n“um no Ceará…outro em Alagoas”",
+        "tamanho_comentario":64
+    },
+    {
+        "id":107,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Rafaelmt229\/status\/1987899866324914286",
+        "usuario":"Rafaelmt229",
+        "conteudo":"Saudades da minha terrinha Ceará",
+        "data_hora":"2025-11-10T15:07:16.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Saudades da minha terrinha Ceará",
+        "tamanho_comentario":32
+    },
+    {
+        "id":108,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/futnacapital\/status\/1987874439732637907",
+        "usuario":"futnacapital",
+        "conteudo":"DIEGUINHO X 11 DO CEARÁ! \nO MENINO JOGOU SOZINHO NESSE JOGO!",
+        "data_hora":"2025-11-10T13:26:14.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"DIEGUINHO X 11 DO CEARÁ! \nO MENINO JOGOU SOZINHO NESSE JOGO!",
+        "tamanho_comentario":60
+    },
+    {
+        "id":109,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/itsjescao\/status\/1987870020697776196",
+        "usuario":"itsjescao",
+        "conteudo":"por mim pode criticar o atendimento dos estabelecimentos de todo canto do brasil não ligo nem um pouco menos do ceará claro",
+        "data_hora":"2025-11-10T13:08:40.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"por mim pode criticar o atendimento dos estabelecimentos de todo canto do brasil não ligo nem um pouco menos do ceará claro",
+        "tamanho_comentario":123
+    },
+    {
+        "id":110,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/jornaldomacico\/status\/1987977084514287818",
+        "usuario":"jornaldomacico",
+        "conteudo":"Governo do Ceará anuncia certificação nacional de empresas cearenses, na abertura da Expoece.",
+        "data_hora":"2025-11-10T20:14:06.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Governo do Ceará anuncia certificação nacional de empresas cearenses, na abertura da Expoece.",
+        "tamanho_comentario":93
+    },
+    {
+        "id":111,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Fernand27510055\/status\/1988013159878455694",
+        "usuario":"Fernand27510055",
+        "conteudo":"Brasileiráo\nEstamos a 32 rodadas o Mirasol virar cavalo paraguaio e nada..ontem ganhou do Palmeiras com autoridade e sem sofrer.\nTambem o fla fez o dever de casa gamhou do Santos por 3a2 levando susto no final.Corintians surpreendido pelo Ceara e o Vasco de salto alto perdeu 3a1.",
+        "data_hora":"2025-11-10T22:37:27.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Brasileiráo\nEstamos a 32 rodadas o Mirasol virar cavalo paraguaio e nada..ontem ganhou do Palmeiras com autoridade e sem sofrer.\nTambem o fla fez o dever de casa gamhou do Santos por 3a2 levando susto no final.Corintians surpreendido pelo Ceara e o Vasco de salto alto perdeu 3a1.",
+        "tamanho_comentario":280
+    },
+    {
+        "id":112,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/chernovic\/status\/1988249492324339767",
+        "usuario":"chernovic",
+        "conteudo":"vi uma menina com uma tatuagem tão linda (a tatuagem era do Ceará)",
+        "data_hora":"2025-11-11T14:16:33.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"vi uma menina com uma tatuagem tão linda (a tatuagem era do Ceará)",
+        "tamanho_comentario":66
+    },
+    {
+        "id":113,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/offsccp\/status\/1988295138855317913",
+        "usuario":"offsccp",
+        "conteudo":"ACABEI DE DESCOBRIR QUE O TIME FEMININO DO VOLÊI DO CEARÁ ESTÁ NA SUPERLIGA B PQP",
+        "data_hora":"2025-11-11T17:17:56.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"ACABEI DE DESCOBRIR QUE O TIME FEMININO DO VOLÊI DO CEARÁ ESTÁ NA SUPERLIGA B PQP",
+        "tamanho_comentario":81
+    },
+    {
+        "id":114,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/TodaTV1\/status\/1987948401871466861",
+        "usuario":"TodaTV1",
+        "conteudo":"DOMINGO - 09\/11\/25\n\nMaior audiência da Globo: Corinthians x Ceará: 17,9\nMaior audiência do SBT: #ProgramaSilvioSantos: 7,1\nMaior audiência da Record: #DomingoEspetacular: 6,5\nMaior audiência da Band: #Fórmula1: 4,1 (média geral)\nMaior audiência da RedeTV!: #ParaAqui: 0,6",
+        "data_hora":"2025-11-10T18:20:07.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"DOMINGO - 09\/11\/25\n\nMaior audiência da Globo: Corinthians x Ceará: 17,9\nMaior audiência do SBT: #ProgramaSilvioSantos: 7,1\nMaior audiência da Record: #DomingoEspetacular: 6,5\nMaior audiência da Band: #Fórmula1: 4,1 (média geral)\nMaior audiência da RedeTV!: #ParaAqui: 0,6",
+        "tamanho_comentario":271
+    },
+    {
+        "id":115,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/GiorasXerez\/status\/1988261656523120783",
+        "usuario":"GiorasXerez",
+        "conteudo":"Ceará perdeu em curto espaço dois grandes empresários. Gestores do desenvolvimento do Estado. Lauro Chaves Filho e Roberto Macêdo.",
+        "data_hora":"2025-11-11T15:04:53.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Ceará perdeu em curto espaço dois grandes empresários. Gestores do desenvolvimento do Estado. Lauro Chaves Filho e Roberto Macêdo.",
+        "tamanho_comentario":130
+    },
+    {
+        "id":116,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/bielzinho4656\/status\/1987970078248165590",
+        "usuario":"bielzinho4656",
+        "conteudo":"O galo, o Grêmio e o Ceará precisam entregar em prol da união sinistra. O Fluminense precisa entregar pra não deixar o flabunda ser campeão.\n\nNamoral? Seremos.",
+        "data_hora":"2025-11-10T19:46:16.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"O galo, o Grêmio e o Ceará precisam entregar em prol da união sinistra. O Fluminense precisa entregar pra não deixar o flabunda ser campeão.\n\nNamoral? Seremos.",
+        "tamanho_comentario":159
+    },
+    {
+        "id":117,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Daniell95978017\/status\/1988028013687218431",
+        "usuario":"Daniell95978017",
+        "conteudo":"“acho que vou pro ceará com a Sté”",
+        "data_hora":"2025-11-10T23:36:28.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"“acho que vou pro ceará com a Sté”",
+        "tamanho_comentario":34
+    },
+    {
+        "id":118,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/chiliniki\/status\/1988129071243399390",
+        "usuario":"chiliniki",
+        "conteudo":"Meus amigos passaram a noite me zoando e dizendo que eu tinha hiperfoco no ceará vsfd não entendi esse bullying eu nem tenho esse hiperfoco todo",
+        "data_hora":"2025-11-11T06:18:02.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Meus amigos passaram a noite me zoando e dizendo que eu tinha hiperfoco no ceará vsfd não entendi esse bullying eu nem tenho esse hiperfoco todo",
+        "tamanho_comentario":144
+    },
+    {
+        "id":119,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/_alberteinstei\/status\/1987912214062231604",
+        "usuario":"_alberteinstei",
+        "conteudo":"e o time todo, e o elenco do CEARÁ JA PASSOU NO ENEM??",
+        "data_hora":"2025-11-10T15:56:20.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"e o time todo, e o elenco do CEARÁ JA PASSOU NO ENEM??",
+        "tamanho_comentario":54
+    },
+    {
+        "id":120,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/rdgrenal\/status\/1988204086005788990",
+        "usuario":"rdgrenal",
+        "conteudo":"Torcedor colorado, você considera que um empate contra o Ceará, fora de casa, seria um bom resultado?",
+        "data_hora":"2025-11-11T11:16:07.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Torcedor colorado, você considera que um empate contra o Ceará, fora de casa, seria um bom resultado?",
+        "tamanho_comentario":101
+    },
+    {
+        "id":121,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/simulant_0\/status\/1988189872491032884",
+        "usuario":"simulant_0",
+        "conteudo":"Vocês querem usar moleton no calor do Ceará mas não querem lavar e usam ele fedendo no ônibus, aí fica difícil.",
+        "data_hora":"2025-11-11T10:19:39.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Vocês querem usar moleton no calor do Ceará mas não querem lavar e usam ele fedendo no ônibus, aí fica difícil.",
+        "tamanho_comentario":111
+    },
+    {
+        "id":122,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/PedrodiedrichG\/status\/1988001537449406779",
+        "usuario":"PedrodiedrichG",
+        "conteudo":"Nesse momento tem chance de o Corinthians poder decidir rebaixamento na última rodada enfrentando Juventude. Com a força recente do jaconero pode deixar os caras rebaixarem Santos e Inter juntos nessa brincadeira.\n\nNão dá pra negociar sair sem ponto do Ceará nessa situação",
+        "data_hora":"2025-11-10T21:51:16.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Nesse momento tem chance de o Corinthians poder decidir rebaixamento na última rodada enfrentando Juventude. Com a força recente do jaconero pode deixar os caras rebaixarem Santos e Inter juntos nessa brincadeira.\n\nNão dá pra negociar sair sem ponto do Ceará nessa situação",
+        "tamanho_comentario":273
+    },
+    {
+        "id":123,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/t_andr\/status\/1988052597387776010",
+        "usuario":"t_andr",
+        "conteudo":"#trocadepasses Boa noite Felipe. Meu amigo Marcos Vitor e William Machado zagueiros  do Ceará, um deles merecia estar na seleção.  Partida impecável da dupla ontem contra o Corinthians. E pode bater o print. Quem vai vencer o Mirassol no Maião é o Ceará.",
+        "data_hora":"2025-11-11T01:14:10.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"#trocadepasses Boa noite Felipe. Meu amigo Marcos Vitor e William Machado zagueiros  do Ceará, um deles merecia estar na seleção.  Partida impecável da dupla ontem contra o Corinthians. E pode bater o print. Quem vai vencer o Mirassol no Maião é o Ceará.",
+        "tamanho_comentario":254
+    },
+    {
+        "id":124,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Papa_Hotel\/status\/1988245327627829575",
+        "usuario":"Papa_Hotel",
+        "conteudo":"Campeonato Brasileiro 2025 \n\nRisco de rebaixamento segundo a UFMG:\nSport - 100%\nFortaleza - 92,6%\nJuventude - 76,8%\nSantos - 59,4%\nVitória - 51,9%\nInternacional - 16,9%                \nGrêmio - 1,7%\nCeará - 0,19%\nCorinthians - 0,19%\nRed Bull Bragantino - 0,18%\nVasco - 0,15%\nAtlético-MG - 0,009%\nSão Paulo - 0,001%",
+        "data_hora":"2025-11-11T14:00:00.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Campeonato Brasileiro 2025 \n\nRisco de rebaixamento segundo a UFMG:\nSport - 100%\nFortaleza - 92,6%\nJuventude - 76,8%\nSantos - 59,4%\nVitória - 51,9%\nInternacional - 16,9%                \nGrêmio - 1,7%\nCeará - 0,19%\nCorinthians - 0,19%\nRed Bull Bragantino - 0,18%\nVasco - 0,15%\nAtlético-MG - 0,009%\nSão Paulo - 0,001%",
+        "tamanho_comentario":314
+    },
+    {
+        "id":125,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/BonetDouglas\/status\/1988069204239548784",
+        "usuario":"BonetDouglas",
+        "conteudo":"Informação.\n\nPerdendo para o Ceará, infelizmente cai o Argentino.",
+        "data_hora":"2025-11-11T02:20:09.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Informação.\n\nPerdendo para o Ceará, infelizmente cai o Argentino.",
+        "tamanho_comentario":65
+    },
+    {
+        "id":126,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/edsonvaas\/status\/1988002732842905930",
+        "usuario":"edsonvaas",
+        "conteudo":"Esses jogadores do Ceará ficam mandando DM para minha amiga.. chamando para resenha kkkkkkkkk esses cara viu",
+        "data_hora":"2025-11-10T21:56:01.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Esses jogadores do Ceará ficam mandando DM para minha amiga.. chamando para resenha kkkkkkkkk esses cara viu",
+        "tamanho_comentario":108
+    },
+    {
+        "id":127,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/sapatonaloucar\/status\/1988054703607779783",
+        "usuario":"sapatonaloucar",
+        "conteudo":"sai rodando o cj ceara cujo o bairro que mais abriga maconheiro atrás de seda e piteira e não tem UM CANTO q venda esse caralho fechem este bairro agora!",
+        "data_hora":"2025-11-11T01:22:32.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"sai rodando o cj ceara cujo o bairro que mais abriga maconheiro atrás de seda e piteira e não tem UM CANTO q venda esse caralho fechem este bairro agora!",
+        "tamanho_comentario":153
+    },
+    {
+        "id":128,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/flowerslilic\/status\/1987874192667419023",
+        "usuario":"flowerslilic",
+        "conteudo":"a menina na mesa do lado enchendo a porra do saco gritando pq viu eu e mais um com a blusa do ceara só pra no final ser rebaixadakkkkkkkkkkkkkkkkkkk",
+        "data_hora":"2025-11-10T13:25:15.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"a menina na mesa do lado enchendo a porra do saco gritando pq viu eu e mais um com a blusa do ceara só pra no final ser rebaixadakkkkkkkkkkkkkkkkkkk",
+        "tamanho_comentario":148
+    },
+    {
+        "id":129,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/vansrobertto\/status\/1987858808513700337",
+        "usuario":"vansrobertto",
+        "conteudo":"O pior que o Santos do Vojvoda não joga mal até nas derrotas, creio que o ultimo jogo ruim foi contra o Ceará. Nem nas derrotas contra Vitória e empate contra o Fortaleza foi ruim, o Santos é bem treinado, o problema são as falhas individuais.",
+        "data_hora":"2025-11-10T12:24:07.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"O pior que o Santos do Vojvoda não joga mal até nas derrotas, creio que o ultimo jogo ruim foi contra o Ceará. Nem nas derrotas contra Vitória e empate contra o Fortaleza foi ruim, o Santos é bem treinado, o problema são as falhas individuais.",
+        "tamanho_comentario":243
+    },
+    {
+        "id":130,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/LOC_ADALBERTO\/status\/1988078188635828615",
+        "usuario":"LOC_ADALBERTO",
+        "conteudo":"Oremos a Deus pelo Ceará !",
+        "data_hora":"2025-11-11T02:55:51.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Oremos a Deus pelo Ceará !",
+        "tamanho_comentario":26
+    },
+    {
+        "id":131,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/LucaasFer_\/status\/1988277408425005467",
+        "usuario":"LucaasFer_",
+        "conteudo":"estou maravilhado com o rambo dó ceara",
+        "data_hora":"2025-11-11T16:07:29.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"estou maravilhado com o rambo dó ceara",
+        "tamanho_comentario":38
+    },
+    {
+        "id":132,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/jornaldomacico\/status\/1987855716565062043",
+        "usuario":"jornaldomacico",
+        "conteudo":"Atacarejos freiam expansão e reduzem novas lojas no Ceará. Consolidação de marca e concorrência local estão entre fatores que explicam cenário.",
+        "data_hora":"2025-11-10T12:11:50.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Atacarejos freiam expansão e reduzem novas lojas no Ceará. Consolidação de marca e concorrência local estão entre fatores que explicam cenário.",
+        "tamanho_comentario":143
+    },
+    {
+        "id":133,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/porangabuS\/status\/1988020097575698669",
+        "usuario":"porangabuS",
+        "conteudo":"Ah se o Ceará tivesse R$600 mil pra pagar no Lucero",
+        "data_hora":"2025-11-10T23:05:01.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Ah se o Ceará tivesse R$600 mil pra pagar no Lucero",
+        "tamanho_comentario":51
+    },
+    {
+        "id":134,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/matheus_karil\/status\/1987863210737684608",
+        "usuario":"matheus_karil",
+        "conteudo":"Imagina não entender pq a população prefere bandido morto, o chefe do tráfico do Ceará foi solto ano passado em decisão do TJCE, e dps disso ele foi lá e expulsou os moradores da cidade executando um homem em praça pública como exemplo do que ele ia fazer com os demais moradores",
+        "data_hora":"2025-11-10T12:41:36.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Imagina não entender pq a população prefere bandido morto, o chefe do tráfico do Ceará foi solto ano passado em decisão do TJCE, e dps disso ele foi lá e expulsou os moradores da cidade executando um homem em praça pública como exemplo do que ele ia fazer com os demais moradores",
+        "tamanho_comentario":279
+    },
+    {
+        "id":135,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/phoresycortinas\/status\/1987864200782172170",
+        "usuario":"phoresycortinas",
+        "conteudo":"na boa, inimaginável aqueles pedreiros da bola jogando oq jogaram ontem sendo campeoes da copa do brasil, time que perde em casa pro CEARÁ chegar numa semi final ja eh caminho demais percorrido",
+        "data_hora":"2025-11-10T12:45:32.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"na boa, inimaginável aqueles pedreiros da bola jogando oq jogaram ontem sendo campeoes da copa do brasil, time que perde em casa pro CEARÁ chegar numa semi final ja eh caminho demais percorrido",
+        "tamanho_comentario":193
+    },
+    {
+        "id":136,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/pietra_delai\/status\/1988200588237299992",
+        "usuario":"pietra_delai",
+        "conteudo":"E eu q sonhei q fui ver o jogo do Corinthians contra o Ceará e fiquei p fora da arena (Corinthians tb perdeu no sonho) alugou um triplex na minha mente mn",
+        "data_hora":"2025-11-11T11:02:13.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"E eu q sonhei q fui ver o jogo do Corinthians contra o Ceará e fiquei p fora da arena (Corinthians tb perdeu no sonho) alugou um triplex na minha mente mn",
+        "tamanho_comentario":154
+    },
+    {
+        "id":137,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/haroldcs\/status\/1988047852803920179",
+        "usuario":"haroldcs",
+        "conteudo":"Em 31 anos como jornalista, eu:\n- editei um jornal de gerentes do Banespa\n- aprendi a tirar self com a Miss Brasil\n- entrevistei Evo Morales antes de ele ser presidente\n- editei um livro do humorista Matheus Ceará\n- joguei tênis com um senhor de 100 anos\n\nNuma exagerei. Qual?",
+        "data_hora":"2025-11-11T00:55:18.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Em 31 anos como jornalista, eu:\n- editei um jornal de gerentes do Banespa\n- aprendi a tirar self com a Miss Brasil\n- entrevistei Evo Morales antes de ele ser presidente\n- editei um livro do humorista Matheus Ceará\n- joguei tênis com um senhor de 100 anos\n\nNuma exagerei. Qual?",
+        "tamanho_comentario":276
+    },
+    {
+        "id":138,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/RoneyHenriqueP1\/status\/1988058928299593851",
+        "usuario":"RoneyHenriqueP1",
+        "conteudo":"Depois da derrota deles pro Mirassol, começo a pensar que vai ser decidido na última rodada\n\nO Ceará, por ex, pode jogar contra eles lutando por G7 ou G8. O Grêmio pode pegar precisando não perder pra não cair.\n\nO Flamengo ainda pega Mirassol, fora. E os dois times oscilam muito!",
+        "data_hora":"2025-11-11T01:39:19.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Depois da derrota deles pro Mirassol, começo a pensar que vai ser decidido na última rodada\n\nO Ceará, por ex, pode jogar contra eles lutando por G7 ou G8. O Grêmio pode pegar precisando não perder pra não cair.\n\nO Flamengo ainda pega Mirassol, fora. E os dois times oscilam muito!",
+        "tamanho_comentario":280
+    },
+    {
+        "id":139,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/CBMSC193\/status\/1988305064520208887",
+        "usuario":"CBMSC193",
+        "conteudo":"14:42 ATENDIMENTO PRÉ-HOSPITALAR local: Rua José Ceara da Costa, ITINGA, #BARRA VELHA - feminina adulta, 59 anos, informa coluna travada. histórico de problemas lombares",
+        "data_hora":"2025-11-11T17:57:22.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"14:42 ATENDIMENTO PRÉ-HOSPITALAR local: Rua José Ceara da Costa, ITINGA, #BARRA VELHA - feminina adulta, 59 anos, informa coluna travada. histórico de problemas lombares",
+        "tamanho_comentario":169
+    },
+    {
+        "id":140,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/cauazin99\/status\/1987946710924956103",
+        "usuario":"cauazin99",
+        "conteudo":"Fui pro Ceará mas já voltei  agora aquela música da porshe azul fica tocando 24 horas na minha cabeça",
+        "data_hora":"2025-11-10T18:13:24.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Fui pro Ceará mas já voltei  agora aquela música da porshe azul fica tocando 24 horas na minha cabeça",
+        "tamanho_comentario":101
+    },
+    {
+        "id":141,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/_brunamz_\/status\/1988092150215831678",
+        "usuario":"_brunamz_",
+        "conteudo":"amo meu fortaleza Ceará\n(eu sendo de Rondônia)",
+        "data_hora":"2025-11-11T03:51:20.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"amo meu fortaleza Ceará\n(eu sendo de Rondônia)",
+        "tamanho_comentario":46
+    },
+    {
+        "id":142,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/jostenl0ver\/status\/1988072700258975846",
+        "usuario":"jostenl0ver",
+        "conteudo":"Hexatombe se passa no SERTÃO NORDESTINO e não estão usando essa oportunidade incrível pra lançar peças de roupas pra lugares quentes. O que eu vou fazer uma touca no Ceará? Vamos Cellbit lance uma regata, saia, cropped, eu quero dar dinheiro pra você mas tu tem que me ajuda macho",
+        "data_hora":"2025-11-11T02:34:03.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Hexatombe se passa no SERTÃO NORDESTINO e não estão usando essa oportunidade incrível pra lançar peças de roupas pra lugares quentes. O que eu vou fazer uma touca no Ceará? Vamos Cellbit lance uma regata, saia, cropped, eu quero dar dinheiro pra você mas tu tem que me ajuda macho",
+        "tamanho_comentario":280
+    },
+    {
+        "id":143,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/idavizada\/status\/1988092878464381244",
+        "usuario":"idavizada",
+        "conteudo":"galera qual a brisa de torcer Ceará Flamengo e usar camisa do Fluminense",
+        "data_hora":"2025-11-11T03:54:13.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"galera qual a brisa de torcer Ceará Flamengo e usar camisa do Fluminense",
+        "tamanho_comentario":72
+    },
+    {
+        "id":144,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Teilor_SCCP\/status\/1987896285232337206",
+        "usuario":"Teilor_SCCP",
+        "conteudo":"os cara nem empataram, com o Ceara em Itaquera meu rs",
+        "data_hora":"2025-11-10T14:53:02.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"os cara nem empataram, com o Ceara em Itaquera meu rs",
+        "tamanho_comentario":53
+    },
+    {
+        "id":145,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/MissCof44344984\/status\/1988071729764196522",
+        "usuario":"MissCof44344984",
+        "conteudo":"A escalada pra valer do Comando Vermelho no Ceará começou ali por 2015. Hoje em dia toca o terror por lá.\nO PT começou a governar o estado em 2015 e continua até hoje.\nE há quem não acredite em coincidências...",
+        "data_hora":"2025-11-11T02:30:11.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"A escalada pra valer do Comando Vermelho no Ceará começou ali por 2015. Hoje em dia toca o terror por lá.\nO PT começou a governar o estado em 2015 e continua até hoje.\nE há quem não acredite em coincidências...",
+        "tamanho_comentario":210
+    },
+    {
+        "id":146,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/dbbiaahh\/status\/1987920428103590301",
+        "usuario":"dbbiaahh",
+        "conteudo":"bia fofolete gueixa lenda do ceará cabelo de playmobil debaixo das asas da mamãe moedas",
+        "data_hora":"2025-11-10T16:28:58.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"bia fofolete gueixa lenda do ceará cabelo de playmobil debaixo das asas da mamãe moedas",
+        "tamanho_comentario":87
+    },
+    {
+        "id":147,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/Heitor_Ferrer\/status\/1988260136612192575",
+        "usuario":"Heitor_Ferrer",
+        "conteudo":"Com pesar, nos despedimos de Roberto Macêdo, ex-presidente da FIEC e líder do Grupo J. Macêdo. Um visionário que marcou o desenvolvimento industrial do Ceará com ética, inovação e compromisso.\nMeus sentimentos à família e amigos. Seu legado seguirá vivo.",
+        "data_hora":"2025-11-11T14:58:51.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"Com pesar, nos despedimos de Roberto Macêdo, ex-presidente da FIEC e líder do Grupo J. Macêdo. Um visionário que marcou o desenvolvimento industrial do Ceará com ética, inovação e compromisso.\nMeus sentimentos à família e amigos. Seu legado seguirá vivo.",
+        "tamanho_comentario":254
+    },
+    {
+        "id":148,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/1910danii_\/status\/1988020123689423213",
+        "usuario":"1910danii_",
+        "conteudo":"Ué, mas as Trikas tbm não perderam do Ceará no morumbis? \n\nQuando está perto de um majestoso sempre tem um babaca para aparecer nessa rede social.",
+        "data_hora":"2025-11-10T23:05:07.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Ué, mas as Trikas tbm não perderam do Ceará no morumbis? \n\nQuando está perto de um majestoso sempre tem um babaca para aparecer nessa rede social.",
+        "tamanho_comentario":146
+    },
+    {
+        "id":149,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/eeeeinanda\/status\/1988015260087836919",
+        "usuario":"eeeeinanda",
+        "conteudo":"É gigolô uma vez corno sempre corno.\nAqui no Ceará chamamos esse tipo de corno de: corno cuscuz ( ele sabe e abafa)",
+        "data_hora":"2025-11-10T22:45:48.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"É gigolô uma vez corno sempre corno.\nAqui no Ceará chamamos esse tipo de corno de: corno cuscuz ( ele sabe e abafa)",
+        "tamanho_comentario":115
+    },
+    {
+        "id":150,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/jkhardest\/status\/1987982578155221075",
+        "usuario":"jkhardest",
+        "conteudo":"quem é essa puta que tá falando do jungkook? vai se foder, caralho. ratatouille do ceará, tua mãe te jogou no lixo assim que tu nasceu, aí tu bateu a cabeça no fundo da lata, rompeu a moleira e deixou o cérebro lá porra?",
+        "data_hora":"2025-11-10T20:35:56.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"quem é essa puta que tá falando do jungkook? vai se foder, caralho. ratatouille do ceará, tua mãe te jogou no lixo assim que tu nasceu, aí tu bateu a cabeça no fundo da lata, rompeu a moleira e deixou o cérebro lá porra?",
+        "tamanho_comentario":220
+    },
+    {
+        "id":151,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/OJOTAPEG\/status\/1988195890167980436",
+        "usuario":"OJOTAPEG",
+        "conteudo":"7h da matina ja metendo pra dentro um pão com carne moída e queijo coalho from Ceará",
+        "data_hora":"2025-11-11T10:43:33.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"7h da matina ja metendo pra dentro um pão com carne moída e queijo coalho from Ceará",
+        "tamanho_comentario":84
+    },
+    {
+        "id":152,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/nanduferr\/status\/1988049498187223169",
+        "usuario":"nanduferr",
+        "conteudo":"O antigo suburbano Garage do RJ ressuscitou, e quando digo Garage me refiro a todo aquele furduncinho da Rua Ceará.\nUm questionamento me surgiu: é só eu que tive a impressão que o bar Heavy Beer (que atualmente fica onde era o antigo Heavy Duty) tem uma vibe roqueiro fascistinha?",
+        "data_hora":"2025-11-11T01:01:51.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"O antigo suburbano Garage do RJ ressuscitou, e quando digo Garage me refiro a todo aquele furduncinho da Rua Ceará.\nUm questionamento me surgiu: é só eu que tive a impressão que o bar Heavy Beer (que atualmente fica onde era o antigo Heavy Duty) tem uma vibe roqueiro fascistinha?",
+        "tamanho_comentario":280
+    },
+    {
+        "id":153,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/clarameldream\/status\/1987915682085032217",
+        "usuario":"clarameldream",
+        "conteudo":"nao eh possivel q o corinthians perdeu PRO CEARA viado",
+        "data_hora":"2025-11-10T16:10:06.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Negativo",
+        "genero_final":"feminino",
+        "emojis":[
+
+        ],
+        "texto_puro":"nao eh possivel q o corinthians perdeu PRO CEARA viado",
+        "tamanho_comentario":54
+    },
+    {
+        "id":154,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/julisbln\/status\/1987938993128788448",
+        "usuario":"julisbln",
+        "conteudo":"quando vc tá performando ouvindo so as pedradas do mpb mas ninguém q tá dentro do av. ceará - ufac sabe",
+        "data_hora":"2025-11-10T17:42:44.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Neutro",
+        "genero_final":"masculino",
+        "emojis":[
+
+        ],
+        "texto_puro":"quando vc tá performando ouvindo so as pedradas do mpb mas ninguém q tá dentro do av. ceará - ufac sabe",
+        "tamanho_comentario":103
+    },
+    {
+        "id":155,
+        "fonte_coleta":"Twitter:keyword:ceara",
+        "post_url":"https:\/\/x.com\/LoteriasMobile\/status\/1987988820726358149",
+        "usuario":"LoteriasMobile",
+        "conteudo":"Loteca 2\/2, Concurso 1219 (10\/11\/2025): CORINTHIANS\/SP:0 X CEARA\/CE:1,VITORIA\/BA:0 X BOTAFOGO\/RJ:0,CRUZEIRO\/MG:0 X FLUMINENSE\/RJ:0,MANCHESTER CITY:3 X LIVERPOOL:0,FLAMENGO\/RJ:3 X SANTOS\/SP:2,VALENCIA CLUB:1 X REAL BETIS:1,FORTALEZA\/CE:2 X GREMIO\/RS:2 #loteca",
+        "data_hora":"2025-11-10T21:00:44.000Z",
+        "parent_url":null,
+        "run_id":"20251111-172815",
+        "sentimento_final":"Positivo",
+        "genero_final":"Desconhecido",
+        "emojis":[
+
+        ],
+        "texto_puro":"Loteca 2\/2, Concurso 1219 (10\/11\/2025): CORINTHIANS\/SP:0 X CEARA\/CE:1,VITORIA\/BA:0 X BOTAFOGO\/RJ:0,CRUZEIRO\/MG:0 X FLUMINENSE\/RJ:0,MANCHESTER CITY:3 X LIVERPOOL:0,FLAMENGO\/RJ:3 X SANTOS\/SP:2,VALENCIA CLUB:1 X REAL BETIS:1,FORTALEZA\/CE:2 X GREMIO\/RS:2 #loteca",
+        "tamanho_comentario":258
+    }
+]

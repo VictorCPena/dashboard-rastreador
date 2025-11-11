@@ -1,0 +1,15 @@
+Resumo do Processamento para Run ID: 20251111-172815
+Perfil: coleta_manual
+Total de comentários processados: 155
+
+Contagem de Sentimentos (Final):
+sentimento_final
+Negativo    70
+Positivo    68
+Neutro      17
+
+Contagem de Gênero (Final):
+genero_final
+Desconhecido    69
+masculino       55
+feminino        31
