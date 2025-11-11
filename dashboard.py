@@ -1,4 +1,4 @@
-# dashboard.py (CORRIGIDO: Erros de HTML, Jinja2, int64 e use_container_width)
+# dashboard.py (CORRIGIDO: Agora com Nomes Amigáveis no Filtro de Post)
 # -*- coding: utf-8 -*-
 import streamlit as st
 import pandas as pd
@@ -109,7 +109,16 @@ def _preprocess_dataframe(df_full: pd.DataFrame) -> pd.DataFrame:
     if df_full.empty: return pd.DataFrame()
     if 'sentimento_final' in df_full.columns: df_full.rename(columns={'sentimento_final': 'sentimento'}, inplace=True)
     if 'genero_final' in df_full.columns: df_full.rename(columns={'genero_final': 'genero_previsto'}, inplace=True)
-    default_values = { 'conteudo': "", 'data_hora': pd.NaT, 'sentimento': 'Neutro', 'genero_previsto': 'Desconhecido', 'fonte_coleta': 'N/A', 'run_id': 'N/A', 'emojis': [], 'texto_puro': "", 'tamanho_comentario': 0, 'parent_url': None }
+    
+    # --- MUDANÇA: Adiciona parent_post_text ---
+    default_values = { 
+        'conteudo': "", 'data_hora': pd.NaT, 'sentimento': 'Neutro', 
+        'genero_previsto': 'Desconhecido', 'fonte_coleta': 'N/A', 
+        'run_id': 'N/A', 'emojis': [], 'texto_puro': "", 
+        'tamanho_comentario': 0, 'parent_url': None, 'parent_post_text': None 
+    }
+    # --- FIM DA MUDANÇA ---
+    
     for col, default in default_values.items():
         if col not in df_full.columns: df_full[col] = default
 
@@ -550,23 +559,32 @@ def display_dashboard_content(
     st.sidebar.divider() 
     st.sidebar.header(f"Filtros Adicionais ({network_name}) 🔍")
 
-    # --- <<< INÍCIO DA MUDANÇA: FILTRO DE POST >>> ---
+    # --- <<< INÍCIO DA MUDANÇA: FILTRO DE POST (COM ALT TEXT) >>> ---
     selected_post_url = "All Posts"
     selected_post_display = "All Posts"
     post_options_map = {}
 
-    if 'parent_url' in df_display.columns:
-        # Pega URLs únicas que não sejam Nulas/NaN
-        unique_posts = df_display['parent_url'].dropna().unique().tolist()
+    # Verifica se as colunas necessárias existem
+    if 'parent_url' in df_display.columns and 'parent_post_text' in df_display.columns:
+        # Agrupa por URL e pega o PRIMEIRO alt_text (eles devem ser todos iguais para a mesma URL)
+        unique_posts_df = df_display.dropna(subset=['parent_url'])
+        unique_posts_df = unique_posts_df.groupby('parent_url')['parent_post_text'].first().reset_index()
         
-        if len(unique_posts) > 0: # Só mostra o filtro se houver posts
-            for url in unique_posts:
-                if not isinstance(url, str): continue
-                # Tenta criar um nome amigável (ex: 'p/Cxyz123' ou 'reel/Cabc456')
-                match = re.search(r'/(p|reel)/([^/]+)', url)
+        if not unique_posts_df.empty:
+            for _, row in unique_posts_df.iterrows():
+                url = row['parent_url']
+                alt_text = row['parent_post_text']
+                
+                # Tenta criar um nome amigável (ex: 'p/Cxyz123')
+                match = re.search(r'/(p|reel)/([^/]+)', str(url))
                 # Remove a barra final se existir
-                friendly_name = match.group(0).lstrip('/').rstrip('/') if match else url
-                post_options_map[friendly_name] = url
+                url_part = match.group(0).lstrip('/').rstrip('/') if match else url
+                
+                # Cria o nome de exibição, truncando o alt_text
+                display_name = f"({url_part}) - {alt_text[:60]}..." if (alt_text and isinstance(alt_text, str)) else url_part
+                
+                # O nome de exibição é a Chave, a URL real é o Valor
+                post_options_map[display_name] = url
             
             if post_options_map:
                 # Ordena os nomes amigáveis para a exibição
@@ -582,6 +600,7 @@ def display_dashboard_content(
                 if selected_post_display != "All Posts":
                     selected_post_url = post_options_map.get(selected_post_display)
     # --- <<< FIM DA MUDANÇA: FILTRO DE POST >>> ---
+
 
     selected_source = "All Sources"
     
@@ -642,7 +661,7 @@ def display_dashboard_content(
     if selected_post_url != "All Posts":
         _df_final_filtered = _df_final_filtered[_df_final_filtered['parent_url'] == selected_post_url]
         print(f"[{network_name}] Filtro Post: {selected_post_display}. Linhas: {len(_df_final_filtered)}")
-        active_filters_list.append(f"Post: {selected_post_display}")
+        active_filters_list.append(f"Post: {selected_post_display[:30]}...") # Trunca o nome do filtro
 
     # 2. Aplica o filtro de RUN ID (EXISTENTE, agora em cadeia)
     if selected_run_id != "All Runs":
@@ -732,9 +751,9 @@ def display_dashboard_content(
         
         # --- <<< INÍCIO DA MUDANÇA: NOME DO ARQUIVO HTML >>> ---
         if selected_post_url != "All Posts":
-             f_name = selected_post_display.replace('/', '_') # ex: p_Cxyz123
+             f_name = selected_post_display.split(') - ')[0].replace('(', '') # Pega só o (p/Cxyz...)
              safe_p = ''.join(c for c in f_name if c.isalnum() or c in ('_', '-')).rstrip()
-             profile_name_for_report += f"_({safe_p})"
+             profile_name_for_report += f"_(Post_{safe_p})"
         
         elif selected_run_id != "All Runs": # (Else if) para não poluir o nome com os dois
         # --- <<< FIM DA MUDANÇA: NOME DO ARQUIVO HTML >>> ---
