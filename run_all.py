@@ -1,3 +1,4 @@
+# run_all.py (Corrigido para ignorar erros de decodificação no log)
 import argparse
 import logging
 import subprocess
@@ -26,7 +27,11 @@ def run_script(script_path: str, *args: str) -> bool:
     command = [PYTHON_EXECUTABLE, "-m", module_path] + list(args)
     logging.info(f"Executando: {' '.join(command)}")
     try:
-        result = subprocess.run(command, check=True, cwd=BASE_DIR, capture_output=True, text=True, encoding='utf-8')
+        # --- MUDANÇA AQUI ---
+        # Adicionado errors='ignore' para evitar o UnicodeDecodeError
+        result = subprocess.run(command, check=True, cwd=BASE_DIR, capture_output=True, text=True, encoding='utf-8', errors='ignore')
+        # --- FIM DA MUDANÇA ---
+        
         logging.info(f"Script '{script_name}' concluído com sucesso.")
         if result.stderr:
              logging.warning(f"Avisos de {script_name}:\n{result.stderr[-500:]}") 
@@ -202,7 +207,7 @@ def main():
     analise_success = run_script(script_analise, '--db-path', db_path, '--run-id', run_id, '--profile-name', profile_name) 
 
     if not analise_success:
-        logging.critical("Pipeline interrompido devido a erro na ETAPA 2: ANÁLISE LOCAL.")
+        logging.critical("Pipeline interrompido due a erro na ETAPA 2: ANÁLISE LOCAL.")
         sys.exit(1)
 
     logging.info("====================== INICIANDO ETAPA 3: PROCESSAMENTO FINAL (JSON/TXT) ======================")
@@ -210,7 +215,7 @@ def main():
     processamento_success = run_script(script_processamento, '--db-path', db_path, '--run-id', run_id)
 
     if not processamento_success:
-        logging.critical("Pipeline interrompido devido a erro na ETAPA 3: PROCESSAMENTO FINAL.")
+        logging.critical("Pipeline interrompido due a erro na ETAPA 3: PROCESSAMENTO FINAL.")
         sys.exit(1)
 
     logging.info("======================== PIPELINE COMPLETO ========================")
