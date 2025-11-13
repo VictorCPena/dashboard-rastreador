@@ -1,0 +1,15 @@
+Resumo do Processamento para Run ID: 20251113-134305
+Perfil: o_povo
+Total de comentários processados: 997
+
+Contagem de Sentimentos (Final):
+sentimento_final
+Neutro      390
+Negativo    304
+Positivo    303
+
+Contagem de Gênero (Final):
+genero_final
+feminino        461
+masculino       368
+Desconhecido    168
