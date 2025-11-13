@@ -1,0 +1,15 @@
+Resumo do Processamento para Run ID: 20251113-144039
+Perfil: diario_do_nordeste
+Total de comentários processados: 1519
+
+Contagem de Sentimentos (Final):
+sentimento_final
+Positivo    628
+Negativo    454
+Neutro      437
+
+Contagem de Gênero (Final):
+genero_final
+feminino        704
+masculino       607
+Desconhecido    208
