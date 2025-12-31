@@ -1,84 +1,113 @@
 settings:
-  chrome_profile_path: "c:/Users/Bolero/Downloads/chrome_profile"
+  chrome_profile_path: "C:/Users/victo/OneDrive/Área de Trabalho/futebol-bot/chrome_profile"
 
+# config.yaml - War Room & Monitoramento
+
+# --- CAMINHOS DO SISTEMA ---
 paths:
+  # Onde o banco de dados e relatórios ficam salvos
+  db: "dados/war_room_2026.db"
+  output: "relatorios_processados"
   output_report: "dados/relatorio_geral.txt"
+  
+  # Caminhos dos modelos locais (Seus caminhos originais mantidos)
   sentiment_model: "modelos/modelo_final_bert_base_estavel"
   gender_model: "modelos/modelo_final_genero_final"
 
-email:
-  sender: "seu-email@gmail.com"
-  recipients:
-    - "email-destino@exemplo.com.br"
-  subject: "Relatório Semanal: Análise de Mídias Sociais"
-
-# Em config/config.yaml
-
+# --- CONFIGURAÇÃO GEMINI (IA) ---
 gemini:
-  # --- Configurações que você já tinha ---
-  model_name: "gemini-2.5-flash" # (Corrigi o seu "2.5-flash" para "1.5-flash", que é o modelo correto)
+  model_name: "gemini-2.5-flash"
+  api_key_env: "GEMINI_API_KEY"
   generation_config:
     temperature: 0.5
     max_output_tokens: 4096
   
-  # --- Chaves que estavam faltando e o script precisa ---
-  api_key_env: "GEMINI_API_KEY"
   api_delay_seconds: 2
   max_comments_per_group: 250
 
-  # --- O PROMPT QUE CAUSOU O ERRO ---
+  # Prompts de Resumo (Mantidos do seu arquivo)
   detailed_summary_prompt: >-
     Você é um analista de mídias sociais. Analise os comentários a seguir sobre "{nome_grupo}" 
-    e forneça um resumo detalhado em 3 a 5 tópicos (bullet points).
-    Identifique o sentimento geral, os principais pontos positivos e negativos, e 
-    qualquer sugestão ou reclamação recorrente. Seja conciso e direto.
+    e forneça um resumo detalhado em 3 a 5 tópicos.
+    Identifique o sentimento geral, os principais pontos positivos e negativos.
+    Comentários: {conteudos_formatados}
 
-    Comentários para análise:
-    {conteudos_formatados}
-
-  # --- O PRÓXIMO PROMPT QUE IA DAR ERRO ---
   executive_summary_prompt: >-
-    Você é um analista sênior de mídias sociais. Você recebeu os resumos detalhados abaixo, 
-    cada um de uma fonte diferente.
-    Compile um "Resumo Executivo" geral e unificado em markdown.
+    Você é um analista sênior. Compile um Resumo Executivo geral em markdown
+    com base nos resumos das fontes: {texto_dos_resumos}
 
-    O resumo deve conter:
-    1.  **Sentimento Geral:** O sentimento predominante (Positivo, Negativo, Misto).
-    2.  **Temas Principais:** Os 3 a 5 assuntos mais discutidos.
-    3.  **Pontos de Atenção:** Quaisquer problemas críticos, reclamações ou elogios 
-        significativos que a equipe precisa saber.
-    4.  **Recomendações (Opcional):** Uma sugestão de ação, se aplicável.
-
-    Resumos Detalhados das Fontes:
-    {texto_dos_resumos}
-
+# --- CONFIGURAÇÃO DE COLETA (SELENIUM) ---
 coleta:
+  # Camuflagem para parecer um Humano no Windows (ESSENCIAL)
+  user_agent_padrao: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+
   twitter:
-    max_scrolls: 10
-    scroll_delay: 2.5
-    timeout: 30
-  instagram:
-    max_posts_por_perfil: 25
-    scrolls_perfil: 25
+    # Caminho do perfil corrigido (dentro da sessão twitter)
+    chrome_profile_path: "C:/Users/victo/OneDrive/Área de Trabalho/futebol-bot/chrome_profile"
+    max_scrolls: 2
     scroll_delay: 3
     timeout: 30
 
-# --- SEÇÃO CORRIGIDA ---
+  instagram:
+    # Caminho do perfil corrigido (dentro da sessão instagram)
+    chrome_profile_path: "C:/Users/victo/OneDrive/Área de Trabalho/futebol-bot/chrome_profile"
+    max_posts_por_perfil: 30
+    scrolls_perfil: 2
+    scroll_delay: 4
+    timeout: 30
+
+# --- E-MAIL (Mantido) ---
+email:
+  sender: "seu-email@gmail.com"
+  recipients:
+    - "email-destino@exemplo.com.br"
+  subject: "Relatório Semanal: Monitoramento War Room"
+
+# --- PERFIS DE MONITORAMENTO ---
 monitor_profiles:
+  
+  # 1. PERFIL: Nikolas Ferreira (War Room Completa)
+  # Rodar: python run_all.py --profile campanha_nikolas_ferreira --plataforma todas
+  campanha_nikolas_ferreira:
+    twitter_profiles:
+      - "@nikolas_dm"       # O Candidato
+
+    twitter_keywords:
+      # Busca Exata em Jornais (Use aspas simples fora ' e duplas dentro ")
+      - '(from:g1 OR from:folha OR from:estadao OR from:metropoles) "nikolas ferreira"'
+      - '(from:g1 OR from:folha OR from:estadao) nikolas'
+      # Busca Geral (Vox Populi)
+      - '"nikolas ferreira"'
+      - '"deputado nikolas"'
+      - '"chupetinha" nikolas' # Monitoramento de crise/ataque
+
+    instagram_profiles:
+      - "nikolasferreiradm"
+      - "portalg1"
+      - "metropoles"
+    
+    instagram_tags:
+      - "nikolas"
+      - "nikolasferreira"
+      - "pl2026"
+
+  # 2. PERFIL: Diário do Nordeste (Monitoramento Local)
+  # Rodar: python run_all.py --profile diario_do_nordeste --plataforma todas
   diario_do_nordeste:
     instagram_profiles:
-      - diariodonordeste
-    # Você pode adicionar twitter_profiles aqui no futuro se precisar
-    # twitter_profiles:
-    #   - diariodonordeste
+      - "diariodonordeste"
+    # Se quiser monitorar o que falam DO jornal no Twitter, descomente abaixo:
+    # twitter_keywords:
+    #   - '"diário do nordeste"'
 
+  # 3. PERFIL: O Povo
+  # Rodar: python run_all.py --profile o_povo --plataforma todas
   o_povo:
     instagram_profiles:
-      - opovoonline
-    # Você pode adicionar twitter_profiles aqui no futuro se precisar
-    # twitter_profiles:
-    #   - opovoonline
+      - "opovoonline"
 
+  # 4. PERFIL: Bolero Comunicação (Cliente/Agência)
+  # Rodar: python run_all.py --profile bolerocomunicacao --plataforma todas
   bolerocomunicacao:
     instagram_profiles:
-      - bolerocomunicacao
+      - "bolerocomunicacao"
